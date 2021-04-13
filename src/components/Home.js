@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Registrations from './auth/Registrations';
+import Login from './auth/Login';
 
 const Home = ({
   loggedInStatus, handleLogin, history, username,
@@ -17,6 +18,7 @@ const Home = ({
         {loggedInStatus === 'Logged in!' ? `Hi ${username}, You are now ${loggedInStatus}` : loggedInStatus }
       </h2>
       <Registrations handleSuccessfulAuthentication={handleSuccessfulAuthentication} />
+      <Login handleSuccessfulAuthentication={handleSuccessfulAuthentication} />
     </div>
   );
 };

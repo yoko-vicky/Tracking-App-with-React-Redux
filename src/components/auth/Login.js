@@ -2,14 +2,14 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const Registrations = ({ handleSuccessfulAuthentication }) => {
+const Login = ({ handleSuccessfulAuthentication }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post('http://localhost:3001/signup',
+    axios.post('http://localhost:3001/login',
       {
         user: {
           username,
@@ -18,19 +18,19 @@ const Registrations = ({ handleSuccessfulAuthentication }) => {
       },
       { withCredentials: true })
       .then((response) => {
-        if (response.data.status === 'created') {
+        if (response.data.logged_in) {
           handleSuccessfulAuthentication(response.data);
-        } else {
-          setErrors(response.data.errorMsgs);
+        } else if (response.data.errors.length > 0) {
+          setErrors(response.data.errors);
         }
-      }).catch(() => {
-        setErrors(['Sorry, user cannot be created.']);
+      }).catch((error) => {
+        console.log('login error', error);
       });
   };
 
   return (
     <div>
-      <h1>Registrations</h1>
+      <h1>Login</h1>
       {errors && errors.map((error) => (<p key={error}>{error}</p>))}
       <form onSubmit={handleSubmit}>
         <input
@@ -47,18 +47,18 @@ const Registrations = ({ handleSuccessfulAuthentication }) => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Register</button>
+        <button type="submit">Log in</button>
       </form>
     </div>
   );
 };
 
-Registrations.propTypes = {
+Login.propTypes = {
   handleSuccessfulAuthentication: PropTypes.func,
 };
 
-Registrations.defaultProps = {
+Login.defaultProps = {
   handleSuccessfulAuthentication: null,
 };
 
-export default Registrations;
+export default Login;
