@@ -12,6 +12,9 @@ import AddTrack from '../pages/AddTrack';
 import TrackList from '../pages/TrackList';
 import Progress from '../pages/Progress';
 import More from '../pages/More';
+import AdminHome from '../admin_views/AdminHome';
+import AdminAddItem from '../admin_views/AdminAddItem';
+import AdminEditItem from '../admin_views/AdminEditItem';
 
 const AppRouter = () => {
   const [loggedInStatus, setLoggedInStatus] = useState('NOT_LOGGED_IN');
@@ -85,6 +88,9 @@ const AppRouter = () => {
           <Route path="/track_list" component={TrackList} />
           <Route path="/progress" component={Progress} />
           <Route path="/more" component={More} />
+          <Route path="/admin" component={AdminHome} />
+          <Route path="/admin/items/create" component={AdminAddItem} />
+          <Route path="/admin/items/:id" component={AdminEditItem} />
           <Route component={NotFound} />
         </Switch>
         <Footer />
