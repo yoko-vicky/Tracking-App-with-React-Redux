@@ -1,16 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import Registrations from './auth/Registrations';
-import Login from './auth/Login';
+import AuthLogin from '../components/auth/AuthLogin';
 
-const Home = ({
-  // loggedInStatus, handleLogin, history, username, handleLogout,
-  loggedInStatus, handleLogin, username, handleLogout,
+const Login = ({
+  loggedInStatus, handleLogin, history, username, handleLogout,
 }) => {
   const handleSuccessfulAuth = (userObj) => {
     handleLogin(userObj);
-    // history.push('/dashboard');
+    history.push('/dashboard');
   };
 
   const handleLogoutClick = () => {
@@ -22,32 +20,31 @@ const Home = ({
 
   return (
     <div>
-      <h1>Home</h1>
+      <h1>Login</h1>
       <h2>
         Logged In Status:
         {loggedInStatus === 'LOGGED_IN' ? `Hi ${username}, You are now ${loggedInStatus}` : loggedInStatus }
       </h2>
       <button type="button" onClick={handleLogoutClick}>Logout</button>
-      <Registrations handleSuccessfulAuth={handleSuccessfulAuth} />
-      <Login handleSuccessfulAuth={handleSuccessfulAuth} />
+      <AuthLogin handleSuccessfulAuth={handleSuccessfulAuth} />
     </div>
   );
 };
 
-Home.propTypes = {
+Login.propTypes = {
   loggedInStatus: PropTypes.string,
   handleLogin: PropTypes.func,
-  // history: PropTypes.instanceOf(Object),
+  history: PropTypes.instanceOf(Object),
   username: PropTypes.string,
   handleLogout: PropTypes.func,
 };
 
-Home.defaultProps = {
+Login.defaultProps = {
   loggedInStatus: '',
   handleLogin: null,
-  // history: undefined,
+  history: undefined,
   username: '',
   handleLogout: null,
 };
 
-export default Home;
+export default Login;

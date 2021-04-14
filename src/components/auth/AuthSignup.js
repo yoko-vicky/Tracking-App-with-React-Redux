@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const Registrations = ({ handleSuccessfulAuth }) => {
+const AuthSignup = ({ handleSuccessfulAuth }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
@@ -33,7 +33,7 @@ const Registrations = ({ handleSuccessfulAuth }) => {
 
   return (
     <div>
-      <h1>Registrations</h1>
+      <h1>AuthSignup</h1>
       {errors && errors.map((error) => (<p key={error}>{error}</p>))}
       <form onSubmit={handleSubmit}>
         <input
@@ -56,12 +56,12 @@ const Registrations = ({ handleSuccessfulAuth }) => {
   );
 };
 
-Registrations.propTypes = {
+AuthSignup.propTypes = {
   handleSuccessfulAuth: PropTypes.func,
 };
 
-Registrations.defaultProps = {
+AuthSignup.defaultProps = {
   handleSuccessfulAuth: null,
 };
 
-export default Registrations;
+export default AuthSignup;
