@@ -1,0 +1,21 @@
+.whole-container {
+  height: 100vh;
+  position: relative;
+
+  @include mq(tab) {
+    min-height: 100vh;
+  }
+}
+
+// .container {
+//   width: $default-width;
+//   max-width: $max-width;
+//   margin: 0 auto;
+// }
+
+.content {
+  width: $default-width;
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 1rem 0;
+}

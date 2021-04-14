@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 
 const Dashboard = ({ loggedInStatus, username }) => (
   <div>
-    <h1>Dashboard</h1>
-    <h2>
-      Logged In Status:
-      {loggedInStatus === 'LOGGED_IN' ? `Hi ${username}, You are now ${loggedInStatus}` : loggedInStatus }
-    </h2>
+    <h1 className="heading">Dashboard</h1>
+    <div className="content">
+      <h2>
+        Logged In Status:
+        {loggedInStatus === 'LOGGED_IN' ? `Hi ${username}, You are now ${loggedInStatus}` : loggedInStatus }
+      </h2>
+    </div>
   </div>
 );
 

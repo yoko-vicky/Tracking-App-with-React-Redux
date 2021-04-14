@@ -1,0 +1,27 @@
+.btn {
+  padding: 1rem 2.2rem;
+  background: $grey;
+  color: $white;
+  text-transform: uppercase;
+  border-radius: 3px;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .iconify {
+    margin-right: 1rem;
+  }
+
+  &.grey {
+    background: $grey;
+  }
+}
+
+input,
+select {
+  background: $white;
+  padding: 1.3rem 1.8rem;
+  border-radius: 4px;
+  border: 1px solid $light-grey;
+}

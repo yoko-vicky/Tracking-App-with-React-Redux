@@ -9,7 +9,9 @@ import Login from '../pages/Login';
 import Signup from '../pages/Signup';
 import Dashboard from '../pages/Dashboard';
 import AddTrack from '../pages/AddTrack';
+import EditTrack from '../pages/EditTrack';
 import TrackList from '../pages/TrackList';
+import TrackItem from '../pages/TrackItem';
 import Progress from '../pages/Progress';
 import More from '../pages/More';
 import AdminHome from '../admin_views/AdminHome';
@@ -40,59 +42,63 @@ const AppRouter = () => {
     <BrowserRouter>
       <div className="whole-container">
         <Header />
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={() => (
-              <Home loggedInStatus={loggedInStatus} />
-            )}
-          />
-          <Route
-            exact
-            path="/dashboard"
-            render={() => (
-              <Dashboard
-                loggedInStatus={loggedInStatus}
-                username={user ? user.username : ''}
-              />
-            )}
-          />
-          <Route
-            exact
-            path="/"
-            render={(props) => (
-              <Login
-                history={props.history}
-                loggedInStatus={loggedInStatus}
-                handleLogin={handleLogin}
-                username={user ? user.username : ''}
-                handleLogout={handleLogout}
-              />
-            )}
-          />
-          <Route
-            exact
-            path="/"
-            render={(props) => (
-              <Signup
-                history={props.history}
-                loggedInStatus={loggedInStatus}
-                handleLogin={handleLogin}
-                username={user ? user.username : ''}
-                handleLogout={handleLogout}
-              />
-            )}
-          />
-          <Route path="/add_track" component={AddTrack} />
-          <Route path="/track_list" component={TrackList} />
-          <Route path="/progress" component={Progress} />
-          <Route path="/more" component={More} />
-          <Route path="/admin" component={AdminHome} />
-          <Route path="/admin/items/create" component={AdminAddItem} />
-          <Route path="/admin/items/:id" component={AdminEditItem} />
-          <Route component={NotFound} />
-        </Switch>
+        <div className="container">
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={() => (
+                <Home loggedInStatus={loggedInStatus} />
+              )}
+            />
+            <Route
+              exact
+              path="/dashboard"
+              render={() => (
+                <Dashboard
+                  loggedInStatus={loggedInStatus}
+                  username={user ? user.username : ''}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/login"
+              render={(props) => (
+                <Login
+                  history={props.history}
+                  loggedInStatus={loggedInStatus}
+                  handleLogin={handleLogin}
+                  username={user ? user.username : ''}
+                  handleLogout={handleLogout}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/signup"
+              render={(props) => (
+                <Signup
+                  history={props.history}
+                  loggedInStatus={loggedInStatus}
+                  handleLogin={handleLogin}
+                  username={user ? user.username : ''}
+                  handleLogout={handleLogout}
+                />
+              )}
+            />
+            <Route exact path="/track/create" component={AddTrack} />
+            <Route exact path="/track/:id" component={TrackItem} />
+            <Route exact path="/track/:id/edit" component={EditTrack} />
+            <Route exact path="/tracks" component={TrackList} />
+            <Route exact path="/progress" component={Progress} />
+            <Route exact path="/more" component={More} />
+            <Route exact path="/admin" component={AdminHome} />
+            <Route exact path="/admin/item/create" component={AdminAddItem} />
+            <Route exact path="/admin/item/:id" component={AdminEditItem} />
+            <Route component={NotFound} />
+          </Switch>
+        </div>
         <Footer />
       </div>
     </BrowserRouter>

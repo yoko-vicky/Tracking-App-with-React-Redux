@@ -1,0 +1,19 @@
+.header {
+  display: none;
+  width: 100%;
+  background: $primary-color;
+  text-align: center;
+  color: $white;
+
+  &__nav {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @include mq(tab) {
+    display: block;
+  }
+}

@@ -20,13 +20,15 @@ const Login = ({
 
   return (
     <div>
-      <h1>Login</h1>
-      <h2>
-        Logged In Status:
-        {loggedInStatus === 'LOGGED_IN' ? `Hi ${username}, You are now ${loggedInStatus}` : loggedInStatus }
-      </h2>
-      <button type="button" onClick={handleLogoutClick}>Logout</button>
-      <AuthLogin handleSuccessfulAuth={handleSuccessfulAuth} />
+      <h1 className="heading">Login</h1>
+      <div className="content">
+        <h2>
+          Logged In Status:
+          {loggedInStatus === 'LOGGED_IN' ? `Hi ${username}, You are now ${loggedInStatus}` : loggedInStatus }
+        </h2>
+        <button type="button" onClick={handleLogoutClick}>Logout</button>
+        <AuthLogin handleSuccessfulAuth={handleSuccessfulAuth} />
+      </div>
     </div>
   );
 };

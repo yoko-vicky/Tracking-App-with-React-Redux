@@ -1,0 +1,48 @@
+.footer {
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+
+  &__nav {
+    width: 100%;
+    background: $dark-grey;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    line-height: 1;
+
+    &__item {
+      padding: 1rem;
+      color: $white;
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+
+      .iconify {
+        font-size: 4rem;
+        margin-bottom: 0.3rem;
+        color: $white;
+
+        &.sm {
+          margin-bottom: 0.5rem;
+          font-size: 3.8rem;
+        }
+
+        &.md {
+          font-size: 4.2rem;
+        }
+      }
+
+      &__text {
+        font-size: 1.1rem;
+      }
+
+      &.active {
+        background: $primary-color;
+        font-weight: bold;
+      }
+    }
+  }
+}

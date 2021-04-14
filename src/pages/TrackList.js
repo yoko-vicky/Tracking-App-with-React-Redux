@@ -3,8 +3,10 @@ import TrackListItem from '../components/TrackListItem';
 
 const TrackList = () => (
   <div className="TrackList">
-    <h1>TrackList</h1>
-    <TrackListItem />
+    <h1 className="heading">TrackList</h1>
+    <div className="content">
+      <TrackListItem />
+    </div>
   </div>
 );
 

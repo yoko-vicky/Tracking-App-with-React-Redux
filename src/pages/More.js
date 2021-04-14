@@ -2,8 +2,8 @@ import React from 'react';
 
 const More = () => (
   <div className="more">
-    <h1>More</h1>
-    <div>
+    <h1 className="heading">More</h1>
+    <div className="content">
       <div>image</div>
       <div>
         <p>Gregorie Vella</p>
