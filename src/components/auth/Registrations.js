@@ -26,6 +26,8 @@ const Registrations = ({ handleSuccessfulAuth }) => {
       }).catch(() => {
         setErrors(['Sorry, user cannot be created.']);
       });
+    setUsername('');
+    setPassword('');
   };
 
   return (

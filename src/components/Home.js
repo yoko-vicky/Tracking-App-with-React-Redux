@@ -25,7 +25,7 @@ const Home = ({
       <h1>Home</h1>
       <h2>
         Logged In Status:
-        {loggedInStatus === 'Logged in!' ? `Hi ${username}, You are now ${loggedInStatus}` : loggedInStatus }
+        {loggedInStatus === 'LOGGED_IN' ? `Hi ${username}, You are now ${loggedInStatus}` : loggedInStatus }
       </h2>
       <button type="button" onClick={handleLogoutClick}>Logout</button>
       <Registrations handleSuccessfulAuth={handleSuccessfulAuth} />

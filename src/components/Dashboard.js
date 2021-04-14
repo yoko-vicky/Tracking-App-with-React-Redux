@@ -6,7 +6,7 @@ const Dashboard = ({ loggedInStatus, username }) => (
     <h1>Dashboard</h1>
     <h2>
       Logged In Status:
-      {loggedInStatus === 'Logged in!' ? `Hi ${username}, You are now ${loggedInStatus}` : loggedInStatus }
+      {loggedInStatus === 'LOGGED_IN' ? `Hi ${username}, You are now ${loggedInStatus}` : loggedInStatus }
     </h2>
   </div>
 );

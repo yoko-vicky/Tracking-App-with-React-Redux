@@ -11,7 +11,7 @@ const App = () => {
   const [user, setUser] = useState({});
 
   const handleLogin = (data) => {
-    setLoggedInStatus('Logged in!');
+    setLoggedInStatus('LOGGED_IN');
     setUser(data.user);
   };
 
@@ -21,20 +21,19 @@ const App = () => {
   };
 
   // const checkLoginStatus = () => {
-  //   axios.get('http://localhost:3001/logged_in', { withCredentials: true })
-
+  //   axios
+  //     .get('http://localhost:3001/logged_in', { withCredentials: true })
   //     .then((response) => {
   //       if (response.data.logged_in && loggedInStatus === 'NOT_LOGGED_IN') {
-  //         setLoggedInStatus('Logged in!');
+  //         setLoggedInStatus('LOGGED_IN');
   //         setUser(response.data.user);
-  //       } else if (!response.data.logged_in && loggedInStatus === 'Logged in!') {
+  //       } else if (!response.data.logged_in && (loggedInStatus === 'LOGGED_IN')) {
   //         setLoggedInStatus('NOT_LOGGED_IN');
   //         setUser({});
   //       }
   //     })
-
   //     .catch((error) => {
-  //       console.log('Login Error: ', error);
+  //       console.log('check login error', error);
   //     });
   // };
 

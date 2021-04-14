@@ -26,6 +26,8 @@ const Login = ({ handleSuccessfulAuth }) => {
       }).catch((error) => {
         console.log('login error', error);
       });
+    setUsername('');
+    setPassword('');
   };
 
   return (
