@@ -10,7 +10,7 @@ const userReducer = (state = defaultUserState, action) => {
         ...state,
         loggedIn: action.loggedIn,
       };
-    case 'ADD_USER':
+    case 'SET_USER':
       return {
         ...state,
         user: action.user,

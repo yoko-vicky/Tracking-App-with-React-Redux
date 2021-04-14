@@ -1,18 +1,15 @@
-// const defaultTracksState = [];
+export const addTrack = (track = {}) => ({
+  type: 'ADD_TRACK',
+  track,
+});
 
-// const tracksReducer = (state = defaultTracksState, action) => {
-//   switch (action.type) {
-//     case 'Add_TRACK':
-//       return [
-//         ...state,
-//         action.track,
-//       ];
-//     case 'EDIT_TRACK':
-//       return state.map((item) => (item.id === action.id ? { ...item, ...action.track } : item));
-//     case 'REMOVE_TRACK':
-//       return state.filter(({ id }) => id !== action.id);
-//     default:
-//       return state;
-//   }
-// };
-// export default tracksReducer;
+export const editTrack = (id, update = {}) => ({
+  type: 'EDIT_TRACK',
+  id,
+  update,
+});
+
+export const removeTrack = (id) => ({
+  type: 'REMOVE_TRACK',
+  id,
+});
