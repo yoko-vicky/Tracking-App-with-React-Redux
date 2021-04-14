@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const Registrations = ({ handleSuccessfulAuthentication }) => {
+const Registrations = ({ handleSuccessfulAuth }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
@@ -19,7 +19,7 @@ const Registrations = ({ handleSuccessfulAuthentication }) => {
       { withCredentials: true })
       .then((response) => {
         if (response.data.status === 'created') {
-          handleSuccessfulAuthentication(response.data);
+          handleSuccessfulAuth(response.data);
         } else {
           setErrors(response.data.errorMsgs);
         }
@@ -54,11 +54,11 @@ const Registrations = ({ handleSuccessfulAuthentication }) => {
 };
 
 Registrations.propTypes = {
-  handleSuccessfulAuthentication: PropTypes.func,
+  handleSuccessfulAuth: PropTypes.func,
 };
 
 Registrations.defaultProps = {
-  handleSuccessfulAuthentication: null,
+  handleSuccessfulAuth: null,
 };
 
 export default Registrations;

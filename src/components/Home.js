@@ -8,7 +8,7 @@ const Home = ({
   // loggedInStatus, handleLogin, history, username, handleLogout,
   loggedInStatus, handleLogin, username, handleLogout,
 }) => {
-  const handleSuccessfulAuthentication = (userObj) => {
+  const handleSuccessfulAuth = (userObj) => {
     handleLogin(userObj);
     // history.push('/dashboard');
   };
@@ -28,8 +28,8 @@ const Home = ({
         {loggedInStatus === 'Logged in!' ? `Hi ${username}, You are now ${loggedInStatus}` : loggedInStatus }
       </h2>
       <button type="button" onClick={handleLogoutClick}>Logout</button>
-      <Registrations handleSuccessfulAuthentication={handleSuccessfulAuthentication} />
-      <Login handleSuccessfulAuthentication={handleSuccessfulAuthentication} />
+      <Registrations handleSuccessfulAuth={handleSuccessfulAuth} />
+      <Login handleSuccessfulAuth={handleSuccessfulAuth} />
     </div>
   );
 };

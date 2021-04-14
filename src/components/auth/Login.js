@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const Login = ({ handleSuccessfulAuthentication }) => {
+const Login = ({ handleSuccessfulAuth }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
@@ -19,7 +19,7 @@ const Login = ({ handleSuccessfulAuthentication }) => {
       { withCredentials: true })
       .then((response) => {
         if (response.data.logged_in) {
-          handleSuccessfulAuthentication(response.data);
+          handleSuccessfulAuth(response.data);
         } else if (response.data.errors.length > 0) {
           setErrors(response.data.errors);
         }
@@ -54,11 +54,11 @@ const Login = ({ handleSuccessfulAuthentication }) => {
 };
 
 Login.propTypes = {
-  handleSuccessfulAuthentication: PropTypes.func,
+  handleSuccessfulAuth: PropTypes.func,
 };
 
 Login.defaultProps = {
-  handleSuccessfulAuthentication: null,
+  handleSuccessfulAuth: null,
 };
 
 export default Login;

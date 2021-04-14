@@ -7,7 +7,7 @@ import Home from './components/Home';
 import Dashboard from './components/Dashboard';
 
 const App = () => {
-  const [loggedInStatus, setLoggedInStatus] = useState('Not logged in');
+  const [loggedInStatus, setLoggedInStatus] = useState('NOT_LOGGED_IN');
   const [user, setUser] = useState({});
 
   const handleLogin = (data) => {
@@ -16,7 +16,7 @@ const App = () => {
   };
 
   const handleLogout = () => {
-    setLoggedInStatus('Not logged in');
+    setLoggedInStatus('NOT_LOGGED_IN');
     setUser({});
   };
 
@@ -24,11 +24,11 @@ const App = () => {
   //   axios.get('http://localhost:3001/logged_in', { withCredentials: true })
 
   //     .then((response) => {
-  //       if (response.data.logged_in && loggedInStatus === 'Not logged in') {
+  //       if (response.data.logged_in && loggedInStatus === 'NOT_LOGGED_IN') {
   //         setLoggedInStatus('Logged in!');
   //         setUser(response.data.user);
   //       } else if (!response.data.logged_in && loggedInStatus === 'Logged in!') {
-  //         setLoggedInStatus('Not logged in');
+  //         setLoggedInStatus('NOT_LOGGED_IN');
   //         setUser({});
   //       }
   //     })
