@@ -20,6 +20,7 @@ const Registrations = ({ handleSuccessfulAuth }) => {
       .then((response) => {
         if (response.data.status === 'created') {
           handleSuccessfulAuth(response.data);
+          console.log(response);
         } else {
           setErrors(response.data.errorMsgs);
         }
