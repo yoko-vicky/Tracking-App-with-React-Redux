@@ -7,7 +7,6 @@ import Home from '../pages/Home';
 import NotFound from '../pages/NotFound';
 import Login from '../pages/Login';
 import Signup from '../pages/Signup';
-import Dashboard from '../pages/Dashboard';
 import AddTrack from '../pages/AddTrack';
 import EditTrack from '../pages/EditTrack';
 import TrackList from '../pages/TrackList';
@@ -49,16 +48,6 @@ const AppRouter = () => {
               path="/"
               render={() => (
                 <Home loggedInStatus={loggedInStatus} />
-              )}
-            />
-            <Route
-              exact
-              path="/dashboard"
-              render={() => (
-                <Dashboard
-                  loggedInStatus={loggedInStatus}
-                  username={user ? user.username : ''}
-                />
               )}
             />
             <Route

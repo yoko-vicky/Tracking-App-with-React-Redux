@@ -8,7 +8,7 @@ const Signup = ({
 }) => {
   const handleSuccessfulAuth = (userObj) => {
     handleLogin(userObj);
-    history.push('/dashboard');
+    history.push('/');
   };
 
   const handleLogoutClick = () => {

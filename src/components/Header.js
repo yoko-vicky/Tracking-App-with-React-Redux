@@ -6,7 +6,6 @@ const Header = () => (
     <h1>Track it</h1>
     <nav className="header__nav">
       <NavLink exact to="/">Home</NavLink>
-      <NavLink exact to="/dashboard">Dashboard</NavLink>
       <NavLink exact to="/login">Login</NavLink>
       <NavLink exact to="/signup">Signup</NavLink>
       <NavLink exact to="/tracks">Add Track</NavLink>

@@ -67,3 +67,10 @@ select {
   max-width: $item-max-width;
   margin: 0 auto;
 }
+
+.image {
+  width: 100%;
+  max-width: $text-max-width;
+  margin: 0 auto;
+  border-radius: 6px;
+}

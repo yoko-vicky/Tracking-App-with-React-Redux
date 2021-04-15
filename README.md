@@ -72,3 +72,4 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgements
 * [Google Fonts](https://fonts.google.com/)
+* [pixabay](https://pixabay.com/)
