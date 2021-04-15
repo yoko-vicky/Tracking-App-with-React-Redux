@@ -12,3 +12,9 @@ export const updateItem = async (id, title, unit, icon) => {
     .then((response) => response).catch((error) => error);
   return response;
 };
+
+export const addNewItem = async (title, unit, icon) => {
+  const response = await axios.post('http://localhost:3001/items', { item: { title, unit, icon } })
+    .then((response) => response).catch((error) => error);
+  return response;
+};
