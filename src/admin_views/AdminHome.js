@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import ItemList from './AdminItemList';
-import { addItems } from '../actions/items';
+import addItems from '../actions/items';
 import { getItems } from '../helpers/restItems';
 
 const AdminHome = ({ addItems, items }) => {

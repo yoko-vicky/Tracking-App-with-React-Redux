@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ItemForm from './AdminItemForm';
-import { updateItem } from '../helpers/restItems';
+import { updateItem, removeItemFromDB } from '../helpers/restItems';
 
 const AdminEditItem = ({ item, history }) => {
   const [error, setError] = useState('');
@@ -17,12 +18,25 @@ const AdminEditItem = ({ item, history }) => {
       await updateItem(id, title, unit, icon);
       history.push('/admin');
     } catch {
-      setError('Unable to fetch the data');
+      setError('Sorry, unable to fetch the data');
+    }
+  };
+
+  const runRemoveItemFromDB = async (id) => {
+    try {
+      await removeItemFromDB(id);
+      history.push('/admin');
+    } catch {
+      setError('Sorry, unable to remove the item');
     }
   };
 
   const handleSubmit = ({ title, unit, icon }) => {
     runUpdateItem(title, unit, icon);
+  };
+
+  const onRemove = () => {
+    runRemoveItemFromDB(id);
   };
 
   return (
@@ -34,7 +48,8 @@ const AdminEditItem = ({ item, history }) => {
       <div className="content">
         {error && <p className="error-msg">{error}</p>}
         <ItemForm id={id} title={title} unit={unit} icon={icon} handleSubmit={handleSubmit} />
-        <button type="button" className="btn w100">Remove Item</button>
+        <button type="button" className="btn w100 mb2" onClick={onRemove}>Remove Item</button>
+        <Link to="/admin" className="btn w100">Cancel & Back to Item List</Link>
       </div>
     </div>
   );
