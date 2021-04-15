@@ -1,33 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
-import AuthLogin from '../components/auth/AuthLogin';
+import UsersForm from '../components/UsersForm';
+import { loggedIn } from '../helpers/authUsers';
 
 const Login = ({
-  loggedInStatus, handleLogin, history, username, handleLogout,
+  loggedInStatus, handleLogin, history, username,
 }) => {
-  const handleSuccessfulAuth = (userObj) => {
-    handleLogin(userObj);
-    history.push('/');
+  const [errors, setErrors] = useState([]);
+
+  const runLoginAuth = async (username, password) => {
+    try {
+      const response = await loggedIn(username, password);
+      if (response.data.logged_in) {
+        handleLogin();
+        history.push('/');
+      } else if (response.data.errors.length > 0) {
+        setErrors(response.data.errors);
+      }
+    } catch {
+      setErrors(['Sorry, login was failed.']);
+    }
   };
 
-  const handleLogoutClick = () => {
-    axios.delete('http://localhost:3001/logout', { withCredentials: true })
-      .then(() => {
-        handleLogout();
-      }).catch((error) => console.log('Logout Error: ', error));
+  const handleSubmit = (username, password) => {
+    runLoginAuth(username, password);
   };
 
   return (
     <div>
       <h1 className="heading">Login</h1>
       <div className="content">
+        {errors && errors.map((error) => (<p key={error}>{error}</p>))}
         <h2>
           Logged In Status:
           {loggedInStatus === 'LOGGED_IN' ? `Hi ${username}, You are now ${loggedInStatus}` : loggedInStatus }
         </h2>
-        <button type="button" onClick={handleLogoutClick}>Logout</button>
-        <AuthLogin handleSuccessfulAuth={handleSuccessfulAuth} />
+        <UsersForm handleSubmit={handleSubmit} />
       </div>
     </div>
   );
@@ -38,7 +46,6 @@ Login.propTypes = {
   handleLogin: PropTypes.func,
   history: PropTypes.instanceOf(Object),
   username: PropTypes.string,
-  handleLogout: PropTypes.func,
 };
 
 Login.defaultProps = {
@@ -46,7 +53,6 @@ Login.defaultProps = {
   handleLogin: null,
   history: undefined,
   username: '',
-  handleLogout: null,
 };
 
 export default Login;

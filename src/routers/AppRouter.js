@@ -47,7 +47,7 @@ const AppRouter = () => {
               exact
               path="/"
               render={() => (
-                <Home loggedInStatus={loggedInStatus} />
+                <Home loggedInStatus={loggedInStatus} handleLogout={handleLogout} username={user ? user.username : ''} />
               )}
             />
             <Route
