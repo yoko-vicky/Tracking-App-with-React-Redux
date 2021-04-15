@@ -7,18 +7,18 @@ class TrackForm extends React.Component {
     super(props);
     this.onSubmit = this.onSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    const items = this.props;
+    // const items = this.props;
     /* eslint-disable react/no-unused-state */
     // 以下はitemsじゃなくて記録の方をチェックする必要あり（Edit用に）
-    this.state = {
-      one: items[0] ? items[0].result : 0,
-      two: items[1] ? items[1].result : 0,
-      three: items[2] ? items[2].result : 0,
-      four: items[3] ? items[3].result : 0,
-      five: items[4] ? items[4].result : 0,
-      six: items[5] ? items[5].result : 0,
-      /* eslint-enable react/no-unused-state */
-    };
+    // this.state = {
+    //   one: items[0] ? items[0].result : 0,
+    //   two: items[1] ? items[1].result : 0,
+    //   three: items[2] ? items[2].result : 0,
+    //   four: items[3] ? items[3].result : 0,
+    //   five: items[4] ? items[4].result : 0,
+    //   six: items[5] ? items[5].result : 0,
+    //   /* eslint-enable react/no-unused-state */
+    // };
   }
 
   onSubmit = (e) => {

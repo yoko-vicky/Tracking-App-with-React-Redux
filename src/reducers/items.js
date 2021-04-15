@@ -2,6 +2,8 @@ const defaultItemsState = [];
 
 const ItemsReducer = (state = defaultItemsState, action) => {
   switch (action.type) {
+    case 'ADD_ITEMS':
+      return action.items;
     case 'ADD_ITEM':
       return [
         ...state,
