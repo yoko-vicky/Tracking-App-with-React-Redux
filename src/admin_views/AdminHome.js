@@ -3,18 +3,21 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import ItemList from './AdminItemList';
 import { addItems } from '../actions/items';
-import getItems from '../helpers/getItems';
+import { getItems } from '../helpers/restItems';
 
 const AdminHome = ({ addItems, items }) => {
   const [error, setError] = useState('');
 
+  const runGetItems = async () => {
+    try {
+      const response = await getItems();
+      addItems(response);
+    } catch {
+      setError('Unable to fetch the data');
+    }
+  };
   useEffect(() => {
-    getItems()
-      .then((response) => {
-        addItems(response);
-      }).catch(() => {
-        setError('Unable to fetch the data');
-      });
+    runGetItems();
   }, []);
 
   return (
