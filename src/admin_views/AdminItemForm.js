@@ -21,9 +21,8 @@ const AdminItemForm = ({
 
   return (
     <div>
-      <h1>AdminItemForm</h1>
       <form className="form" onSubmit={onSubmit}>
-        <div className="form-group">
+        <div className="form__group">
           <input
             type="text"
             name="title"
@@ -32,7 +31,7 @@ const AdminItemForm = ({
             onChange={(e) => setInputTitle(e.target.value)}
           />
         </div>
-        <div className="form-group">
+        <div className="form__group">
           <input
             type="text"
             name="unit"
@@ -41,7 +40,7 @@ const AdminItemForm = ({
             onChange={(e) => setInputUnit(e.target.value)}
           />
         </div>
-        <div className="form-group">
+        <div className="form__group">
           <input
             type="text"
             name="icon"
@@ -50,7 +49,7 @@ const AdminItemForm = ({
             onChange={(e) => setInputIcon(e.target.value)}
           />
         </div>
-        <button type="submit">Save Item</button>
+        <button type="submit" className="btn dark w100 mb2">Save Item</button>
       </form>
     </div>
   );

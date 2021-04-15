@@ -29,7 +29,7 @@ const AdminAddItem = ({ history }) => {
       <div className="content">
         {error && <p className="error-msg">{error}</p>}
         <ItemForm handleSubmit={handleSubmit} />
-        <Link to="/admin">Back to Item List</Link>
+        <Link to="/admin" className="btn">Back to Item List</Link>
       </div>
     </div>
   );
@@ -38,9 +38,5 @@ const AdminAddItem = ({ history }) => {
 AdminAddItem.propTypes = {
   history: PropTypes.instanceOf(Object).isRequired,
 };
-
-// AdminAddItem.defaultProps = {
-//   item: {},
-// };
 
 export default AdminAddItem;

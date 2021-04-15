@@ -34,7 +34,7 @@ const AdminEditItem = ({ item, history }) => {
       <div className="content">
         {error && <p className="error-msg">{error}</p>}
         <ItemForm id={id} title={title} unit={unit} icon={icon} handleSubmit={handleSubmit} />
-        <button type="button">Remove Item</button>
+        <button type="button" className="btn w100">Remove Item</button>
       </div>
     </div>
   );
