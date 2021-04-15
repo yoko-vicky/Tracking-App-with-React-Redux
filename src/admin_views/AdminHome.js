@@ -1,24 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
 import PropTypes from 'prop-types';
 import ItemList from './AdminItemList';
 import { addItems } from '../actions/items';
+import getItems from '../helpers/getItems';
 
 const AdminHome = ({ addItems, items }) => {
   const [error, setError] = useState('');
 
-  const getItems = () => {
-    axios.get('http://localhost:3001/items',
-      { withCredentials: true })
+  useEffect(() => {
+    getItems()
       .then((response) => {
-        addItems(response.data);
+        addItems(response);
       }).catch(() => {
         setError('Unable to fetch the data');
       });
-  };
-  useEffect(() => {
-    getItems();
   }, []);
 
   return (
