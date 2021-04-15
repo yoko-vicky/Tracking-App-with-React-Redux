@@ -8,17 +8,17 @@ import { addItems } from '../actions/items';
 const AdminHome = ({ addItems, items }) => {
   const [error, setError] = useState('');
 
-  const getItem = () => {
+  const getItems = () => {
     axios.get('http://localhost:3001/items',
       { withCredentials: true })
       .then((response) => {
         addItems(response.data);
-      }).catch((e) => {
-        setError(e);
+      }).catch(() => {
+        setError('Unable to fetch the data');
       });
   };
   useEffect(() => {
-    getItem();
+    getItems();
   }, []);
 
   return (
@@ -26,6 +26,7 @@ const AdminHome = ({ addItems, items }) => {
       <h1 className="heading">
         Items
         <span className="admin-icon">admin</span>
+
       </h1>
       <div className="content">
         {error && <p className="error-msg">{error}</p>}
