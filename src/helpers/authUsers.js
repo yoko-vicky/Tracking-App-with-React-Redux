@@ -1,19 +1,20 @@
 import axios from 'axios';
+import baseUrl from './baseUrl';
 
 export const signedUp = async (username, password) => {
-  const response = await axios.post('http://localhost:3001/signup', { user: { username, password } }, { withCredentials: true })
+  const response = await axios.post(`${baseUrl}signup`, { user: { username, password } }, { withCredentials: true })
     .then((response) => response.data).catch((error) => error);
   return response;
 };
 
 export const loggedIn = async (username, password) => {
-  const response = await axios.post('http://localhost:3001/login', { user: { username, password } }, { withCredentials: true })
+  const response = await axios.post(`${baseUrl}login`, { user: { username, password } }, { withCredentials: true })
     .then((response) => response.data).catch((error) => error);
   return response;
 };
 
 export const loggedOut = async () => {
-  const response = await axios.delete('http://localhost:3001/logout', { withCredentials: true })
+  const response = await axios.delete(`${baseUrl}logout`, { withCredentials: true })
     .then((response) => response).catch((error) => error);
   return response;
 };
