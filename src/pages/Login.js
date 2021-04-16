@@ -55,7 +55,7 @@ Login.propTypes = {
 Login.defaultProps = {
   loggedInStatus: '',
   handleLogin: null,
-  history: undefined,
+  history: null,
   username: '',
 };
 

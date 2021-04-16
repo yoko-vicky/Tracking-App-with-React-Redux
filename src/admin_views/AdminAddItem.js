@@ -36,7 +36,11 @@ const AdminAddItem = ({ history }) => {
 };
 
 AdminAddItem.propTypes = {
-  history: PropTypes.instanceOf(Object).isRequired,
+  history: PropTypes.instanceOf(Object),
+};
+
+AdminAddItem.defaultProps = {
+  history: null,
 };
 
 export default AdminAddItem;

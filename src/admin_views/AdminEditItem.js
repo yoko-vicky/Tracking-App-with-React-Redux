@@ -62,11 +62,12 @@ const mapStateToProps = (state, props) => ({
 
 AdminEditItem.propTypes = {
   item: PropTypes.instanceOf(Object),
-  history: PropTypes.instanceOf(Object).isRequired,
+  history: PropTypes.instanceOf(Object),
 };
 
 AdminEditItem.defaultProps = {
   item: {},
+  history: null,
 };
 
 export default connect(mapStateToProps)(AdminEditItem);

@@ -12,9 +12,3 @@ export const loggedIn = async (username, password) => {
     .then((response) => response.data).catch((error) => error);
   return response;
 };
-
-export const loggedOut = async () => {
-  const response = await axios.delete(`${baseUrl}logout`, { withCredentials: true })
-    .then((response) => response).catch((error) => error);
-  return response;
-};

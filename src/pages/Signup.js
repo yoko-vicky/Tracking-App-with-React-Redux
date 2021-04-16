@@ -55,7 +55,7 @@ Signup.propTypes = {
 Signup.defaultProps = {
   loggedInStatus: '',
   handleLogin: null,
-  history: undefined,
+  history: null,
   username: '',
 };
 

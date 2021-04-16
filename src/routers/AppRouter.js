@@ -99,6 +99,6 @@ AppRouter.propTypes = {
 };
 
 AppRouter.defaultProps = {
-  history: undefined,
+  history: null,
 };
 export default AppRouter;
