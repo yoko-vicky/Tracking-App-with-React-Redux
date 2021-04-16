@@ -9,6 +9,9 @@
   align-items: center;
   justify-content: center;
   font-weight: bold;
+  width: 100%;
+  max-width: $item-max-width;
+  margin: 0 auto;
 
   .iconify {
     margin-right: 1rem;
@@ -62,11 +65,11 @@ select {
   margin-bottom: 4rem !important;
 }
 
-.w100 {
-  width: 100%;
-  max-width: $item-max-width;
-  margin: 0 auto;
-}
+// .w100 {
+//   width: 100%;
+//   max-width: $item-max-width;
+//   margin: 0 auto;
+// }
 
 .image {
   width: 100%;

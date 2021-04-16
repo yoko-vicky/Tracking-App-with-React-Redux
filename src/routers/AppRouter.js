@@ -18,7 +18,7 @@ import AdminAddItem from '../admin_views/AdminAddItem';
 import AdminEditItem from '../admin_views/AdminEditItem';
 
 const AppRouter = () => {
-  const [loggedInStatus, setLoggedInStatus] = useState('NOT_LOGGED_IN');
+  const [loggedInStatus, setLoggedInStatus] = useState('LOGGED_OUT');
   const [user, setUser] = useState({});
   // const [stateToken, setStateToken] = useState('');
   const [, setStateToken] = useState('');
@@ -31,7 +31,7 @@ const AppRouter = () => {
   };
 
   const handleLogout = () => {
-    setLoggedInStatus('NOT_LOGGED_IN');
+    setLoggedInStatus('LOGGED_OUT');
     setUser({});
     setStateToken('');
     localStorage.removeItem('token');

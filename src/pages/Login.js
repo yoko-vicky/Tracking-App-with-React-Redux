@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import UsersForm from '../components/UsersForm';
 import { loggedIn } from '../helpers/authUsers';
@@ -11,11 +12,13 @@ const Login = ({
   const runLoginAuth = async (username, password) => {
     try {
       const response = await loggedIn(username, password);
-      if (response.data.logged_in) {
-        handleLogin();
+      // eslint-disable-next-line no-console
+      console.log('response', response);
+      if (response.logged_in) {
+        handleLogin(response);
         history.push('/');
-      } else if (response.data.errors.length > 0) {
-        setErrors(response.data.errors);
+      } else if (response.errors.length > 0) {
+        setErrors(response.errors);
       }
     } catch {
       setErrors(['Sorry, login was failed.']);
@@ -35,7 +38,8 @@ const Login = ({
           Logged In Status:
           {loggedInStatus === 'LOGGED_IN' ? `Hi ${username}, You are now ${loggedInStatus}` : loggedInStatus }
         </h2>
-        <UsersForm handleSubmit={handleSubmit} />
+        <UsersForm handleSubmit={handleSubmit} btnName="Login" />
+        <Link to="/" className="btn">Go back to Home</Link>
       </div>
     </div>
   );

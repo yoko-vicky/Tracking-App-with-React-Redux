@@ -29,7 +29,7 @@ const AdminAddItem = ({ history }) => {
       <div className="content">
         {error && <p className="error-msg">{error}</p>}
         <ItemForm handleSubmit={handleSubmit} />
-        <Link to="/admin" className="btn w100">Back to Item List</Link>
+        <Link to="/admin" className="btn">Back to Item List</Link>
       </div>
     </div>
   );
