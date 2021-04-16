@@ -1,10 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { logIn } from '../actions/user';
 
-const Home = ({ handleLogout }) => {
+const LogoutBtn = ({ logIn }) => {
   const onLogout = () => {
-    localStorage.setItem('token', '');
-    handleLogout();
+    localStorage.removeItem('token');
+    logIn(false);
   };
 
   return (
@@ -12,8 +14,16 @@ const Home = ({ handleLogout }) => {
   );
 };
 
-Home.propTypes = {
-  handleLogout: PropTypes.func.isRequired,
+const mapDispatchToProps = (dispatch) => ({
+  logIn: (status) => dispatch(logIn(status)),
+});
+
+LogoutBtn.propTypes = {
+  logIn: PropTypes.func,
 };
 
-export default Home;
+LogoutBtn.defaultProps = {
+  logIn: null,
+};
+
+export default connect(undefined, mapDispatchToProps)(LogoutBtn);

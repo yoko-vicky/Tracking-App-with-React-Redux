@@ -1,14 +1,14 @@
 const defaultUserState = {
-  loggedIn: '',
+  logIn: false,
   user: {},
 };
 
 const userReducer = (state = defaultUserState, action) => {
   switch (action.type) {
-    case 'LOGGED_IN':
+    case 'LOG_IN':
       return {
         ...state,
-        loggedIn: action.loggedIn,
+        logIn: action.logIn,
       };
     case 'SET_USER':
       return {

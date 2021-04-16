@@ -18,7 +18,6 @@ const AdminItemList = ({ items }) => (
         </div>
       );
     })}
-    <Link to="/admin/item/create" className="btn">Add Item</Link>
   </div>
 );
 

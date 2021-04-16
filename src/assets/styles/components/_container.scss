@@ -1,10 +1,10 @@
 .whole-container {
-  height: 100vh;
+  min-height: 100vh;
   position: relative;
 
-  @include mq(tab) {
-    min-height: 100vh;
-  }
+  // @include mq(tab) {
+  //   min-height: 100vh;
+  // }
 }
 
 // .container {

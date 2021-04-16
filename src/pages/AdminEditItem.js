@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import ItemForm from './AdminItemForm';
+import ItemForm from '../components/AdminItemForm';
 import { updateItem, removeItemFromDB } from '../helpers/restItems';
 
 const AdminEditItem = ({ item, history }) => {

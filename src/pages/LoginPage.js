@@ -1,21 +1,23 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import UsersForm from '../components/UsersForm';
 import { loggedIn } from '../helpers/authUsers';
+import { logIn, setUser } from '../actions/user';
 
-const Login = ({
-  loggedInStatus, handleLogin, history, username,
-}) => {
+const LoginPage = ({ history, setUser, logIn }) => {
   const [errors, setErrors] = useState([]);
 
   const runLoginAuth = async (username, password) => {
     try {
       const response = await loggedIn(username, password);
       // eslint-disable-next-line no-console
-      console.log('response', response);
+      // console.log('response', response);
       if (response.logged_in) {
-        handleLogin(response);
+        localStorage.setItem('token', response.token);
+        setUser(response.user);
+        logIn(true);
         history.push('/');
       } else if (response.errors.length > 0) {
         setErrors(response.errors);
@@ -34,10 +36,6 @@ const Login = ({
       <h1 className="heading">Login</h1>
       <div className="content">
         {errors && errors.map((error) => (<p key={error}>{error}</p>))}
-        <h2>
-          Logged In Status:
-          {loggedInStatus === 'LOGGED_IN' ? `Hi ${username}, You are now ${loggedInStatus}` : loggedInStatus }
-        </h2>
         <UsersForm handleSubmit={handleSubmit} btnName="Login" />
         <Link to="/" className="btn">Go back to Home</Link>
       </div>
@@ -45,18 +43,21 @@ const Login = ({
   );
 };
 
-Login.propTypes = {
-  loggedInStatus: PropTypes.string,
-  handleLogin: PropTypes.func,
+LoginPage.propTypes = {
   history: PropTypes.instanceOf(Object),
-  username: PropTypes.string,
+  logIn: PropTypes.func,
+  setUser: PropTypes.func,
 };
 
-Login.defaultProps = {
-  loggedInStatus: '',
-  handleLogin: null,
+LoginPage.defaultProps = {
   history: null,
-  username: '',
+  logIn: null,
+  setUser: null,
 };
 
-export default Login;
+const mapDispatchToProps = (dispatch) => ({
+  setUser: (user) => dispatch(setUser(user)),
+  logIn: (status) => dispatch(logIn(status)),
+});
+
+export default connect(undefined, mapDispatchToProps)(LoginPage);

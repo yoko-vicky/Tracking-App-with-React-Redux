@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import ItemForm from './AdminItemForm';
+import ItemForm from '../components/AdminItemForm';
 import { addNewItem } from '../helpers/restItems';
 
 const AdminAddItem = ({ history }) => {

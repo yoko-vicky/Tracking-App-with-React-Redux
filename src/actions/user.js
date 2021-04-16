@@ -1,6 +1,6 @@
-export const loggedIn = (loggedIn) => ({
-  type: 'LOGGED_IN',
-  loggedIn,
+export const logIn = (logIn) => ({
+  type: 'LOG_IN',
+  logIn,
 });
 
 export const setUser = (user) => ({
