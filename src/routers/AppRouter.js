@@ -21,8 +21,8 @@ import LoginStatus from '../components/LoginStatus';
 const AppRouter = () => (
   <BrowserRouter>
     <div className="whole-container">
-      <Header />
       <LoginStatus />
+      <Header />
       <div className="container">
         <Switch>
           <Route exact path="/" component={Home} />

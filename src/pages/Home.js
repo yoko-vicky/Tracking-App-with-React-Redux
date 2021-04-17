@@ -5,7 +5,7 @@ import LogoutBtn from '../components/LogoutBtn';
 
 const Home = ({ history }) => (
   <div>
-    <h1 className="heading">Track it</h1>
+    <h1 className="heading">Home</h1>
     <div className="content">
       <h2>
         Welcome to Track it App
