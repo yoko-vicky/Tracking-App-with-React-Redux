@@ -1,12 +1,14 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ItemForm from '../components/AdminItemForm';
 import { updateItem, removeItemFromDB } from '../helpers/restItems';
 
-const AdminEditItem = ({ item, history }) => {
+const AdminEditItem = ({
+  item, history, adminStatus, loginUser,
+}) => {
   const [error, setError] = useState('');
 
   const {
@@ -39,7 +41,7 @@ const AdminEditItem = ({ item, history }) => {
     runRemoveItemFromDB(id);
   };
 
-  return (
+  return adminStatus && loginUser ? (
     <div className="admin">
       <h1 className="heading">
         Edit Item
@@ -52,22 +54,27 @@ const AdminEditItem = ({ item, history }) => {
         <Link to="/admin" className="btn">Cancel & Back to Item List</Link>
       </div>
     </div>
-  );
+  ) : <Redirect to="/" />;
 };
 
 const mapStateToProps = (state, props) => ({
   items: state.items,
   item: state.items.find((item) => item.id === Number(props.match.params.id)),
+  adminStatus: state.user.user.admin,
+  loginUser: state.user.logIn,
 });
 
 AdminEditItem.propTypes = {
   item: PropTypes.instanceOf(Object),
   history: PropTypes.instanceOf(Object),
+  adminStatus: PropTypes.bool,
+  loginUser: PropTypes.bool.isRequired,
 };
 
 AdminEditItem.defaultProps = {
   item: {},
   history: null,
+  adminStatus: null,
 };
 
 export default connect(mapStateToProps)(AdminEditItem);

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ItemForm from '../components/AdminItemForm';
 import { addNewItem } from '../helpers/restItems';
 
-const AdminAddItem = ({ history }) => {
+const AdminAddItem = ({ history, adminStatus, loginUser }) => {
   const [error, setError] = useState('');
 
   const runAddNewItem = async (title, unit, icon) => {
@@ -20,7 +21,7 @@ const AdminAddItem = ({ history }) => {
     runAddNewItem(title, unit, icon);
   };
 
-  return (
+  return adminStatus && loginUser ? (
     <div className="admin">
       <h1 className="heading">
         Admin Add Item
@@ -32,15 +33,25 @@ const AdminAddItem = ({ history }) => {
         <Link to="/admin" className="btn">Back to Item List</Link>
       </div>
     </div>
-  );
+  ) : <Redirect to="/" />;
 };
+
+const mapStateToProps = (state, props) => ({
+  items: state.items,
+  item: state.items.find((item) => item.id === Number(props.match.params.id)),
+  adminStatus: state.user.user.admin,
+  loginUser: state.user.logIn,
+});
 
 AdminAddItem.propTypes = {
   history: PropTypes.instanceOf(Object),
+  adminStatus: PropTypes.bool,
+  loginUser: PropTypes.bool.isRequired,
 };
 
 AdminAddItem.defaultProps = {
   history: null,
+  adminStatus: null,
 };
 
-export default AdminAddItem;
+export default connect(mapStateToProps)(AdminAddItem);

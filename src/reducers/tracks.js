@@ -2,15 +2,10 @@ const defaultTracksState = [];
 
 const tracksReducer = (state = defaultTracksState, action) => {
   switch (action.type) {
-    case 'ADD_TRACK':
-      return [
-        ...state,
-        action.track,
-      ];
-    case 'EDIT_TRACK':
-      return state.map((item) => (item.id === action.id ? { ...item, ...action.update } : item));
-    case 'REMOVE_TRACK':
-      return state.filter(({ id }) => id !== action.id);
+    case 'ADD_TRACKS':
+      return action.tracks;
+    case 'REMOVE_ALL_TRACKS':
+      return defaultTracksState;
     default:
       return state;
   }

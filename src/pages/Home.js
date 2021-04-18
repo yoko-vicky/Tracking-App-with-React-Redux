@@ -1,28 +1,38 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import LogoutBtn from '../components/LogoutBtn';
 
-const Home = ({ history }) => (
+const Home = ({ history, loginUser }) => (
   <div>
     <h1 className="heading">Home</h1>
     <div className="content">
       <h2>
         Welcome to Track it App
       </h2>
-      <Link to="/login" className="btn mb2">Login</Link>
-      <Link to="/signup" className="btn mb2">Signup</Link>
-      <LogoutBtn history={history} />
+      {loginUser ? <LogoutBtn history={history} /> : (
+        <div>
+          <Link to="/login" className="btn mb2">Login</Link>
+          <Link to="/signup" className="btn mb2">Signup</Link>
+        </div>
+      )}
+
     </div>
   </div>
 );
 
+const mapStateToProps = (state) => ({
+  loginUser: state.user.logIn,
+});
+
 Home.propTypes = {
   history: PropTypes.instanceOf(Object),
+  loginUser: PropTypes.bool.isRequired,
 };
 
 Home.defaultProps = {
   history: null,
 };
 
-export default Home;
+export default connect(mapStateToProps)(Home);

@@ -1,14 +1,41 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-const TrackListItem = () => (
-  <div className="TrackListItem">
-    <h2>TrackListItem</h2>
-    <div>Graph</div>
-    <div>
-      <p>Sep 5 2013</p>
-      <p>Total Time 60 min</p>
+const TrackListItem = ({ track }) => {
+  console.log('TrackListItem', track);
+  return (
+    <div className="TrackListItem">
+      <Link to={`/track/${track.id}`}>
+        <h2>
+          Track ID:
+          {track.id}
+        </h2>
+        <div>
+          item Id:
+          {track.item_id}
+        </div>
+        <div>
+          <p>
+            date:
+            {track.date}
+          </p>
+          <p>
+            result:
+            {track.result}
+          </p>
+        </div>
+      </Link>
     </div>
-  </div>
-);
+  );
+};
+
+TrackListItem.propTypes = {
+  track: PropTypes.instanceOf(Object),
+};
+
+TrackListItem.defaultProps = {
+  track: {},
+};
 
 export default TrackListItem;

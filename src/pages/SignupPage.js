@@ -18,7 +18,7 @@ const SignupPage = ({ history, setUser, logIn }) => {
         localStorage.setItem('token', response.token);
         setUser(response.user);
         logIn(true);
-        history.push('/');
+        history.push('/tracks');
       } else if (response.errors.length > 0) {
         setErrors(response.errors);
       }

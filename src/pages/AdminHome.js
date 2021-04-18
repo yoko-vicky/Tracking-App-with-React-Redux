@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ItemList from '../components/AdminItemList';
 import addItems from '../actions/items';
 import { getItems } from '../helpers/restItems';
-import NotFound from './NotFound';
 
-const AdminHome = ({ addItems, items, adminStatus }) => {
+const AdminHome = ({
+  addItems, items, adminStatus, loginUser,
+}) => {
   const [error, setError] = useState('');
 
   const runGetItems = async () => {
@@ -29,7 +30,7 @@ const AdminHome = ({ addItems, items, adminStatus }) => {
     }
   }, []);
 
-  return adminStatus ? (
+  return adminStatus && loginUser ? (
     <div className="admin">
       <h1 className="heading">
         Items
@@ -41,12 +42,13 @@ const AdminHome = ({ addItems, items, adminStatus }) => {
         <Link to="/admin/item/create" className="btn">Add Item</Link>
       </div>
     </div>
-  ) : <NotFound />;
+  ) : <Redirect to="/" />;
 };
 
 const mapStateToProps = (state) => ({
   items: state.items,
   adminStatus: state.user.user.admin,
+  loginUser: state.user.logIn,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -57,11 +59,12 @@ AdminHome.propTypes = {
   addItems: PropTypes.func.isRequired,
   items: PropTypes.instanceOf(Object),
   adminStatus: PropTypes.bool,
+  loginUser: PropTypes.bool.isRequired,
 };
 
 AdminHome.defaultProps = {
   items: [],
-  adminStatus: false,
+  adminStatus: null,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdminHome);

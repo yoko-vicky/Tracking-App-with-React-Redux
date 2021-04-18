@@ -13,12 +13,11 @@ const LoginPage = ({ history, setUser, logIn }) => {
     try {
       const response = await loggedIn(username, password);
       // eslint-disable-next-line no-console
-      // console.log('response', response);
       if (response.logged_in) {
         localStorage.setItem('token', response.token);
         setUser(response.user);
         logIn(true);
-        history.push('/');
+        history.push(response.user.admin ? '/admin' : '/tracks');
       } else if (response.errors.length > 0) {
         setErrors(response.errors);
       }
@@ -43,21 +42,20 @@ const LoginPage = ({ history, setUser, logIn }) => {
   );
 };
 
+const mapDispatchToProps = (dispatch) => ({
+  setUser: (user) => dispatch(setUser(user)),
+  logIn: (status) => dispatch(logIn(status)),
+});
+
 LoginPage.propTypes = {
   history: PropTypes.instanceOf(Object),
-  logIn: PropTypes.func,
+  logIn: PropTypes.func.isRequired,
   setUser: PropTypes.func,
 };
 
 LoginPage.defaultProps = {
   history: null,
-  logIn: null,
   setUser: null,
 };
-
-const mapDispatchToProps = (dispatch) => ({
-  setUser: (user) => dispatch(setUser(user)),
-  logIn: (status) => dispatch(logIn(status)),
-});
 
 export default connect(undefined, mapDispatchToProps)(LoginPage);
