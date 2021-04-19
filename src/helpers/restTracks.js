@@ -6,7 +6,7 @@ export const getTracks = async () => {
   const response = await axios.get(`${baseUrl}records`, authHeaders())
     .then((response) => response).catch((error) => error);
   // console.log(response.data);
-  return [...response.data];
+  return response.data;
 };
 
 export const updateTrack = async (id, result, itemId, date) => {

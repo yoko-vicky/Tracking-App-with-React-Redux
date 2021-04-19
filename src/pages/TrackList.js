@@ -5,15 +5,19 @@ import PropTypes from 'prop-types';
 import TrackListItem from '../components/TrackListItem';
 import { getTracks } from '../helpers/restTracks';
 import { addTracks } from '../actions/tracks';
+import { addTrackDates } from '../actions/trackDates';
 
-const TrackList = ({ addTracks, tracks, loginUser }) => {
+const TrackList = ({
+  addTracks, tracks, loginUser, addTrackDates,
+}) => {
   const [error, setError] = useState('');
 
   const runGetTracks = async () => {
     try {
       const response = await getTracks();
-      if (response.length > 0) {
-        addTracks(response);
+      if (response) {
+        addTracks(response.records);
+        addTrackDates(response.record_dates);
       } else {
         setError('No Tracks');
       }
@@ -44,6 +48,7 @@ const TrackList = ({ addTracks, tracks, loginUser }) => {
 
 const mapDispatchToProps = (dispatch) => ({
   addTracks: (tracks) => dispatch(addTracks(tracks)),
+  addTrackDates: (trackDates) => dispatch(addTrackDates(trackDates)),
 });
 
 const mapStateToProps = (state) => ({
@@ -52,12 +57,15 @@ const mapStateToProps = (state) => ({
 });
 
 TrackList.propTypes = {
-  addTracks: PropTypes.func.isRequired,
+  addTracks: PropTypes.func,
+  addTrackDates: PropTypes.func,
   tracks: PropTypes.instanceOf(Array),
   loginUser: PropTypes.bool.isRequired,
 };
 
 TrackList.defaultProps = {
+  addTracks: null,
+  addTrackDates: null,
   tracks: [],
 };
 

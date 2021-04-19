@@ -9,10 +9,13 @@ import './assets/styles/style.scss';
 const store = configureStore();
 
 store.subscribe(() => {
-  const { user, items, tracks } = store.getState();
+  const {
+    user, items, tracks, trackDates,
+  } = store.getState();
   console.log('user', user);
   console.log('items', items);
   console.log('tracks', tracks);
+  console.log('trackDates', trackDates);
 });
 
 const jsx = (
@@ -20,24 +23,6 @@ const jsx = (
     <AppRouter />
   </Provider>
 );
-
-//  Default Data Sample
-
-// store.dispatch(addTrack({
-//   id: 1, result: 32, item_id: 1, date: '2021-04-13 00:00:00 +0000',
-// }));
-// store.dispatch(addTrack({
-//   id: 2, result: 64, item_id: 2, date: '2021-04-13 00:00:00 +0000',
-// }));
-// store.dispatch(addTrack({
-//   id: 3, result: 180, item_id: 3, date: '2021-04-13 00:00:00 +0000',
-// }));
-// store.dispatch(addTrack({
-//   id: 4, result: 55, item_id: 4, date: '2021-04-13 00:00:00 +0000',
-// }));
-// store.dispatch(addTrack({
-//   id: 4, result: 55, item_id: 4, date: '2021-04-13 00:00:00 +0000',
-// }));
 
 ReactDOM.render(jsx, document.getElementById('root'));
 /* eslint-enable no-console */

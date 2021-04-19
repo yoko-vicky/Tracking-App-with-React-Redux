@@ -11,15 +11,3 @@ const tracksReducer = (state = defaultTracksState, action) => {
   }
 };
 export default tracksReducer;
-
-// const tracks = [{
-//   date: '2021-04-13 00:00:00 +0000',
-//   result: {
-//     item1: '',
-//     item2: '',
-//     item3: '',
-//     item4: '',
-//     item5: '',
-//     item6: '',
-//   },
-// }];
