@@ -10,7 +10,7 @@ import SignupPage from '../pages/SignupPage';
 import AddTrack from '../pages/AddTrack';
 import EditTrack from '../pages/EditTrack';
 import TrackList from '../pages/TrackList';
-import TrackItem from '../pages/TrackItem';
+import TrackItems from '../pages/TrackItems';
 import Progress from '../pages/Progress';
 import More from '../pages/More';
 import AdminHome from '../pages/AdminHome';
@@ -29,7 +29,7 @@ const AppRouter = () => (
           <Route exact path="/login" render={(props) => (<LoginPage history={props.history} />)} />
           <Route exact path="/signup" render={(props) => (<SignupPage history={props.history} />)} />
           <Route exact path="/tracks/create" component={AddTrack} />
-          <Route exact path="/tracks/:id" component={TrackItem} />
+          <Route exact path="/tracks/:id" component={TrackItems} />
           <Route exact path="/tracks/:id/edit" component={EditTrack} />
           <Route exact path="/tracks" component={TrackList} />
           <Route exact path="/progress" component={Progress} />
