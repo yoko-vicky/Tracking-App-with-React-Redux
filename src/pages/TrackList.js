@@ -8,7 +8,7 @@ import { addTracks } from '../actions/tracks';
 import { addTrackDates } from '../actions/trackDates';
 
 const TrackList = ({
-  addTracks, tracks, loginUser, addTrackDates,
+  addTracks, loginUser, addTrackDates, trackDates,
 }) => {
   const [error, setError] = useState('');
 
@@ -36,9 +36,13 @@ const TrackList = ({
       <div className="content">
         {error && <p className="error-msg">{error}</p>}
         <div className="tracks mb3">
-          {tracks.length > 0 && tracks.map((eachTrack) => (
-            <TrackListItem track={eachTrack} key={eachTrack.id} />
-          ))}
+          {trackDates.length > 0 && trackDates.map((trackDate) => {
+            const milSec = Number(trackDate);
+
+            return (
+              <TrackListItem milSec={milSec} key={milSec} />
+            );
+          })}
         </div>
         <Link to="track/create" className="btn">Add New Track</Link>
       </div>
@@ -53,20 +57,21 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = (state) => ({
   tracks: state.tracks,
+  trackDates: state.trackDates,
   loginUser: state.user.logIn,
 });
 
 TrackList.propTypes = {
   addTracks: PropTypes.func,
   addTrackDates: PropTypes.func,
-  tracks: PropTypes.instanceOf(Array),
+  trackDates: PropTypes.instanceOf(Array),
   loginUser: PropTypes.bool.isRequired,
 };
 
 TrackList.defaultProps = {
   addTracks: null,
   addTrackDates: null,
-  tracks: [],
+  trackDates: [],
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TrackList);

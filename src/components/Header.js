@@ -24,7 +24,7 @@ const Header = ({ adminUser, whileloggedIn }) => {
       </button>
       <nav className={`header__nav${toggleClass}`}>
         <NavLink exact to="/" className="header__link" onClick={closeToggleMenu}>Home</NavLink>
-        <NavLink exact to="/track/create" className="header__link" onClick={closeToggleMenu}>Add Track</NavLink>
+        <NavLink exact to="/tracks/create" className="header__link" onClick={closeToggleMenu}>Add Track</NavLink>
         <NavLink exact to="/tracks" className="header__link" onClick={closeToggleMenu}>All Tracks</NavLink>
         <NavLink exact to="/progress" className="header__link" onClick={closeToggleMenu}>Progress</NavLink>
         <NavLink exact to="/more" className="header__link" onClick={closeToggleMenu}>More</NavLink>

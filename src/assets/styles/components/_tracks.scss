@@ -1,0 +1,35 @@
+.tracks {
+  &__item {
+    &__sign {
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    &__link {
+      display: grid;
+      grid-template-columns: 0.5fr 2fr 0.4fr 0.2fr;
+      align-items: center;
+      padding: 1rem;
+      background: $white;
+      margin: 0 auto 2rem;
+    }
+
+    &__date {
+      font-weight: bold;
+      font-size: 1.8rem;
+    }
+
+    &__rate {
+      span {
+        font-weight: bold;
+        font-size: 1.8rem;
+      }
+    }
+
+    &__graph {
+      width: 4rem;
+      height: 4rem;
+      border: 1px solid $primary-color;
+    }
+  }
+}

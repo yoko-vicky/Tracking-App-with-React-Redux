@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 const Footer = () => (
   <footer className="footer">
     <nav className="footer__nav">
-      <NavLink to="/track/create" className="footer__nav__item">
+      <NavLink to="/tracks/create" className="footer__nav__item">
         <span className="iconify" data-icon="foundation:graph-bar" data-inline="false" />
         <span className="footer__nav__item__text">Add Track</span>
       </NavLink>
