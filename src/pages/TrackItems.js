@@ -11,10 +11,7 @@ const TrackItems = ({
   sameDateTracks, items, loginUser, addItems, date, trackDates, currentIndex,
 }) => {
   const [error, setError] = useState('');
-  const [totalRate, setTotalRate] = useState(0);
-  let achiveTotalRate = [];
 
-  // console.log(sameDateTracks);
   const runGetItems = async () => {
     try {
       const response = await getItems();
@@ -28,32 +25,18 @@ const TrackItems = ({
     }
   };
 
-  const resultForItem = (itemId) => {
-    const targetTrack = sameDateTracks.find((track) => track.item_id === itemId);
-    if (!targetTrack) return 0;
-
-    return Number(targetTrack.result);
-  };
-
-  const calcAchivementRate = (record, target) => Math.floor((record / target) * 100);
   const calcAchiveTotalRate = () => {
-    const filteredRates = achiveTotalRate.filter((rate) => rate !== 0);
-    const totalRates = filteredRates.reduce((acm, rate) => acm + rate, 0);
-    setTotalRate(Math.floor(totalRates / filteredRates.length));
+    const totalTrackRates = sameDateTracks
+      .map((tr) => Math.floor((tr.result / tr.target) * 100))
+      .reduce((acm, tr) => acm + tr, 0);
+    const totalRate = Math.floor(totalTrackRates / sameDateTracks.length);
+    return totalRate;
   };
 
   useEffect(() => {
     if (loginUser) {
       runGetItems();
     }
-    if (achiveTotalRate.length > 0) {
-      calcAchiveTotalRate();
-    }
-    return () => {
-      // ページ遷移したらstateを消す
-      achiveTotalRate = [];
-      setTotalRate(0);
-    };
   }, []);
 
   return loginUser ? (
@@ -62,31 +45,25 @@ const TrackItems = ({
       <h1 className="heading">Track it</h1>
       <div className="items__header">
         <div className="items__date">
-          <Link to={trackDates[currentIndex - 1]}>&lt;</Link>
+          <Link to={trackDates[currentIndex - 1] || currentIndex}>&lt;</Link>
           <span>{moment(date).format('MMM Do YYYY')}</span>
-          <Link to={trackDates[currentIndex + 1]}>&gt;</Link>
+          <Link to={trackDates[currentIndex + 1] || currentIndex}>&gt;</Link>
         </div>
         <div className="items__overview">
           Graph for
-          {`achivements rate: ${totalRate} %`}
+          {`achivements rate: ${calcAchiveTotalRate() || '0'} %`}
         </div>
       </div>
       <div className="content">
-        <div className="items__list">
+        <div className="items__list mb3">
           {items.map((item) => {
-            const record = resultForItem(item.id);
-            const achivementRate = calcAchivementRate(record, item.target);
-            achiveTotalRate.push(achivementRate);
+            const targetTrack = sameDateTracks.find((track) => track.item_id === item.id);
             return (
-              <TrackItem
-                key={item.id}
-                item={item}
-                record={record}
-                achivementRate={achivementRate}
-              />
+              <TrackItem key={item.id} item={item} targetTrack={targetTrack} />
             );
           })}
         </div>
+        <Link to="/tracks" className="btn">Back to all tracks</Link>
       </div>
     </div>
   ) : <Redirect to="/" />;

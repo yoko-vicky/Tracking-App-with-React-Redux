@@ -27,16 +27,24 @@
   }
 
   &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     .iconify {
-      font-size: 4rem;
+      font-size: 5rem;
       color: $primary-color;
     }
   }
 
   &__list {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     grid-gap: 2rem;
+
+    @include mq(mob) {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   &__item {
@@ -49,10 +57,17 @@
     border-radius: 3px;
   }
 
+  &__text {
+    text-align: left;
+
+    @include mq(mob) {
+      text-align: center;
+    }
+  }
+
   &__title {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     color: $grey;
-    text-align: center;
     word-break: break-all;
     line-height: 1.2;
     margin-bottom: 0.6rem;
@@ -61,7 +76,10 @@
   &__result {
     display: flex;
     align-items: center;
-    justify-content: center;
+
+    @include mq(mob) {
+      justify-content: center;
+    }
 
     &__num {
       font-size: 2.6rem;

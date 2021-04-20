@@ -1,10 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const TrackItem = ({ item, record, achivementRate }) => {
+/* eslint-disable camelcase */
+const TrackItem = ({ item, targetTrack }) => {
   const {
-    id, icon, unit, title, target,
+    icon, unit, title, target,
   } = item;
+  const { result } = targetTrack;
+  const achivementRate = Math.floor((result / target) * 100);
 
   return (
     <div className="items__item">
@@ -12,12 +15,12 @@ const TrackItem = ({ item, record, achivementRate }) => {
         <span className="iconify" data-icon={icon || 'bi:pen-fill'} data-inline="false" />
       </div>
       <div className="items__text">
-        <div className="items__title">{`${id} ${title}`}</div>
+        <div className="items__title">{title}</div>
         <div className="items__result">
-          <span className="items__result__num">{record}</span>
+          <span className="items__result__num">{result || '0'}</span>
           <span className="items__result__unit">{`${unit} / ${target}`}</span>
         </div>
-        <div className="items__rate">{`Achivement rate: ${achivementRate} %`}</div>
+        <div className="items__rate">{`Achivement rate: ${achivementRate || '0'} %`}</div>
       </div>
     </div>
   );
@@ -25,14 +28,12 @@ const TrackItem = ({ item, record, achivementRate }) => {
 
 TrackItem.propTypes = {
   item: PropTypes.instanceOf(Object),
-  record: PropTypes.number,
-  achivementRate: PropTypes.number,
+  targetTrack: PropTypes.instanceOf(Object),
 };
 
 TrackItem.defaultProps = {
   item: {},
-  record: 0,
-  achivementRate: 0,
+  targetTrack: {},
 };
 
 export default TrackItem;
