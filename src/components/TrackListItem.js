@@ -12,7 +12,7 @@ const TrackListItem = ({ milSec, sameDateTracks }) => {
     const today = moment();
     const formattedToday = today.format('MMM Do YYYY');
     const formattedYesterday = today.subtract(1, 'days').format('MMM Do YYYY');
-    const weekAgoFromToday = today.subtract(7, 'days');
+    // const weekAgoFromToday = today.subtract(7, 'days');
     const momentMilSec = moment(milSec);
     const formattedMilSec = momentMilSec.format('MMM Do YYYY');
 
@@ -22,8 +22,8 @@ const TrackListItem = ({ milSec, sameDateTracks }) => {
       setDateSign('Today');
     } else if (formattedMilSec === formattedYesterday) {
       setDateSign('Yesterday');
-    } else if (momentMilSec > weekAgoFromToday) {
-      setDateSign('Before Last week');
+    } else {
+      setDateSign('AAA');
     }
   };
 

@@ -1,81 +1,77 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 
-class TrackForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.onSubmit = this.onSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    // const items = this.props;
-    /* eslint-disable react/no-unused-state */
-    // 以下はitemsじゃなくて記録の方をチェックする必要あり（Edit用に）
-    // this.state = {
-    //   one: items[0] ? items[0].result : 0,
-    //   two: items[1] ? items[1].result : 0,
-    //   three: items[2] ? items[2].result : 0,
-    //   four: items[3] ? items[3].result : 0,
-    //   five: items[4] ? items[4].result : 0,
-    //   six: items[5] ? items[5].result : 0,
-    //   /* eslint-enable react/no-unused-state */
-    // };
-  }
+const TrackForm = ({ items, handleSubmit, itemTitles }) => {
+  const [error, setError] = useState('');
+  const [date, setDate] = useState(moment().format('YYYY-MM-DD'));
+  const [state, setState] = useState(itemTitles);
 
-  onSubmit = (e) => {
+  const onDateChange = (e) => {
+    setDate(e.target.value);
+  };
+
+  const handleInputChange = (value, nameItemNum) => {
+    if (value.match(/^[0-9\s]{0,4}$/)) {
+      setState({ ...state, [nameItemNum]: value.trim() });
+    } else {
+      setError('Please provide only integers with maximum 4 digits');
+    }
+  };
+
+  const onSubmit = (e) => {
     e.preventDefault();
-    // eslint-disable-next-line react/destructuring-assignment
-    console.log(this.state.one);
-  }
+    const formattedDate = String(moment(date).valueOf());
+    handleSubmit(formattedDate, state);
+  };
 
-  handleChange = (e, nameStr) => {
-    const { value } = e.target;
-    this.setState(() => ({ [nameStr]: value }));
-  }
-
-  render() {
-    const { items } = this.props;
-
-    return (
-      <div>
-        <h1>Track Form</h1>
-        <form onSubmit={this.onSubmit} className="track-form form">
-          {items.length > 0 && items.map((item, index) => {
-            const {
-              id, icon, title, unit,
-            } = item;
-            const names = ['one', 'two', 'three', 'four', 'five', 'six'];
-            return (
-              <div className="track-form__group" key={id}>
-                <span className="iconify" data-icon={icon || 'bi:pen-fill'} data-inline="false" />
-                <label className="track-form__label" htmlFor={title}>{title}</label>
-                <input
-                  type="number"
-                  name={names[index]}
-                  className="track-form__input"
-                  onChange={(e) => this.handleChange(e, names[index])}
-                />
-                <span className="track-form__unit">{unit}</span>
+  return (
+    <div className="track-form">
+      {error && <p className="error-msg">{error}</p>}
+      <form className="track-form__form mb3" onSubmit={onSubmit}>
+        <div className="track-form__date">
+          <input type="date" onChange={onDateChange} value={date} />
+        </div>
+        <div className="track-form__group mb3">
+          {items.map((item) => (
+            <div className="track-form__item" key={item.id}>
+              <div className="track-form__icon">
+                <span className="iconify" data-icon={item.icon} data-inline="false" />
               </div>
-            );
-          })}
-
-          <button type="submit" className="btn">Save Track</button>
-        </form>
-      </div>
-    );
-  }
-}
+              <div className="track-form__title">{item.title}</div>
+              <input
+                type="number"
+                name={item.title}
+                className="track-form__input"
+                maxLength="4"
+                onChange={(e) => handleInputChange(e.target.value, item.id)}
+                // eslint-disable-next-line dot-notation
+                value={state[item.id]}
+              />
+            </div>
+          ))}
+        </div>
+        <button type="submit" className="btn">Save</button>
+      </form>
+    </div>
+  );
+};
 
 const mapStateToProps = (state) => ({
   items: state.items,
 });
 
 TrackForm.propTypes = {
-  items: PropTypes.instanceOf(Array),
+  items: PropTypes.instanceOf(Object),
+  handleSubmit: PropTypes.func,
+  itemTitles: PropTypes.instanceOf(Object),
 };
 
 TrackForm.defaultProps = {
   items: [],
+  handleSubmit: null,
+  itemTitles: {},
 };
 
 export default connect(mapStateToProps)(TrackForm);

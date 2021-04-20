@@ -28,9 +28,9 @@ const AppRouter = () => (
           <Route exact path="/" component={Home} />
           <Route exact path="/login" render={(props) => (<LoginPage history={props.history} />)} />
           <Route exact path="/signup" render={(props) => (<SignupPage history={props.history} />)} />
-          <Route exact path="/tracks/create" component={AddTrack} />
+          <Route exact path="/track/create" render={(props) => (<AddTrack history={props.history} />)} />
           <Route exact path="/tracks/:id" component={TrackItems} />
-          <Route exact path="/tracks/:id/edit" component={EditTrack} />
+          <Route exact path="/track/:id/edit" component={EditTrack} />
           <Route exact path="/tracks" component={TrackList} />
           <Route exact path="/progress" component={Progress} />
           <Route exact path="/more" component={More} />
