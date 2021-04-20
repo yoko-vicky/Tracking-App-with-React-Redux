@@ -6,6 +6,7 @@ import TrackForm from '../components/TrackForm';
 import { addNewTrack } from '../helpers/restTracks';
 import { getItems } from '../helpers/restItems';
 import addItems from '../actions/items';
+import getItemTitles from '../helpers/getItemTitles';
 
 const AddTrack = ({
   loginUser, tracks, history, items, addItems,
@@ -50,11 +51,8 @@ const AddTrack = ({
       });
     }
   };
-  const itemTitles = () => {
-    const titles = {};
-    items.forEach((item) => { titles[item.id] = ''; });
-    return titles;
-  };
+
+  const itemTitles = getItemTitles(items, undefined);
 
   return (loginUser ? (
     <div className="add-track">
@@ -62,7 +60,7 @@ const AddTrack = ({
       <div className="content">
         {error && <p className="error-msg">{error}</p>}
         <div className="content__msg">Welcome back. Let&apos;s add your track for today!</div>
-        <TrackForm handleSubmit={handleSubmit} itemTitles={itemTitles} />
+        <TrackForm handleSubmit={handleSubmit} itemTitles={itemTitles} targetDate={null} />
       </div>
     </div>
   ) : <Redirect to="/" />);

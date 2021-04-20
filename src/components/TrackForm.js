@@ -4,9 +4,11 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import pluralize from 'pluralize';
 
-const TrackForm = ({ items, handleSubmit, itemTitles }) => {
+const TrackForm = ({
+  items, handleSubmit, itemTitles, targetDate,
+}) => {
   const [error, setError] = useState('');
-  const [date, setDate] = useState(moment().format('YYYY-MM-DD'));
+  const [date, setDate] = useState(targetDate ? moment(targetDate).format('YYYY-MM-DD') : moment().format('YYYY-MM-DD'));
   const [state, setState] = useState(itemTitles);
 
   const onDateChange = (e) => {
@@ -69,12 +71,14 @@ TrackForm.propTypes = {
   items: PropTypes.instanceOf(Object),
   handleSubmit: PropTypes.func,
   itemTitles: PropTypes.instanceOf(Object),
+  targetDate: PropTypes.number,
 };
 
 TrackForm.defaultProps = {
   items: [],
   handleSubmit: null,
   itemTitles: {},
+  targetDate: 0,
 };
 
 export default connect(mapStateToProps)(TrackForm);

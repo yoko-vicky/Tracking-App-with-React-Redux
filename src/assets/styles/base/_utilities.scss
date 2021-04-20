@@ -80,8 +80,9 @@ select {
 
 .error-msg {
   padding: 1rem;
-  margin-bottom: 1.6rem;
   border-radius: 3px;
   color: $red;
   border: 1px solid $red;
+  max-width: $text-max-width;
+  margin: 0 auto 1.6rem;
 }
