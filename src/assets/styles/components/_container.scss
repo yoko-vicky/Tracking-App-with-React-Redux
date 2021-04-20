@@ -15,4 +15,16 @@
   max-width: $max-width;
   margin: 0 auto;
   padding: 2rem 0 6rem;
+
+  &__msg {
+    line-height: 1.6;
+    margin: 0 auto 2rem;
+    max-width: $text-max-width;
+    background: $green;
+    color: $white;
+    font-weight: bold;
+    font-size: 1.6rem;
+    padding: 2rem;
+    border-radius: 3px;
+  }
 }

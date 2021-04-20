@@ -77,3 +77,11 @@ select {
   margin: 0 auto;
   border-radius: 6px;
 }
+
+.error-msg {
+  padding: 1rem;
+  margin-bottom: 1.6rem;
+  border-radius: 3px;
+  color: $red;
+  border: 1px solid $red;
+}

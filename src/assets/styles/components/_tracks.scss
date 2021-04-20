@@ -21,7 +21,7 @@
 
     &__rate {
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-items: center;
 
       .rate {
@@ -44,6 +44,10 @@
           padding-left: 0.2rem;
         }
       }
+    }
+
+    &__toright {
+      text-align: right;
     }
 
     &__graph {

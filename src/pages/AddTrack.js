@@ -39,7 +39,7 @@ const AddTrack = ({
   const handleSubmit = (StrDate, state) => {
     const sameDateTrack = tracks.find((track) => track.date === StrDate);
     if (sameDateTrack) {
-      setError('Track data for the same date alreay exists');
+      setError('Track for the same date alreay exists');
     } else {
       Object.keys(state).forEach((key) => {
         runAddNewTrack(state[key], key, StrDate);
@@ -58,7 +58,7 @@ const AddTrack = ({
       <h1 className="heading">Add Track</h1>
       <div className="content">
         {error && <p className="error-msg">{error}</p>}
-        <p>Welcome back let&apos;s add your track for today!</p>
+        <div className="content__msg">Welcome back. Let&apos;s add your track for today!</div>
         <TrackForm handleSubmit={handleSubmit} itemTitles={itemTitles} />
       </div>
     </div>

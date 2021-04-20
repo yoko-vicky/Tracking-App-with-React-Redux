@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import pluralize from 'pluralize';
 
 const TrackForm = ({ items, handleSubmit, itemTitles }) => {
   const [error, setError] = useState('');
@@ -49,6 +50,7 @@ const TrackForm = ({ items, handleSubmit, itemTitles }) => {
                 // eslint-disable-next-line dot-notation
                 value={state[item.id]}
               />
+              <div className="track-form__unit">{pluralize(item.unit, state[item.id])}</div>
             </div>
           ))}
         </div>

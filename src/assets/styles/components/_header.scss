@@ -13,11 +13,11 @@
     box-shadow: 1px 1px 5px rgba($black, 0.2);
     position: absolute;
     z-index: 9;
-    transform: translateX(100%);
-    transition: all 0.1s;
+    transform: translateY(-200%);
+    transition: all 0.25s;
 
     &.active {
-      transform: translateX(0);
+      transform: translateY(0);
     }
   }
 

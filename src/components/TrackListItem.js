@@ -47,7 +47,9 @@ const TrackListItem = ({ milSec, sameDateTracks }) => {
           <span className="rate">{achivementRate}</span>
           %
         </div>
-        <span className="iconify" data-icon="akar-icons:chevron-right" data-inline="false" />
+        <div className="tracks__item__toright">
+          <span className="iconify" data-icon="akar-icons:chevron-right" data-inline="false" />
+        </div>
       </Link>
     </div>
   );
