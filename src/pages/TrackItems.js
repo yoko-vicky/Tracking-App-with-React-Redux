@@ -6,6 +6,7 @@ import moment from 'moment';
 import { getItems } from '../helpers/restItems';
 import TrackItem from '../components/TrackItem';
 import addItems from '../actions/items';
+import calcAchiveTotalRate from '../helpers/calcAchiveTotalRate';
 
 const TrackItems = ({
   sameDateTracks, items, loginUser, addItems, date, trackDates, currentIndex,
@@ -23,14 +24,6 @@ const TrackItems = ({
     } catch {
       setError('Unable to fetch the item data');
     }
-  };
-
-  const calcAchiveTotalRate = () => {
-    const totalTrackRates = sameDateTracks
-      .map((tr) => Math.floor((tr.result / tr.target) * 100))
-      .reduce((acm, tr) => acm + tr, 0);
-    const totalRate = Math.floor(totalTrackRates / sameDateTracks.length);
-    return totalRate;
   };
 
   useEffect(() => {
@@ -51,7 +44,7 @@ const TrackItems = ({
         </div>
         <div className="items__overview">
           Graph for
-          {`achivements rate: ${calcAchiveTotalRate() || '0'} %`}
+          {`achivements rate: ${calcAchiveTotalRate(sameDateTracks) || '0'} %`}
         </div>
       </div>
       <div className="content">

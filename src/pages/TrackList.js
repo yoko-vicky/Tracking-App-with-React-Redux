@@ -8,7 +8,7 @@ import { addTracks } from '../actions/tracks';
 import { addTrackDates } from '../actions/trackDates';
 
 const TrackList = ({
-  addTracks, loginUser, addTrackDates, trackDates,
+  addTracks, loginUser, addTrackDates, trackDates, tracks,
 }) => {
   const [error, setError] = useState('');
 
@@ -38,9 +38,10 @@ const TrackList = ({
         <div className="tracks mb3">
           {trackDates.length > 0 && trackDates.map((trackDate) => {
             const milSec = Number(trackDate);
+            const sameDateTracks = tracks.filter((track) => track.date === trackDate);
 
             return (
-              <TrackListItem milSec={milSec} key={milSec} />
+              <TrackListItem milSec={milSec} key={milSec} sameDateTracks={sameDateTracks} />
             );
           })}
         </div>
@@ -66,12 +67,14 @@ TrackList.propTypes = {
   addTrackDates: PropTypes.func,
   trackDates: PropTypes.instanceOf(Array),
   loginUser: PropTypes.bool.isRequired,
+  tracks: PropTypes.instanceOf(Array),
 };
 
 TrackList.defaultProps = {
   addTracks: null,
   addTrackDates: null,
   trackDates: [],
+  tracks: [],
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TrackList);
