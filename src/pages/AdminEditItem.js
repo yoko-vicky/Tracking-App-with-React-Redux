@@ -17,6 +17,7 @@ const AdminEditItem = ({
 
   const runUpdateItem = async (title, unit, icon) => {
     try {
+      setError('');
       await updateItem(id, title, unit, icon);
       history.push('/admin');
     } catch {
@@ -26,6 +27,7 @@ const AdminEditItem = ({
 
   const runRemoveItemFromDB = async (id) => {
     try {
+      setError('');
       await removeItemFromDB(id);
       history.push('/admin');
     } catch {

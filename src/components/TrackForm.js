@@ -15,6 +15,7 @@ const TrackForm = ({ items, handleSubmit, itemTitles }) => {
 
   const handleInputChange = (value, nameItemNum) => {
     if (value.match(/^[0-9\s]{0,4}$/)) {
+      setError('');
       setState({ ...state, [nameItemNum]: value.trim() });
     } else {
       setError('Please provide only integers with maximum 4 digits');

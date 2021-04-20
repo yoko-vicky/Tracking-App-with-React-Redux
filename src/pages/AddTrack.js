@@ -14,6 +14,7 @@ const AddTrack = ({
 
   const runGetItems = async () => {
     try {
+      setError('');
       const response = await getItems();
       if (response.length > 0) {
         addItems(response);
@@ -30,6 +31,7 @@ const AddTrack = ({
 
   const runAddNewTrack = async (result, itemId, date) => {
     try {
+      setError('');
       await addNewTrack(result, itemId, date);
     } catch {
       setError('Unable to create new tracks');
@@ -41,6 +43,7 @@ const AddTrack = ({
     if (sameDateTrack) {
       setError('Track for the same date alreay exists');
     } else {
+      setError('');
       Object.keys(state).forEach((key) => {
         runAddNewTrack(state[key], key, StrDate);
         history.push('/tracks');

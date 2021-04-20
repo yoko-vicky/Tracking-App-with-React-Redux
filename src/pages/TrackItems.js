@@ -17,6 +17,7 @@ const TrackItems = ({
     try {
       const response = await getItems();
       if (response.length > 0) {
+        setError('');
         addItems(response);
       } else {
         setError('No Items');

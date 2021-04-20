@@ -12,9 +12,8 @@ const SignupPage = ({ history, setUser, logIn }) => {
   const runSignedUpAuth = async (username, password) => {
     try {
       const response = await signedUp(username, password);
-      // eslint-disable-next-line no-console
-      // console.log(response);
       if (response.status === 'created') {
+        setErrors([]);
         localStorage.setItem('token', response.token);
         setUser(response.user);
         logIn(true);

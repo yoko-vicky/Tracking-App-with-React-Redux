@@ -6,7 +6,7 @@ import calcAchiveTotalRate from '../helpers/calcAchiveTotalRate';
 
 const TrackListItem = ({ milSec, sameDateTracks }) => {
   const [dateSign, setDateSign] = useState('');
-  console.log('sameDateTracks', sameDateTracks);
+  // console.log('sameDateTracks', sameDateTracks);
 
   const checkDateSign = () => {
     const today = moment();

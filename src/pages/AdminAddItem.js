@@ -10,6 +10,7 @@ const AdminAddItem = ({ history, adminStatus, loginUser }) => {
 
   const runAddNewItem = async (title, unit, icon) => {
     try {
+      setError('');
       await addNewItem(title, unit, icon);
       history.push('/admin');
     } catch {

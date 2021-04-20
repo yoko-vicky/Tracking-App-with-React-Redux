@@ -16,6 +16,7 @@ const TrackList = ({
     try {
       const response = await getTracks();
       if (response) {
+        setError('');
         addTracks(response.records);
         addTrackDates(response.record_dates);
       } else {
