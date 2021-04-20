@@ -45,9 +45,9 @@ const TrackItems = ({
       <h1 className="heading">Track it</h1>
       <div className="items__header">
         <div className="items__date">
-          <Link to={trackDates[currentIndex - 1] || currentIndex}>&lt;</Link>
+          <Link to={trackDates[currentIndex - 1] || trackDates[currentIndex]}>&lt;</Link>
           <span>{moment(date).format('MMM Do YYYY')}</span>
-          <Link to={trackDates[currentIndex + 1] || currentIndex}>&gt;</Link>
+          <Link to={trackDates[currentIndex + 1] || trackDates[currentIndex]}>&gt;</Link>
         </div>
         <div className="items__overview">
           Graph for
