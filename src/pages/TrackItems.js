@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import Chart from 'react-google-charts';
 import { getItems } from '../helpers/restItems';
 import TrackItem from '../components/TrackItem';
 import addItems from '../actions/items';
-import calcAchiveTotalRate from '../helpers/calcAchiveTotalRate';
+import calcAchieveTotalRate from '../helpers/calcAchieveTotalRate';
 
 const TrackItems = ({
   sameDateTracks, items, loginUser, addItems, date, trackDates, currentIndex,
@@ -33,6 +34,10 @@ const TrackItems = ({
     }
   }, []);
 
+  const totalRate = calcAchieveTotalRate(sameDateTracks) || 0;
+  const rateForChart = totalRate >= 100 ? 100 : totalRate;
+  const leftRateForChart = 100 - rateForChart;
+
   return loginUser ? (
     <div className="items">
       {error && <p className="error-msg">{error}</p>}
@@ -44,8 +49,29 @@ const TrackItems = ({
           <Link to={trackDates[currentIndex + 1] || trackDates[currentIndex]}>&gt;</Link>
         </div>
         <div className="items__overview">
-          Graph for
-          {`achivements rate: ${calcAchiveTotalRate(sameDateTracks) || '0'} %`}
+          <div className="items__chart__container">
+            <Chart
+              width="180px"
+              height="180px"
+              chartType="PieChart"
+              loader={<div className="loader">Loading...</div>}
+              data={[['Pac Man', 'Percentage'], ['', rateForChart], ['', leftRateForChart]]}
+              options={{
+                legend: 'none',
+                pieSliceText: 'none',
+                pieStartAngle: 0,
+                tooltip: { trigger: 'none' },
+                slices: {
+                  0: { color: '#41b5e8' },
+                  1: { color: 'transparent' },
+                },
+              }}
+              rootProps={{ 'data-testid': '6' }}
+            />
+          </div>
+          <div className="items__chart__comment">
+            {`Achievements rate: ${calcAchieveTotalRate(sameDateTracks) || '0'} %`}
+          </div>
         </div>
       </div>
       <div className="content">
@@ -53,7 +79,12 @@ const TrackItems = ({
           {items.map((item) => {
             const targetTrack = sameDateTracks.find((track) => track.item_id === item.id);
             return (
-              <TrackItem key={item.id} item={item} targetTrack={targetTrack} />
+              <TrackItem
+                key={item.id}
+                item={item}
+                result={targetTrack ? targetTrack.result : 0}
+                targetDate={date}
+              />
             );
           })}
         </div>

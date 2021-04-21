@@ -4,16 +4,15 @@ import PropTypes from 'prop-types';
 import pluralize from 'pluralize';
 
 /* eslint-disable camelcase */
-const TrackItem = ({ item, targetTrack }) => {
+const TrackItem = ({ item, result, targetDate }) => {
   const {
     icon, unit, title, target,
   } = item;
-  const { result, date } = targetTrack;
-  const achivementRate = Math.floor((result / target) * 100);
+  const AchievementRate = Math.floor((result / target) * 100);
 
   return (
     <div className="items__item">
-      <Link to={`/track/${Number(date)}/edit`} className="items__item-link">
+      <Link to={`/track/${Number(targetDate)}/edit`} className="items__item-link">
         <div className="items__icon">
           <span className="iconify" data-icon={icon || 'bi:pen-fill'} data-inline="false" />
         </div>
@@ -23,7 +22,7 @@ const TrackItem = ({ item, targetTrack }) => {
             <span className="items__result__num">{result || '0'}</span>
             <span className="items__result__unit">{`${pluralize(unit, result)} / ${target}`}</span>
           </div>
-          <div className="items__rate">{`Achivement rate: ${achivementRate || '0'} %`}</div>
+          <div className="items__rate">{`Achievement rate: ${AchievementRate || '0'} %`}</div>
         </div>
       </Link>
     </div>
@@ -32,12 +31,14 @@ const TrackItem = ({ item, targetTrack }) => {
 
 TrackItem.propTypes = {
   item: PropTypes.instanceOf(Object),
-  targetTrack: PropTypes.instanceOf(Object),
+  result: PropTypes.number,
+  targetDate: PropTypes.number,
 };
 
 TrackItem.defaultProps = {
   item: {},
-  targetTrack: {},
+  result: 0,
+  targetDate: 0,
 };
 
 export default TrackItem;

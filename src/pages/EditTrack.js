@@ -35,7 +35,6 @@ const EditTrack = ({
     try {
       setError('');
       await updateTrack(trackId, result, itemId, date);
-      console.log('update??');
     } catch {
       setError('Unable to update the track');
     }
@@ -52,14 +51,17 @@ const EditTrack = ({
 
   const handleSubmit = (StrDate, state) => {
     Object.keys(state).forEach((key) => {
-      sameDateTracks.forEach((track) => {
-        if (track.item_id === Number(key)) {
-          runUpdateTrack(track.id, state[key], key, StrDate);
-        } else {
-          runAddNewTrack(state[key], key, StrDate);
-        }
-        history.push('/tracks');
-      });
+      if (state[key]) {
+        sameDateTracks.forEach((track) => {
+          if (track.item_id === Number(key)) {
+            runUpdateTrack(track.id, state[key], key, StrDate);
+          } else {
+            runAddNewTrack(state[key], key, StrDate);
+          }
+          history.push('/tracks');
+          // history.push(`/tracks/${StrDate}`);
+        });
+      }
     });
   };
   const itemTitles = getItemTitles(items, sameDateTracks);
