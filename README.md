@@ -35,7 +35,7 @@ A list of commonly used resources that I find helpful is listed in the acknowled
 
 ## Live Demo
 
-[Live Demo Link](https://yocosaka.github.io)
+[Live Demo Link](https://yoco-tracking-app-front.herokuapp.com/)
 
 
 ## Getting Started
@@ -50,8 +50,9 @@ To get a local copy up and running follow these simple example steps.
 6. Type git clone, and then paste the URL you copied in Step 3. <br>
 e.g. $ git clone https://github.com/yourUsername/yourProjectName 
 7. Press Enter. Your local copy will be created. 
-8. To run the server in your local environment, run `npm start`
-9. To run the tests, run `npm test`
+8. Go to helpers/baseUrl.js and rewrite the baseUrl like `http://localhost:3001/` so you can run this project in your local environment
+9. To run the server, run `npm start`
+10. To run the tests, run `npm test`
 
 ## How to use this app as a user
 
@@ -64,8 +65,8 @@ e.g. $ git clone https://github.com/yourUsername/yourProjectName
 
 1. Like the ordinary user, you need to log in with a username and password as an admin user, which is required to be given the status of admin: true by the administrator
 2. Then, you'll see the admin page. On this page, the items that are added by administrators will show
-3. By clicked the "Add item" button, it shows the form, and you can add an item
-4. By clicked each item, you can edit it
+3. By clicking the "Add item" button, it shows the form, and you can add an item
+4. By clicking each item, you can edit it
 
 
 ## Author
@@ -100,7 +101,7 @@ Give a ⭐️ if you like this project!
 ["Bodytrack.it "](https://www.behance.net/gallery/13271423/Bodytrackit-An-iOs-app-Branding-UX-and-UI) design idea by [Gregoire Vella](https://www.behance.net/gregoirevella) is licensed under [Creative Commons license of the design](https://creativecommons.org/licenses/by-nc/4.0/).
 
 ### Application:
-This project is [MIT](./LICENSE) licensed except for the design
+This project is [MIT](./LICENSE) licensed except for the design above
 
 ## Acknowledgements
 * [Proptypes](https://reactjs.org/docs/typechecking-with-proptypes.html)
