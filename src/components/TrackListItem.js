@@ -29,6 +29,7 @@ const TrackListItem = ({ milSec, sameDateTracks }) => {
 
   useEffect(() => {
     checkDateSign();
+    renderCharts();
   }, []);
 
   const achivementRate = calcAchiveTotalRate(sameDateTracks);
@@ -36,7 +37,9 @@ const TrackListItem = ({ milSec, sameDateTracks }) => {
     <div className="tracks__item">
       {dateSign && <div className="tracks__item__sign">{dateSign}</div>}
       <Link to={`/tracks/${milSec}`} className="tracks__item__link">
-        <div className="tracks__item__graph">&nbsp;</div>
+        <div className="tracks__item__graph">
+          <div className="chart" data-percent={achivementRate}>&nbsp;</div>
+        </div>
         <div className="tracks__item__date">{moment(milSec).format('MMM Do YYYY')}</div>
         <div className="tracks__item__rate">
           {achivementRate >= 100 && (

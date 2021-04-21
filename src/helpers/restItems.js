@@ -8,14 +8,22 @@ export const getItems = async () => {
   return response;
 };
 
-export const updateItem = async (id, title, unit, icon) => {
-  const response = await axios.put(`${baseUrl}items/${id}`, { item: { title, unit, icon } }, authHeaders())
+export const updateItem = async (id, title, unit, icon, target) => {
+  const response = await axios.put(`${baseUrl}items/${id}`, {
+    item: {
+      title, unit, icon, target,
+    },
+  }, authHeaders())
     .then((response) => response).catch((error) => error);
   return response;
 };
 
-export const addNewItem = async (title, unit, icon) => {
-  const response = await axios.post(`${baseUrl}items`, { item: { title, unit, icon } }, authHeaders())
+export const addNewItem = async (title, unit, icon, target) => {
+  const response = await axios.post(`${baseUrl}items`, {
+    item: {
+      title, unit, icon, target,
+    },
+  }, authHeaders())
     .then((response) => response).catch((error) => error);
   return response;
 };

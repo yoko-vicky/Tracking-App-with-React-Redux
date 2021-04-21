@@ -8,18 +8,20 @@ import { addNewItem } from '../helpers/restItems';
 const AdminAddItem = ({ history, adminStatus, loginUser }) => {
   const [error, setError] = useState('');
 
-  const runAddNewItem = async (title, unit, icon) => {
+  const runAddNewItem = async (title, unit, icon, target) => {
     try {
       setError('');
-      await addNewItem(title, unit, icon);
+      await addNewItem(title, unit, icon, target);
       history.push('/admin');
     } catch {
       setError('Unable to fetch the data');
     }
   };
 
-  const handleSubmit = ({ title, unit, icon }) => {
-    runAddNewItem(title, unit, icon);
+  const handleSubmit = ({
+    title, unit, icon, target,
+  }) => {
+    runAddNewItem(title, unit, icon, target);
   };
 
   return adminStatus && loginUser ? (

@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 // import axios from 'axios';
 
 const AdminItemForm = ({
-  title, unit, icon, handleSubmit,
+  title, unit, icon, target, handleSubmit,
 }) => {
   const [inputTitle, setInputTitle] = useState(title || '');
   const [inputUnit, setInputUnit] = useState(unit || '');
   const [inputIcon, setInputIcon] = useState(icon || '');
+  const [inputTarget, setInputTarget] = useState(target || '');
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -15,6 +16,7 @@ const AdminItemForm = ({
       title: inputTitle,
       unit: inputUnit,
       icon: inputIcon,
+      target: inputTarget,
     };
     handleSubmit(item);
   };
@@ -63,6 +65,16 @@ const AdminItemForm = ({
             onChange={(e) => setInputIcon(e.target.value)}
           />
         </div>
+        <div className="form__group">
+          <div className="form__title">Target</div>
+          <input
+            type="text"
+            name="unit"
+            placeholder="Item Target"
+            value={inputTarget}
+            onChange={(e) => setInputTarget(e.target.value)}
+          />
+        </div>
         <button type="submit" className="btn dark w100 mb2">Save Item</button>
       </form>
     </div>
@@ -73,6 +85,7 @@ AdminItemForm.propTypes = {
   title: PropTypes.string,
   unit: PropTypes.string,
   icon: PropTypes.string,
+  target: PropTypes.number,
   handleSubmit: PropTypes.func.isRequired,
 };
 
@@ -80,6 +93,7 @@ AdminItemForm.defaultProps = {
   title: '',
   unit: '',
   icon: '',
+  target: 0,
 };
 
 export default AdminItemForm;

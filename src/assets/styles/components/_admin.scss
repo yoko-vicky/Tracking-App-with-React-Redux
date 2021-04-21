@@ -42,22 +42,34 @@
         .iconify {
           font-size: 3rem;
           color: $primary-color;
-          margin-right: 0.6rem;
+          margin-right: 0.8rem;
         }
 
         .title {
           font-size: 1.6rem;
           word-break: break-all;
           margin-right: 0.6rem;
+          max-width: 50%;
+          line-height: 1.3;
+        }
+
+        .target {
+          position: absolute;
+          right: 1rem;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+
+        .target-num {
+          font-size: 2rem;
+          color: $medium-grey;
+          font-weight: bold;
+          margin-right: 0.4rem;
         }
 
         .unit {
           font-size: 1.4rem;
           color: $primary-color;
-          position: absolute;
-          right: 1rem;
-          top: 50%;
-          transform: translateY(-50%);
         }
       }
     }

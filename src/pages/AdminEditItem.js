@@ -12,13 +12,13 @@ const AdminEditItem = ({
   const [error, setError] = useState('');
 
   const {
-    id, title, unit, icon,
+    id, title, unit, icon, target,
   } = item;
 
-  const runUpdateItem = async (title, unit, icon) => {
+  const runUpdateItem = async (title, unit, icon, target) => {
     try {
       setError('');
-      await updateItem(id, title, unit, icon);
+      await updateItem(id, title, unit, icon, target);
       history.push('/admin');
     } catch {
       setError('Sorry, unable to fetch the data');
@@ -35,8 +35,10 @@ const AdminEditItem = ({
     }
   };
 
-  const handleSubmit = ({ title, unit, icon }) => {
-    runUpdateItem(title, unit, icon);
+  const handleSubmit = ({
+    title, unit, icon, target,
+  }) => {
+    runUpdateItem(title, unit, icon, target);
   };
 
   const onRemove = () => {
@@ -51,7 +53,14 @@ const AdminEditItem = ({
       </h1>
       <div className="content">
         {error && <p className="error-msg">{error}</p>}
-        <ItemForm id={id} title={title} unit={unit} icon={icon} handleSubmit={handleSubmit} />
+        <ItemForm
+          id={id}
+          title={title}
+          unit={unit}
+          icon={icon}
+          target={target}
+          handleSubmit={handleSubmit}
+        />
         <button type="button" className="btn mb2" onClick={onRemove}>Remove Item</button>
         <Link to="/admin" className="btn">Cancel & Back to Item List</Link>
       </div>
