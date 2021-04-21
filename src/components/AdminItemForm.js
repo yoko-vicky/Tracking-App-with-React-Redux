@@ -23,6 +23,7 @@ const AdminItemForm = ({
     <div>
       <form className="form" onSubmit={onSubmit}>
         <div className="form__group">
+          <div className="form__title">Item Label</div>
           <input
             type="text"
             name="title"
@@ -32,6 +33,7 @@ const AdminItemForm = ({
           />
         </div>
         <div className="form__group">
+          <div className="form__title">Unit (Singular)</div>
           <input
             type="text"
             name="unit"
@@ -41,6 +43,18 @@ const AdminItemForm = ({
           />
         </div>
         <div className="form__group">
+          <div className="form__title">Icon</div>
+          <p className="form__desc">
+            Please add the string for data-icon of the icon that you can find in
+            <span className="strong"><a href="https://iconify.design/icon-sets/" target="_blank" rel="noreferrer">Iconify</a></span>
+            . For exapmle, if you want to use
+            <span className="iconify" data-icon="bi:pen-fill" data-inline="false" />
+            , you need to to add
+            <span className="blue strong">&apos;bi:pen-fill&apos;</span>
+            that is the data-icon attribute value of this icon. If you leave this field empty,
+            <span className="iconify" data-icon="heroicons-outline:paper-clip" data-inline="false" />
+            is provided automatically.
+          </p>
           <input
             type="text"
             name="icon"

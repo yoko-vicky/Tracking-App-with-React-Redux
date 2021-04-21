@@ -44,6 +44,22 @@ select {
     }
   }
 
+  &__title {
+    font-weight: bold;
+    margin: 0 auto 0.4rem;
+  }
+
+  &__desc {
+    font-size: 90%;
+    line-height: 1.5;
+    color: $medium-grey;
+    margin: 0 auto 0.4rem;
+
+    a {
+      text-decoration: underline;
+    }
+  }
+
   .btn {
     width: 100%;
   }
@@ -85,4 +101,13 @@ select {
   border: 1px solid $red;
   max-width: $text-max-width;
   margin: 0 auto 1.6rem;
+}
+
+.blue {
+  color: $primary-color;
+}
+
+.strong {
+  font-weight: bold;
+  margin: 0 0.2rem;
 }
