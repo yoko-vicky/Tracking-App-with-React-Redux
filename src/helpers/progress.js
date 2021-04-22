@@ -24,5 +24,6 @@ const getAvarageAchievemnetsRateForMonth = (trackDates, tracks) => {
   return Math.floor(totalRatesForMonth / arrForAchiveRateForMonth.length);
 };
 
-// daily
+// weekly achivement rate:
+// this week, last week, 2weeks ago, 3 weeks ago, last month
 export default getAvarageAchievemnetsRateForMonth;

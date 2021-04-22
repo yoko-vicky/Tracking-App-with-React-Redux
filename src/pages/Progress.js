@@ -12,7 +12,7 @@ const Progress = ({
   addTracks, loginUser, addTrackDates, trackDates, tracks,
 }) => {
   const [error, setError] = useState('');
-  const [arMonth, setArMonth] = useState(0);
+  // const [arMonth, setArMonth] = useState(0);
 
   const runGetTracks = async () => {
     try {
@@ -32,13 +32,10 @@ const Progress = ({
   useEffect(() => {
     if (loginUser) {
       runGetTracks();
-      setTimeout(() => {
-        const avgAchieveRateForMonth = getAvgAchieveRateForMonth(trackDates, tracks);
-        setArMonth(avgAchieveRateForMonth);
-      }, 1000);
     }
   }, []);
 
+  const arMonth = getAvgAchieveRateForMonth(trackDates, tracks);
   const percentForChart = arMonth >= 100 ? 100 : arMonth;
   const leftPercentForChart = 100 - percentForChart;
   return loginUser ? (
@@ -47,50 +44,51 @@ const Progress = ({
       <div className="content">
         {error && <p className="error-msg">{error}</p>}
         <div className="progress__header">
-          <Chart
-            width="300px"
-            height="300px"
-            chartType="PieChart"
-            loader={<div className="loader">Loading...</div>}
-            data={[['Pac Man', 'Percentage'], ['', percentForChart], ['', leftPercentForChart]]}
-            options={{
-              legend: 'none',
-              pieSliceText: 'none',
-              pieStartAngle: 0,
-              tooltip: { trigger: 'none' },
-              slices: {
-                0: { color: '#41b5e8' },
-                1: { color: 'transparent' },
-              },
-            }}
-            rootProps={{ 'data-testid': '6' }}
-          />
-          {`Your avarage achievements rate for the last 30 days: ${arMonth} %`}
+          <div className="progress__title">
+            {`Your avarage achievements rate for the last 30 days: ${arMonth}%`}
+          </div>
+          <div className="progress__chart__container">
+            <Chart
+              width="300px"
+              height="300px"
+              chartType="PieChart"
+              loader={<div className="loader">Loading...</div>}
+              data={[['Pac Man', 'Percentage'], ['', percentForChart], ['', leftPercentForChart]]}
+              options={{
+                legend: 'none',
+                pieSliceText: 'none',
+                pieStartAngle: 0,
+                tooltip: { trigger: 'none' },
+                slices: {
+                  0: { color: '#41b5e8' },
+                  1: { color: 'transparent' },
+                },
+              }}
+              rootProps={{ 'data-testid': '6' }}
+            />
+          </div>
         </div>
         <div className="progress__graph">
-          your achivements graph for the last 2 weeks? 1 week?
-          <Chart
-            width="500px"
-            height="300px"
-            chartType="Bar"
-            loader={<div>Loading Chart</div>}
-            data={[
-              ['Year', 'Sales', 'Expenses', 'Profit'],
-              ['2014', 1000, 400, 200],
-              ['2015', 1170, 460, 250],
-              ['2016', 660, 1120, 300],
-              ['2017', 1030, 540, 350],
-            ]}
-            options={{
-              // Material design options
-              chart: {
-                title: 'Company Performance',
-                subtitle: 'Sales, Expenses, and Profit: 2014-2017',
-              },
-            }}
-              // For tests
-            rootProps={{ 'data-testid': '2' }}
-          />
+          <div className="progress__title">
+            Weekly Achivements Rate
+          </div>
+          <div className="progress__graph__container">
+            <Chart
+              width="100%"
+              height="200px"
+              chartType="Bar"
+              loader={<div>Loading Chart</div>}
+              data={[
+                ['', ''],
+                ['This week', 80],
+                ['Last week', 90],
+                ['2 weeks ago', 68],
+                ['3 weeks ago', 75],
+                ['last month', 75],
+              ]}
+              rootProps={{ 'data-testid': '2' }}
+            />
+          </div>
         </div>
         <div className="progress__items">
           <div className="progress__item">
