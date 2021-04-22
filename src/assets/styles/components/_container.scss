@@ -8,6 +8,11 @@
   padding-bottom: 7.6rem;
   background: $light-grey;
   min-height: 90vh;
+
+  @include mq(laptap) {
+    padding-bottom: 0;
+    min-height: 84vh;
+  }
 }
 
 .content {

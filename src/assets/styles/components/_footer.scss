@@ -4,10 +4,19 @@
   position: fixed;
   bottom: 0;
   left: 0;
+  background: $dark-grey;
+
+  @include mq(laptap) {
+    position: relative;
+    left: auto;
+    bottom: auto;
+  }
 
   &__nav {
     width: 100%;
-    background: $dark-grey;
+    max-width: $text-max-width;
+    margin: 0 auto;
+    // background: $dark-grey;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     line-height: 1;

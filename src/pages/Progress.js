@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Chart from 'react-google-charts';
-import getAvgAchieveRateForMonth from '../helpers/progress';
+import getAvgRate from '../helpers/getAvgRate';
 import { getTracks } from '../helpers/restTracks';
 import { addTracks } from '../actions/tracks';
 import { addTrackDates } from '../actions/trackDates';
@@ -35,7 +35,7 @@ const Progress = ({
     }
   }, []);
 
-  const arMonth = getAvgAchieveRateForMonth(trackDates, tracks);
+  const arMonth = getAvgRate(trackDates, tracks, 'THIS_MONTH');
   const percentForChart = arMonth >= 100 ? 100 : arMonth;
   const leftPercentForChart = 100 - percentForChart;
   return loginUser ? (
@@ -87,11 +87,11 @@ const Progress = ({
               loader={<div>Loading Chart</div>}
               data={[
                 ['', ''],
-                ['This week', 80],
-                ['Last week', 90],
-                ['2 weeks ago', 68],
-                ['3 weeks ago', 75],
-                ['last month', 75],
+                ['This week', getAvgRate(trackDates, tracks, 'THIS_WEEK')],
+                ['Last week', getAvgRate(trackDates, tracks, 'LAST_WEEK')],
+                ['2 weeks ago', getAvgRate(trackDates, tracks, 'TWO_WEEKS_BEFORE')],
+                ['3 weeks ago', getAvgRate(trackDates, tracks, 'THREE_WEEKS_BEFORE')],
+                ['last month', getAvgRate(trackDates, tracks, 'LAST_MONTH')],
               ]}
               rootProps={{ 'data-testid': '2' }}
             />

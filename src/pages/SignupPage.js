@@ -34,7 +34,7 @@ const SignupPage = ({ history, setUser, logIn }) => {
     <div>
       <h1 className="heading">Signup</h1>
       <div className="content">
-        {errors && errors.map((error) => (<p key={error}>{error}</p>))}
+        {errors && errors.map((error) => (<p key={error} className="error-msg">{error}</p>))}
         <UsersForm handleSubmit={handleSubmit} btnName="Sign Up" />
         <Link to="/" className="btn">Go back to Home</Link>
       </div>
