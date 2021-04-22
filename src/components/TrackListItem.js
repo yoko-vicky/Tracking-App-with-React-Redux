@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import Chart from 'react-google-charts';
+import { GiTrophyCup } from 'react-icons/gi';
+import { BiChevronRight } from 'react-icons/bi';
 import calcAchieveTotalRate from '../helpers/calcAchieveTotalRate';
 
 const TrackListItem = ({ milSec, sameDateTracks, itemNum }) => {
@@ -66,14 +68,14 @@ const TrackListItem = ({ milSec, sameDateTracks, itemNum }) => {
         <div className="tracks__item__rate">
           {rateForChart >= 100 && (
             <span className="goodjob">
-              <span className="iconify" data-icon="si-glyph:champion-cup" data-inline="false" />
+              <GiTrophyCup />
             </span>
           )}
           <span className="rate">{rateForChart}</span>
           %
         </div>
         <div className="tracks__item__toright">
-          <span className="iconify" data-icon="akar-icons:chevron-right" data-inline="false" />
+          <BiChevronRight />
         </div>
       </Link>
     </div>
