@@ -1,0 +1,18 @@
+.more {
+  &__content {
+    width: 100%;
+    max-width: $text-max-width;
+    margin: 0 auto;
+  }
+
+  &__header {
+    background: $white;
+    padding: 2rem;
+
+    &__wrapper {
+      width: 100%;
+      max-width: $text-max-width;
+      margin: 0 auto;
+    }
+  }
+}

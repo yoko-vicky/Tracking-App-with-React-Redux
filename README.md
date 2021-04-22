@@ -110,3 +110,4 @@ This project is [MIT](./LICENSE) licensed except for the design above
 * [Pluralize](https://github.com/plurals/pluralize)
 * [Google Fonts](https://fonts.google.com/)
 * [Pixabay](https://pixabay.com/)
+* [React Icons](https://react-icons.github.io/react-icons)
