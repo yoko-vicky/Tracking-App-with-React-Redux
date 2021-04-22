@@ -44,8 +44,8 @@ const TrackListItem = ({ milSec, sameDateTracks, itemNum }) => {
       <Link to={`/tracks/${milSec}`} className="tracks__item__link">
         <div className="tracks__item__graph">
           <Chart
-            width="40px"
-            height="40px"
+            width="60px"
+            height="60px"
             chartType="PieChart"
             loader={<div className="loader">Loading...</div>}
             data={[['Pac Man', 'Percentage'], ['', rateForChart], ['', leftRateForChart]]}
@@ -56,7 +56,7 @@ const TrackListItem = ({ milSec, sameDateTracks, itemNum }) => {
               tooltip: { trigger: 'none' },
               slices: {
                 0: { color: '#41b5e8' },
-                1: { color: '#fffd83' },
+                1: { color: '#eaeef1' },
               },
             }}
             rootProps={{ 'data-testid': '6' }}

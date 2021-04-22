@@ -63,7 +63,7 @@ const TrackItems = ({
                 tooltip: { trigger: 'none' },
                 slices: {
                   0: { color: '#41b5e8' },
-                  1: { color: '#fffd83' },
+                  1: { color: '#eaeef1' },
                 },
               }}
               rootProps={{ 'data-testid': '6' }}

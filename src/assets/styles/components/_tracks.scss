@@ -56,18 +56,21 @@
       width: 4rem;
       height: 4rem;
       position: relative;
-      // border: 1px solid $primary-color;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
 
       &::after {
         content: '';
         display: block;
-        height: 1.4rem;
-        width: 1.4rem;
+        height: 2.4rem;
+        width: 2.4rem;
         border-radius: 50%;
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-43%, -43%);
+        transform: translate(-46%, -46%);
         background: $white;
       }
     }
