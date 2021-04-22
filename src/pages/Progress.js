@@ -45,12 +45,19 @@ const Progress = ({
         {error && <p className="error-msg">{error}</p>}
         <div className="progress__header">
           <div className="progress__title">
-            {`Your avarage achievements rate for the last 30 days: ${arMonth}%`}
+            Average achievements rate for the last 30 days
+          </div>
+          <div className="progress__chart__text">
+            <span className="txt">You achieved</span>
+            <span className="num">
+              {`${arMonth}`}
+            </span>
+            <span className="txt">on average</span>
           </div>
           <div className="progress__chart__container">
             <Chart
-              width="300px"
-              height="300px"
+              width="400px"
+              height="400px"
               chartType="PieChart"
               loader={<div className="loader">Loading...</div>}
               data={[['Pac Man', 'Percentage'], ['', percentForChart], ['', leftPercentForChart]]}
@@ -60,8 +67,8 @@ const Progress = ({
                 pieStartAngle: 0,
                 tooltip: { trigger: 'none' },
                 slices: {
-                  0: { color: '#41b5e8' },
-                  1: { color: 'transparent' },
+                  0: { color: '#86df81' },
+                  1: { color: '#eaeef1' },
                 },
               }}
               rootProps={{ 'data-testid': '6' }}
@@ -70,7 +77,7 @@ const Progress = ({
         </div>
         <div className="progress__graph">
           <div className="progress__title">
-            Weekly Achivements Rate
+            Weekly Achivements Rate (%)
           </div>
           <div className="progress__graph__container">
             <Chart
@@ -110,7 +117,6 @@ const Progress = ({
             Your total score for item6
           </div>
         </div>
-        <div className="progress__share">Share</div>
       </div>
     </div>
   ) : <Redirect to="/" />;
