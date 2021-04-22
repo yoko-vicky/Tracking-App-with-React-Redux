@@ -8,7 +8,8 @@ const TrackItem = ({ item, result, targetDate }) => {
   const {
     icon, unit, title, target,
   } = item;
-  const AchievementRate = Math.floor((result / target) * 100);
+  const rate = result / target;
+  const AchievementRate = Math.floor((rate >= 1 ? 1 : rate) * 100);
 
   return (
     <div className="items__item">

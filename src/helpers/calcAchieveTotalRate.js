@@ -1,8 +1,10 @@
-const calcAchieveTotalRate = (sameDateTracks) => {
+const calcAchieveTotalRate = (sameDateTracks, itemNum) => {
   const totalTrackRates = sameDateTracks
-    .map((tr) => Math.floor((tr.result / tr.target) * 100))
-    .reduce((acm, tr) => acm + tr, 0);
-  return Math.floor(totalTrackRates / sameDateTracks.length);
+    .reduce((acm, rec) => {
+      const rate = rec.result / rec.target;
+      return acm + ((rate >= 1 ? 1 : rate) * 100);
+    }, 0);
+  return Math.floor(totalTrackRates / itemNum);
 };
 
 export default calcAchieveTotalRate;

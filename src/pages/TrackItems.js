@@ -34,7 +34,7 @@ const TrackItems = ({
     }
   }, []);
 
-  const totalRate = calcAchieveTotalRate(sameDateTracks) || 0;
+  const totalRate = calcAchieveTotalRate(sameDateTracks, items.length) || 0;
   const rateForChart = totalRate >= 100 ? 100 : totalRate;
   const leftRateForChart = 100 - rateForChart;
 
@@ -63,14 +63,14 @@ const TrackItems = ({
                 tooltip: { trigger: 'none' },
                 slices: {
                   0: { color: '#41b5e8' },
-                  1: { color: 'transparent' },
+                  1: { color: '#fffd83' },
                 },
               }}
               rootProps={{ 'data-testid': '6' }}
             />
           </div>
           <div className="items__chart__comment">
-            {`Achievements rate: ${calcAchieveTotalRate(sameDateTracks) || '0'} %`}
+            {`Achievements rate: ${rateForChart} %`}
           </div>
         </div>
       </div>

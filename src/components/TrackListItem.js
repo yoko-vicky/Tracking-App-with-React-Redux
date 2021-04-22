@@ -5,29 +5,24 @@ import moment from 'moment';
 import Chart from 'react-google-charts';
 import calcAchieveTotalRate from '../helpers/calcAchieveTotalRate';
 
-const TrackListItem = ({ milSec, sameDateTracks }) => {
+const TrackListItem = ({ milSec, sameDateTracks, itemNum }) => {
   const [dateSign, setDateSign] = useState('');
 
   const checkDateSign = () => {
-    const today = moment();
-    const formattedToday = today.format('MMM Do YYYY');
-    const formattedYesterday = today.subtract(1, 'days').format('MMM Do YYYY');
-    const formattedLastweek = today.subtract(7, 'days').format('MMM Do YYYY');
-    const momentMilSec = moment(milSec);
-    const formattedMilSec = momentMilSec.format('MMM Do YYYY');
+    const targetDay = moment(milSec);
 
-    if (formattedMilSec === formattedToday) {
+    if (targetDay.isSame(moment(), 'day')) {
       setDateSign('today');
-    } else if (formattedMilSec === formattedYesterday) {
+    } else if (targetDay.isSame(moment().subtract(1, 'days'), 'day')) {
       setDateSign('yesterday');
-    } else if (formattedMilSec <= formattedLastweek) {
+    } else if (targetDay.isSameOrBefore(moment().subtract(7, 'days'))) {
       setDateSign('lastweek');
     }
   };
 
   const setBeforeSign = () => {
     const beforeArray = Array.from(document.querySelectorAll('.lastweek'));
-    if (beforeArray.classList) {
+    if (beforeArray && beforeArray[0].classList) {
       beforeArray[0].classList.add('first');
       beforeArray[0].firstElementChild.textContent = 'before last week';
     }
@@ -40,9 +35,10 @@ const TrackListItem = ({ milSec, sameDateTracks }) => {
     }, 1000);
   }, []);
 
-  const AchievementRate = calcAchieveTotalRate(sameDateTracks);
-  const rateForChart = AchievementRate >= 100 ? 100 : AchievementRate;
+  const totalRate = calcAchieveTotalRate(sameDateTracks, itemNum) || 0;
+  const rateForChart = totalRate >= 100 ? 100 : totalRate;
   const leftRateForChart = 100 - rateForChart;
+
   return (
     <div className={`tracks__item ${dateSign}`}>
       <div className="tracks__item__sign">{dateSign !== 'lastweek' ? dateSign : ''}</div>
@@ -61,7 +57,7 @@ const TrackListItem = ({ milSec, sameDateTracks }) => {
               tooltip: { trigger: 'none' },
               slices: {
                 0: { color: '#41b5e8' },
-                1: { color: 'transparent' },
+                1: { color: '#fffd83' },
               },
             }}
             rootProps={{ 'data-testid': '6' }}
@@ -69,12 +65,12 @@ const TrackListItem = ({ milSec, sameDateTracks }) => {
         </div>
         <div className="tracks__item__date">{moment(milSec).format('MMM Do YYYY')}</div>
         <div className="tracks__item__rate">
-          {AchievementRate >= 100 && (
+          {rateForChart >= 100 && (
             <span className="goodjob">
               <span className="iconify" data-icon="si-glyph:champion-cup" data-inline="false" />
             </span>
           )}
-          <span className="rate">{AchievementRate}</span>
+          <span className="rate">{rateForChart}</span>
           %
         </div>
         <div className="tracks__item__toright">
@@ -88,11 +84,13 @@ const TrackListItem = ({ milSec, sameDateTracks }) => {
 TrackListItem.propTypes = {
   milSec: PropTypes.number,
   sameDateTracks: PropTypes.instanceOf(Array),
+  itemNum: PropTypes.number,
 };
 
 TrackListItem.defaultProps = {
   milSec: 0,
   sameDateTracks: [],
+  itemNum: 0,
 };
 
 export default TrackListItem;

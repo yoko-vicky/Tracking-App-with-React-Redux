@@ -13,7 +13,10 @@ const getAvarageAchievemnetsRateForMonth = (trackDates, tracks) => {
   trackDatesForThisMonth.forEach((trackDate) => {
     const sameDateTracks = tracks.filter((track) => track.date === trackDate);
     const totalRatesForDay = sameDateTracks
-      .reduce((acm, rec) => acm + ((rec.result / rec.target) * 100), 0);
+      .reduce((acm, rec) => {
+        const rate = rec.result / rec.target;
+        return acm + ((rate >= 1 ? 1 : rate) * 100);
+      }, 0);
     const achiveRateForDay = totalRatesForDay / sameDateTracks.length;
     arrForAchiveRateForMonth.push(achiveRateForDay);
   });
@@ -21,4 +24,5 @@ const getAvarageAchievemnetsRateForMonth = (trackDates, tracks) => {
   return Math.floor(totalRatesForMonth / arrForAchiveRateForMonth.length);
 };
 
+// daily
 export default getAvarageAchievemnetsRateForMonth;
