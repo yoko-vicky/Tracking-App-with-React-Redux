@@ -7,37 +7,43 @@ import calcAchieveTotalRate from '../helpers/calcAchieveTotalRate';
 
 const TrackListItem = ({ milSec, sameDateTracks }) => {
   const [dateSign, setDateSign] = useState('');
-  // console.log('sameDateTracks', sameDateTracks);
 
   const checkDateSign = () => {
     const today = moment();
     const formattedToday = today.format('MMM Do YYYY');
     const formattedYesterday = today.subtract(1, 'days').format('MMM Do YYYY');
-    // const weekAgoFromToday = today.subtract(7, 'days');
+    const formattedLastweek = today.subtract(7, 'days').format('MMM Do YYYY');
     const momentMilSec = moment(milSec);
     const formattedMilSec = momentMilSec.format('MMM Do YYYY');
 
-    // console.log('weekagoFromToday', weekAgoFromToday);
-    // console.log('yesterday', formattedYesterday);
     if (formattedMilSec === formattedToday) {
-      setDateSign('Today');
+      setDateSign('today');
     } else if (formattedMilSec === formattedYesterday) {
-      setDateSign('Yesterday');
-    } else {
-      setDateSign('AAA');
+      setDateSign('yesterday');
+    } else if (formattedMilSec <= formattedLastweek) {
+      setDateSign('lastweek');
     }
+  };
+
+  const setBeforeSign = () => {
+    const beforeArray = Array.from(document.querySelectorAll('.lastweek'));
+    beforeArray[0].classList.add('first');
+    beforeArray[0].firstElementChild.textContent = 'before last week';
   };
 
   useEffect(() => {
     checkDateSign();
+    setTimeout(() => {
+      setBeforeSign();
+    }, 1000);
   }, []);
 
   const AchievementRate = calcAchieveTotalRate(sameDateTracks);
   const rateForChart = AchievementRate >= 100 ? 100 : AchievementRate;
   const leftRateForChart = 100 - rateForChart;
   return (
-    <div className="tracks__item">
-      {dateSign && <div className="tracks__item__sign">{dateSign}</div>}
+    <div className={`tracks__item ${dateSign}`}>
+      <div className="tracks__item__sign">{dateSign !== 'lastweek' ? dateSign : ''}</div>
       <Link to={`/tracks/${milSec}`} className="tracks__item__link">
         <div className="tracks__item__graph">
           <Chart
