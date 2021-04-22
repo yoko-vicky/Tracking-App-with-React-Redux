@@ -27,8 +27,10 @@ const TrackListItem = ({ milSec, sameDateTracks }) => {
 
   const setBeforeSign = () => {
     const beforeArray = Array.from(document.querySelectorAll('.lastweek'));
-    beforeArray[0].classList.add('first');
-    beforeArray[0].firstElementChild.textContent = 'before last week';
+    if (beforeArray.classList) {
+      beforeArray[0].classList.add('first');
+      beforeArray[0].firstElementChild.textContent = 'before last week';
+    }
   };
 
   useEffect(() => {
