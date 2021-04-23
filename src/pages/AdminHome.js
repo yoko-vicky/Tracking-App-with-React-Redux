@@ -67,7 +67,7 @@ AdminHome.propTypes = {
 
 AdminHome.defaultProps = {
   items: [],
-  adminStatus: null,
+  adminStatus: false,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdminHome);

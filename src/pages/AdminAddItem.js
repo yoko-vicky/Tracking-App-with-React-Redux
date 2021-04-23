@@ -54,7 +54,7 @@ AdminAddItem.propTypes = {
 
 AdminAddItem.defaultProps = {
   history: null,
-  adminStatus: null,
+  adminStatus: false,
 };
 
 export default connect(mapStateToProps)(AdminAddItem);

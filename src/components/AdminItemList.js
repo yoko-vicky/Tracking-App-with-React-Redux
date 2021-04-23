@@ -7,12 +7,11 @@ const AdminItemList = ({ items }) => (
   <div className="admin__list">
     {items.map((item) => {
       const {
-        id, title, unit, icon, target,
+        id, title, unit, target,
       } = item;
       return (
         <div key={id} className="admin__list__item">
           <Link to={`/admin/item/${id}`} className="admin__list__item__wrap">
-            <span className="iconify" data-icon={icon || 'heroicons-outline:paper-clip'} data-inline="false" />
             <h2 className="title">{title}</h2>
             <p className="target">
               <span className="target-num">{target}</span>

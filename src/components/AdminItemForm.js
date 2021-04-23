@@ -12,12 +12,12 @@ const AdminItemForm = ({
 
   const onTitleChange = (e) => {
     const { value } = e.target;
-    const regex = /^[a-zA-Z0-9-':,()]{3,23}$/;
+    const regex = /^[a-zA-Z0-9-':,()]{0,23}$/;
     if (value.match(regex)) {
       setError('');
       setInputTitle(value);
     } else {
-      setError("Alphabet, numbers, ', ;, :, (, and ) are available. The number of letters should be between 3 and 23");
+      setError("Alphabet, numbers, ', ;, :, (, and ) are available. The number of letters should be within 23");
     }
   };
 
@@ -33,18 +33,11 @@ const AdminItemForm = ({
   };
   const onIconChange = (e) => {
     const { value } = e.target;
-    const regex = /^[a-zA-Z0-9-]+:[a-zA-Z0-9-]+$/;
-
-    if (value === '' || value.match(regex)) {
-      setError('');
-      setInputIcon(value);
-    } else {
-      setError('Please provide a valid icon string or leave it empty');
-    }
+    setInputIcon(value);
   };
   const onTargetChange = (e) => {
     const { value } = e.target;
-    const regex = /^[0-9]{1,3}$/;
+    const regex = /^[0-9]{0,3}$/;
     if (value.match(regex)) {
       setError('');
       setInputTarget(value);
@@ -55,13 +48,21 @@ const AdminItemForm = ({
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const item = {
-      title: inputTitle,
-      unit: inputUnit,
-      icon: inputIcon,
-      target: inputTarget,
-    };
-    handleSubmit(item);
+    const iconRegex = /^[a-zA-Z0-9-]+:[a-zA-Z0-9-]+$/;
+    if (!inputTitle || !inputUnit || !inputTarget) {
+      setError('Please provide valid title, unit, and target');
+    } else if (!!inputIcon && !inputIcon.match(iconRegex)) {
+      setError('Please provide a valid icon string or leave it empty');
+      setInputIcon('');
+    } else {
+      const item = {
+        title: inputTitle,
+        unit: inputUnit,
+        icon: inputIcon,
+        target: inputTarget,
+      };
+      handleSubmit(item);
+    }
   };
 
   return (

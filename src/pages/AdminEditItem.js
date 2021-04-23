@@ -85,7 +85,7 @@ AdminEditItem.propTypes = {
 AdminEditItem.defaultProps = {
   item: {},
   history: null,
-  adminStatus: null,
+  adminStatus: false,
 };
 
 export default connect(mapStateToProps)(AdminEditItem);

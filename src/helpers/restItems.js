@@ -29,7 +29,7 @@ export const addNewItem = async (title, unit, icon, target) => {
 };
 
 export const removeItemFromDB = async (id) => {
-  const response = await axios.delete(`${baseUrl}items/${id}`, { id }, authHeaders())
+  const response = await axios.delete(`${baseUrl}items/${id}`, authHeaders())
     .then((response) => response).catch((error) => error);
   return response;
 };
