@@ -17,9 +17,7 @@ I implemented these things:
 - Implemented user authentication from the front-end to the server
 - Created an admin panel to create / update / delete Items (things to measure)
 - Made the app responsive, creating both tablet and desktop versions, following design guidelines
-
-<!-- - You could implement transitions to make user experience better -->
-<!-- - You can implement the progress page with data charts -->
+- Implemented the progress page with data charts that show the average achievements rate and total scores
 
 A list of commonly used resources that I find helpful is listed in the acknowledgments.
 
@@ -63,7 +61,8 @@ e.g. $ git clone https://github.com/yourUsername/yourProjectName
 
 ## How to manage items as an admin user
 
-1. Like the ordinary user, you need to log in with a username and password as an admin user, which is required to be given the status of admin: true by the administrator
+1. Like the ordinary user, you need to log in with a username and password as an admin user, which is required to be given the status of admin: true by the administrator for the API
+  * You can see how to create admin user in the [Readme file for the REST API](https://github.com/yocosaka/Tracking-App-Api-with-Rails)
 2. Then, you'll see the admin page. On this page, the items that are added by administrators will show
 3. By clicking the "Add item" button, it shows the form, and you can add an item
 4. By clicking each item, you can edit it
@@ -111,3 +110,4 @@ This project is [MIT](./LICENSE) licensed except for the design above
 * [Google Fonts](https://fonts.google.com/)
 * [Pixabay](https://pixabay.com/)
 * [React Icons](https://react-icons.github.io/react-icons)
+* [Iconify](https://iconify.design/icon-sets/)
