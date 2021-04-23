@@ -67,7 +67,6 @@ const AdminItemForm = ({
 
   return (
     <div>
-      {error && <p className="error-msg">{error}</p>}
       <form className="form" onSubmit={onSubmit}>
         <div className="form__group">
           <div className="form__title">Item Label</div>
@@ -120,6 +119,7 @@ const AdminItemForm = ({
             onChange={onTargetChange}
           />
         </div>
+        {error && <p className="error-msg mb3">{error}</p>}
         <button type="submit" className="btn dark w100 mb2">Save Item</button>
       </form>
     </div>

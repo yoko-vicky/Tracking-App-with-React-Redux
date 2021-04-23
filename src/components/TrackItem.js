@@ -2,9 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import pluralize from 'pluralize';
-import { FaPencilAlt } from 'react-icons/fa';
 
-/* eslint-disable camelcase */
 const TrackItem = ({ item, result, targetDate }) => {
   const {
     icon, unit, title, target,
@@ -17,7 +15,6 @@ const TrackItem = ({ item, result, targetDate }) => {
       <Link to={`/track/${Number(targetDate)}/edit`} className="items__item-link">
         <div className="items__icon">
           <span className="iconify" data-icon={icon || 'bi:pen-fill'} data-inline="false" />
-          <FaPencilAlt />
         </div>
         <div className="items__text">
           <div className="items__title">{title}</div>

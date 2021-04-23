@@ -22,7 +22,7 @@ export const addNewTrack = async (result, itemId, date) => {
 };
 
 export const removeTrackFromDB = async (id) => {
-  const response = await axios.delete(`${baseUrl}records/${id}`, { id }, authHeaders())
+  const response = await axios.delete(`${baseUrl}records/${id}`, authHeaders())
     .then((response) => response).catch((error) => error);
   return response;
 };

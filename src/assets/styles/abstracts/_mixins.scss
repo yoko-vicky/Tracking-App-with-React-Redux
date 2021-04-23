@@ -4,6 +4,14 @@
   margin: 0 auto;
 }
 
+@mixin msgStyle {
+  padding: 1rem;
+  border-radius: 3px;
+  border: 1px solid;
+  max-width: $text-max-width;
+  margin: 0 auto 1.6rem;
+}
+
 // MEDIA QUERY setting
 @mixin mq($breakpoint) {
   @if $breakpoint == mob {

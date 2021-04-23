@@ -53,7 +53,7 @@ const Progress = ({
     }
   }, []);
 
-  const arMonth = getAvgRate(trackDates, tracks, 'THIS_MONTH');
+  const arMonth = getAvgRate(trackDates, tracks, 'THIS_MONTH') || 0;
   const percentForChart = arMonth >= 100 ? 100 : arMonth;
   const leftPercentForChart = 100 - percentForChart;
   return loginUser ? (

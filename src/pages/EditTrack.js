@@ -9,7 +9,6 @@ import addItems from '../actions/items';
 import getItemTitles from '../helpers/getItemTitles';
 
 const EditTrack = ({
-
   loginUser, history, items, addItems, sameDateTracks, targetDate,
 }) => {
   const [error, setError] = useState('');
@@ -51,18 +50,19 @@ const EditTrack = ({
 
   const handleSubmit = (StrDate, state) => {
     Object.keys(state).forEach((key) => {
-      if (state[key]) {
-        sameDateTracks.forEach((track) => {
-          if (track.item_id === Number(key)) {
-            runUpdateTrack(track.id, state[key], key, StrDate);
-          } else {
-            runAddNewTrack(state[key], key, StrDate);
-          }
-          history.push('/tracks');
-          // history.push(`/tracks/${StrDate}`);
-        });
+      const submitItemId = Number(key);
+      const submitItemValue = state[key];
+
+      const sameItemTrack = sameDateTracks.find((track) => track.item_id === submitItemId);
+      if (sameItemTrack && submitItemValue) {
+        runUpdateTrack(sameItemTrack.id, submitItemValue, submitItemId, StrDate);
+      } else if (submitItemValue) {
+        runAddNewTrack(submitItemValue, submitItemId, StrDate);
       }
     });
+    if (!error) {
+      history.push(`/tracks/${StrDate}`);
+    }
   };
   const itemTitles = getItemTitles(items, sameDateTracks);
 

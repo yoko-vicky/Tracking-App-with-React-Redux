@@ -5,14 +5,27 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import Chart from 'react-google-charts';
 import { getItems } from '../helpers/restItems';
+import { addTracks } from '../actions/tracks';
+import { addTrackDates } from '../actions/trackDates';
+import { removeTrackFromDB, getTracks } from '../helpers/restTracks';
 import TrackItem from '../components/TrackItem';
 import addItems from '../actions/items';
 import calcAchieveTotalRate from '../helpers/calcAchieveTotalRate';
 
 const TrackItems = ({
-  sameDateTracks, items, loginUser, addItems, date, trackDates, currentIndex,
+  sameDateTracks,
+  items,
+  loginUser,
+  addItems,
+  date,
+  trackDates,
+  currentIndex,
+  history,
+  addTracks,
+  addTrackDates,
 }) => {
   const [error, setError] = useState('');
+  const [msg, setMsg] = useState('');
 
   const runGetItems = async () => {
     try {
@@ -28,11 +41,48 @@ const TrackItems = ({
     }
   };
 
+  const runGetTracks = async () => {
+    try {
+      const response = await getTracks();
+      if (response) {
+        setError('');
+        addTracks(response.records);
+        addTrackDates(response.record_dates);
+      } else {
+        setError('No Tracks');
+      }
+    } catch {
+      setError('Unable to fetch the data');
+    }
+  };
+
   useEffect(() => {
     if (loginUser) {
       runGetItems();
+      runGetTracks();
     }
   }, []);
+
+  const runRemoveTrackFromDB = async (id) => {
+    try {
+      setError('');
+      await removeTrackFromDB(id);
+    } catch {
+      setError('Sorry, unable to remove the item');
+    }
+  };
+
+  const handleRemoveTrack = () => {
+    sameDateTracks.forEach((track) => {
+      runRemoveTrackFromDB(track.id);
+    });
+    if (!error) {
+      setMsg('Removing now...');
+      setTimeout(() => {
+        history.push('/tracks');
+      }, 800);
+    }
+  };
 
   const totalRate = calcAchieveTotalRate(sameDateTracks, items.length) || 0;
   const rateForChart = totalRate >= 100 ? 100 : totalRate;
@@ -88,6 +138,8 @@ const TrackItems = ({
             );
           })}
         </div>
+        {msg && <p className="info-msg">{msg}</p>}
+        <button type="button" onClick={handleRemoveTrack} className="btn mb3">Remove this track</button>
         <Link to="/tracks" className="btn">Back to all tracks</Link>
       </div>
     </div>
@@ -105,9 +157,14 @@ const mapStateToProps = (state, props) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   addItems: (items) => dispatch(addItems(items)),
+  addTracks: (tracks) => dispatch(addTracks(tracks)),
+  addTrackDates: (trackDates) => dispatch(addTrackDates(trackDates)),
 });
 
 TrackItems.propTypes = {
+  addTracks: PropTypes.func,
+  addTrackDates: PropTypes.func,
+  history: PropTypes.instanceOf(Object),
   sameDateTracks: PropTypes.instanceOf(Array),
   loginUser: PropTypes.bool.isRequired,
   items: PropTypes.instanceOf(Object),
@@ -118,6 +175,9 @@ TrackItems.propTypes = {
 };
 
 TrackItems.defaultProps = {
+  addTracks: null,
+  addTrackDates: null,
+  history: null,
   sameDateTracks: [],
   items: [],
   addItems: null,

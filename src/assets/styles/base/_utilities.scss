@@ -95,12 +95,15 @@ select {
 }
 
 .error-msg {
-  padding: 1rem;
-  border-radius: 3px;
+  @include msgStyle;
+
   color: $red;
-  border: 1px solid $red;
-  max-width: $text-max-width;
-  margin: 0 auto 1.6rem;
+}
+
+.info-msg {
+  @include msgStyle;
+
+  color: $primary-color;
 }
 
 .blue {

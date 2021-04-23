@@ -54,6 +54,7 @@ const TrackForm = ({
                 value={state[item.id]}
               />
               <div className="track-form__unit">{pluralize(item.unit, state[item.id])}</div>
+              <div className="track-form__target">{`/ ${item.target}`}</div>
             </div>
           ))}
         </div>
