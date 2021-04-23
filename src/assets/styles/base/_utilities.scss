@@ -20,6 +20,18 @@
   &.dark {
     background: $dark-grey;
   }
+
+  &.warn {
+    background: $red;
+  }
+
+  &.green {
+    background: $green;
+  }
+
+  &.medium {
+    background: $medium-grey;
+  }
 }
 
 input,
@@ -113,4 +125,8 @@ select {
 .strong {
   font-weight: bold;
   margin: 0 0.2rem;
+}
+
+.center {
+  text-align: center;
 }

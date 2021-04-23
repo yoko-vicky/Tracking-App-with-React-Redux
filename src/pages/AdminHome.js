@@ -39,8 +39,10 @@ const AdminHome = ({
       </h1>
       <div className="content">
         {error && <p className="error-msg">{error}</p>}
-        {items.length > 0 && <ItemList items={items} />}
-        <Link to="/admin/item/create" className="btn">Add Item</Link>
+        <div className="admin__items mb3">
+          {items.length > 0 && <ItemList items={items} />}
+        </div>
+        <Link to="/admin/item/create" className="btn dark">Add Item</Link>
       </div>
     </div>
   ) : <Redirect to="/" />;

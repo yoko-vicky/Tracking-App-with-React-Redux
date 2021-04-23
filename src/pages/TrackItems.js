@@ -139,7 +139,8 @@ const TrackItems = ({
           })}
         </div>
         {msg && <p className="info-msg">{msg}</p>}
-        <button type="button" onClick={handleRemoveTrack} className="btn mb3">Remove this track</button>
+        <Link to={`/track/${Number(date)}/edit`} className="btn dark mb3">Edit this track</Link>
+        <button type="button" onClick={handleRemoveTrack} className="btn mb2 warn">Remove this track</button>
         <Link to="/tracks" className="btn">Back to all tracks</Link>
       </div>
     </div>

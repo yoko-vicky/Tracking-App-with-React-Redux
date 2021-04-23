@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import TrackForm from '../components/TrackForm';
 import { addNewTrack } from '../helpers/restTracks';
@@ -65,7 +65,6 @@ const AddTrack = ({
         {error && <p className="error-msg">{error}</p>}
         <div className="content__msg">Welcome back. Let&apos;s add your track for today!</div>
         <TrackForm handleSubmit={handleSubmit} itemTitles={itemTitles} targetDate={null} />
-        <Link to="/tracks" className="btn">Go Back to track list</Link>
       </div>
     </div>
   ) : <Redirect to="/" />);

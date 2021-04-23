@@ -8,13 +8,13 @@ const Home = ({ history, loginUser }) => (
   <div>
     <h1 className="heading">Home</h1>
     <div className="content">
-      <h2>
-        Welcome to Track it App
+      <h2 className="home__heading">
+        Welcome to Track it App!
       </h2>
       {loginUser ? <LogoutBtn history={history} /> : (
         <div>
-          <Link to="/login" className="btn mb2">Login</Link>
-          <Link to="/signup" className="btn mb2">Signup</Link>
+          <Link to="/login" className="btn mb2 dark">Login</Link>
+          <Link to="/signup" className="btn mb2 medium">Signup</Link>
         </div>
       )}
 

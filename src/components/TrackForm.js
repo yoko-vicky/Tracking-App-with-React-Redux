@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import pluralize from 'pluralize';
@@ -58,8 +59,9 @@ const TrackForm = ({
             </div>
           ))}
         </div>
-        <button type="submit" className="btn">Save</button>
+        <button type="submit" className="btn dark">Save</button>
       </form>
+      <Link to="/tracks" className="btn">Cancel & Back to Track List</Link>
     </div>
   );
 };
