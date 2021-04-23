@@ -1,14 +1,57 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-// import axios from 'axios';
 
 const AdminItemForm = ({
   title, unit, icon, target, handleSubmit,
 }) => {
+  const [error, setError] = useState('');
   const [inputTitle, setInputTitle] = useState(title || '');
   const [inputUnit, setInputUnit] = useState(unit || '');
   const [inputIcon, setInputIcon] = useState(icon || '');
   const [inputTarget, setInputTarget] = useState(target || '');
+
+  const onTitleChange = (e) => {
+    const { value } = e.target;
+    const regex = /^[a-zA-Z0-9-':,()]{3,23}$/;
+    if (value.match(regex)) {
+      setError('');
+      setInputTitle(value);
+    } else {
+      setError("Alphabet, numbers, ', ;, :, (, and ) are available. The number of letters should be between 3 and 23");
+    }
+  };
+
+  const onUnitChange = (e) => {
+    const { value } = e.target;
+    const regex = /^[a-zA-Z]{1,9}$/;
+    if (value.match(regex)) {
+      setError('');
+      setInputUnit(value);
+    } else {
+      setError('Alphabet is available and the number of letters should be between 1 and 9');
+    }
+  };
+  const onIconChange = (e) => {
+    const { value } = e.target;
+    const regex = /^[a-zA-Z0-9-]+:[a-zA-Z0-9-]+$/;
+
+    if (value === '' || value.match(regex)) {
+      setError('');
+      setInputIcon(value);
+    } else {
+      setError('Please provide a valid icon string or leave it empty');
+    }
+  };
+  const onTargetChange = (e) => {
+    const { value } = e.target;
+    const regex = /^[0-9]{1,3}$/;
+    if (value.match(regex)) {
+      setError('');
+      setInputTarget(value);
+    } else {
+      setError('Please provide a number within 3 digit');
+    }
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -23,6 +66,7 @@ const AdminItemForm = ({
 
   return (
     <div>
+      {error && <p className="error-msg">{error}</p>}
       <form className="form" onSubmit={onSubmit}>
         <div className="form__group">
           <div className="form__title">Item Label</div>
@@ -31,7 +75,7 @@ const AdminItemForm = ({
             name="title"
             placeholder="Item Label"
             value={inputTitle}
-            onChange={(e) => setInputTitle(e.target.value)}
+            onChange={onTitleChange}
           />
         </div>
         <div className="form__group">
@@ -41,7 +85,7 @@ const AdminItemForm = ({
             name="unit"
             placeholder="Item Unit"
             value={inputUnit}
-            onChange={(e) => setInputUnit(e.target.value)}
+            onChange={onUnitChange}
           />
         </div>
         <div className="form__group">
@@ -62,7 +106,7 @@ const AdminItemForm = ({
             name="icon"
             placeholder="Item icon"
             value={inputIcon}
-            onChange={(e) => setInputIcon(e.target.value)}
+            onChange={onIconChange}
           />
         </div>
         <div className="form__group">
@@ -72,7 +116,7 @@ const AdminItemForm = ({
             name="unit"
             placeholder="Item Target"
             value={inputTarget}
-            onChange={(e) => setInputTarget(e.target.value)}
+            onChange={onTargetChange}
           />
         </div>
         <button type="submit" className="btn dark w100 mb2">Save Item</button>

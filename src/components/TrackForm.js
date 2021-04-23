@@ -16,11 +16,11 @@ const TrackForm = ({
   };
 
   const handleInputChange = (value, nameItemNum) => {
-    if (value.match(/^[0-9\s]{0,4}$/)) {
+    if (value.match(/^[0-9\s]{0,3}$/)) {
       setError('');
-      setState({ ...state, [nameItemNum]: value.trim() });
+      setState({ ...state, [nameItemNum]: value });
     } else {
-      setError('Please provide only integers with maximum 4 digits');
+      setError('Please provide an integer with maximum of 3 digits');
     }
   };
 
