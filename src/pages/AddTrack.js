@@ -12,6 +12,7 @@ const AddTrack = ({
   loginUser, tracks, history, items, addItems,
 }) => {
   const [error, setError] = useState('');
+  const [msg, setMsg] = useState('');
 
   const runGetItems = async () => {
     try {
@@ -51,7 +52,10 @@ const AddTrack = ({
         }
       });
       if (!error) {
-        history.push('/tracks');
+        setMsg('Adding track now...');
+        setTimeout(() => {
+          history.push('/tracks');
+        }, 800);
       }
     }
   };
@@ -65,6 +69,7 @@ const AddTrack = ({
         {error && <p className="error-msg">{error}</p>}
         <div className="content__msg">Welcome back. Let&apos;s add your track for today!</div>
         <TrackForm handleSubmit={handleSubmit} itemTitles={itemTitles} targetDate={null} />
+        {msg && <p className="info-msg">{msg}</p>}
       </div>
     </div>
   ) : <Redirect to="/" />);
