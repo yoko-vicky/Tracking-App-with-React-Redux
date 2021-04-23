@@ -8,15 +8,15 @@ import './assets/styles/style.scss';
 /* eslint-disable no-console */
 const store = configureStore();
 
-store.subscribe(() => {
-  const {
-    user, items, tracks, trackDates,
-  } = store.getState();
-  console.log('user', user);
-  console.log('items', items);
-  console.log('tracks', tracks);
-  console.log('trackDates', trackDates);
-});
+// store.subscribe(() => {
+//   const {
+//     user, items, tracks, trackDates,
+//   } = store.getState();
+//   console.log('user', user);
+//   console.log('items', items);
+//   console.log('tracks', tracks);
+//   console.log('trackDates', trackDates);
+// });
 
 const jsx = (
   <Provider store={store}>
