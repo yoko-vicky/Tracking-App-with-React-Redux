@@ -89,6 +89,16 @@ const AdminItemForm = ({
           />
         </div>
         <div className="form__group">
+          <div className="form__title">Target</div>
+          <input
+            type="text"
+            name="unit"
+            placeholder="Item Target"
+            value={inputTarget}
+            onChange={onTargetChange}
+          />
+        </div>
+        <div className="form__group">
           <div className="form__title">Icon</div>
           <p className="form__desc">
             Please add the string for data-icon of the icon that you can find in
@@ -107,16 +117,6 @@ const AdminItemForm = ({
             placeholder="Item icon"
             value={inputIcon}
             onChange={onIconChange}
-          />
-        </div>
-        <div className="form__group">
-          <div className="form__title">Target</div>
-          <input
-            type="text"
-            name="unit"
-            placeholder="Item Target"
-            value={inputTarget}
-            onChange={onTargetChange}
           />
         </div>
         {error && <p className="error-msg mb3">{error}</p>}
