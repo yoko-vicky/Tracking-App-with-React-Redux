@@ -10,7 +10,6 @@ const AdminHome = ({
   addItems, items, adminStatus, loginUser,
 }) => {
   const [error, setError] = useState('');
-  const [readyForRender, setReadyForRender] = useState(false);
 
   const runGetItems = async () => {
     try {
@@ -29,9 +28,8 @@ const AdminHome = ({
   useEffect(() => {
     if (adminStatus) {
       runGetItems();
-      setReadyForRender(true);
     }
-  }, [readyForRender]);
+  }, []);
 
   return adminStatus && loginUser ? (
     <div className="admin">
