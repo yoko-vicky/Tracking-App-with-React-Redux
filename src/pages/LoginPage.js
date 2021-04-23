@@ -17,7 +17,7 @@ const LoginPage = ({ history, setUser, logIn }) => {
         localStorage.setItem('token', response.token);
         setUser(response.user);
         logIn(true);
-        history.push(response.user.admin ? '/admin' : '/track/create');
+        history.push(response.user.admin ? '/admin' : '/tracks');
       } else if (response.errors.length > 0) {
         setErrors(response.errors);
       }

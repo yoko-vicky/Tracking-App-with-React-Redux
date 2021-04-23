@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import pluralize from 'pluralize';
@@ -32,7 +31,7 @@ const TrackForm = ({
   };
 
   return (
-    <div className="track-form">
+    <div className="track-form mb3">
       {error && <p className="error-msg">{error}</p>}
       <form className="track-form__form mb3" onSubmit={onSubmit}>
         <div className="track-form__date">
@@ -61,7 +60,6 @@ const TrackForm = ({
         </div>
         <button type="submit" className="btn dark">Save</button>
       </form>
-      <Link to="/tracks" className="btn">Cancel & Back to Track List</Link>
     </div>
   );
 };

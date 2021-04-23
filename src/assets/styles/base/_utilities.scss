@@ -115,7 +115,9 @@ select {
 .info-msg {
   @include msgStyle;
 
-  color: $primary-color;
+  background-color: $green;
+  color: $white;
+  border: none;
 }
 
 .blue {

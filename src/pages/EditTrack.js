@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import TrackForm from '../components/TrackForm';
 import { updateTrack, addNewTrack } from '../helpers/restTracks';
@@ -12,6 +12,7 @@ const EditTrack = ({
   loginUser, history, items, addItems, sameDateTracks, targetDate,
 }) => {
   const [error, setError] = useState('');
+  const [msg, setMsg] = useState('');
 
   const runGetItems = async () => {
     try {
@@ -55,13 +56,19 @@ const EditTrack = ({
 
       const sameItemTrack = sameDateTracks.find((track) => track.item_id === submitItemId);
       if (sameItemTrack && submitItemValue) {
+        console.log('sameItemTrack', sameItemTrack);
+        console.log('submitItemValue', submitItemValue);
         runUpdateTrack(sameItemTrack.id, submitItemValue, submitItemId, StrDate);
       } else if (submitItemValue) {
+        console.log('submitItemValue', submitItemValue);
         runAddNewTrack(submitItemValue, submitItemId, StrDate);
       }
     });
     if (!error) {
-      history.push(`/tracks/${StrDate}`);
+      setMsg('Updating track now...');
+      setTimeout(() => {
+        history.push(`/tracks/${StrDate}`);
+      }, 800);
     }
   };
   const itemTitles = getItemTitles(items, sameDateTracks);
@@ -72,6 +79,8 @@ const EditTrack = ({
       <div className="content">
         {error && <p className="error-msg">{error}</p>}
         <TrackForm handleSubmit={handleSubmit} itemTitles={itemTitles} targetDate={targetDate} />
+        {msg && <p className="info-msg">{msg}</p>}
+        <Link to="/tracks" className="btn">Cancel & Back to Track List</Link>
       </div>
     </div>
   ) : <Redirect to="/" />);

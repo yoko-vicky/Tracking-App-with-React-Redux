@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import TrackForm from '../components/TrackForm';
 import { addNewTrack } from '../helpers/restTracks';
@@ -43,20 +43,18 @@ const AddTrack = ({
   const handleSubmit = (StrDate, state) => {
     const sameDateTrack = tracks.find((track) => track.date === StrDate);
     if (sameDateTrack) {
-      setError('Track for the same date alreay exists');
+      setError('Track for the same date already exists');
     } else {
       setError('');
+      setMsg('Adding track now...');
       Object.keys(state).forEach((key) => {
         if (state[key]) {
           runAddNewTrack(state[key], key, StrDate);
         }
       });
-      if (!error) {
-        setMsg('Adding track now...');
-        setTimeout(() => {
-          history.push('/tracks');
-        }, 800);
-      }
+      setTimeout(() => {
+        history.push('/tracks');
+      }, 800);
     }
   };
 
@@ -66,10 +64,11 @@ const AddTrack = ({
     <div className="add-track">
       <h1 className="heading">Add Track</h1>
       <div className="content">
-        {error && <p className="error-msg">{error}</p>}
         <div className="content__msg">Welcome back. Let&apos;s add your track for today!</div>
         <TrackForm handleSubmit={handleSubmit} itemTitles={itemTitles} targetDate={null} />
         {msg && <p className="info-msg">{msg}</p>}
+        {error && <p className="error-msg">{error}</p>}
+        <Link to="/tracks" className="btn">Cancel & Back to Track List</Link>
       </div>
     </div>
   ) : <Redirect to="/" />);
