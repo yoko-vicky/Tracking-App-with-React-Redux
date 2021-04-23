@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { BiTargetLock } from 'react-icons/bi';
 import { AiTwotoneMail, AiFillSetting } from 'react-icons/ai';
@@ -15,7 +15,7 @@ const More = ({ loginUser, userName }) => (loginUser ? (
       <div className="more__header">
         <div className="more__header__wrapper">
           <div className="more__thumb">
-            <img src={thumbPic} alt={userName} />
+            <img src={thumbPic} alt={userName} className="more__thumb__image" />
           </div>
           <div className="more__names">
             <div className="more__names__name">{userName}</div>
@@ -25,27 +25,27 @@ const More = ({ loginUser, userName }) => (loginUser ? (
           </div>
         </div>
       </div>
-      <div className="more__links">
-        <div className="more__item">
+      <div className="more__items">
+        <Link className="more__link" to="/more">
           <BiTargetLock />
           Your goal
-        </div>
-        <div className="more__item">
+        </Link>
+        <Link className="more__link" to="/more">
           <AiTwotoneMail />
           Mailing List
-        </div>
-        <div className="more__item">
+        </Link>
+        <Link className="more__link" to="/more">
           <FaUserAlt />
           Your profile
-        </div>
-        <div className="more__item">
+        </Link>
+        <Link className="more__link" to="/more">
           <AiFillSetting />
           Settings
-        </div>
-        <div className="more__item">
+        </Link>
+        <Link className="more__link" to="/more">
           <BsFillInfoCircleFill />
           Help
-        </div>
+        </Link>
       </div>
     </div>
   </div>

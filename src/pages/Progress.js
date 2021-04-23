@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Chart from 'react-google-charts';
 import pluralize from 'pluralize';
@@ -115,7 +115,7 @@ const Progress = ({
             />
           </div>
         </div>
-        <div className="progress__items">
+        <div className="progress__items mb3">
           {items.map((item) => {
             const itemTotalResult = getItemAvgResult(item, tracks);
             const formattedItemTotal = itemTotalResult.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
@@ -134,6 +134,7 @@ const Progress = ({
             );
           })}
         </div>
+        <Link to="/progress" className="btn">Share</Link>
       </div>
     </div>
   ) : <Redirect to="/" />;
