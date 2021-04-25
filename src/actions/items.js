@@ -3,9 +3,4 @@ const addItems = (items = []) => ({
   items,
 });
 
-// export const removeItem = (id) => ({
-//   type: 'REMOVE_ITEM',
-//   id,
-// });
-
 export default addItems;

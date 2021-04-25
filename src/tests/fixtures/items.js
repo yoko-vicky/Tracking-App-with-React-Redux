@@ -1,0 +1,51 @@
+const items = [{
+  created_at: '2021-04-23T13:39:39.009Z',
+  icon: 'typcn:sort-alphabetically',
+  id: 1,
+  target: 30,
+  title: 'Idioms',
+  unit: 'idiom',
+  updated_at: '2021-04-23T13:39:39.009Z',
+}, {
+  created_at: '2021-04-23T13:39:59.227Z',
+  icon: 'bx:bxs-book',
+  id: 2,
+  target: 30,
+  title: 'Grammer',
+  unit: 'min',
+  updated_at: '2021-04-23T13:39:59.227Z',
+}, {
+  created_at: '2021-04-23T13:40:16.316Z',
+  icon: 'carbon:chat-bot',
+  id: 3,
+  target: 15,
+  title: 'Pronunciation',
+  unit: 'min',
+  updated_at: '2021-04-23T13:40:16.316Z',
+}, {
+  created_at: '2021-04-23T13:40:33.533Z',
+  icon: 'akar-icons:book',
+  id: 4,
+  target: 10,
+  title: 'Reading',
+  unit: 'page',
+  updated_at: '2021-04-23T13:40:33.533Z',
+}, {
+  created_at: '2021-04-23T13:40:53.877Z',
+  icon: 'cil:chat-bubble',
+  id: 5,
+  target: 30,
+  title: 'Speaking',
+  unit: 'min',
+  updated_at: '2021-04-23T13:40:53.877Z',
+}, {
+  created_at: '2021-04-23T13:41:09.923Z',
+  icon: 'bx:bxs-pen',
+  id: 6,
+  target: 200,
+  title: 'Writing',
+  unit: 'word',
+  updated_at: '2021-04-23T13:41:09.923Z',
+}];
+
+export default items;
