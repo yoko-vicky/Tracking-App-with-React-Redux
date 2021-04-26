@@ -1,4 +1,4 @@
-const getItemTitles = (items, theDayTracks) => {
+const getItemTitles = (items, theDayTracks = undefined) => {
   const titles = {};
   items.forEach((item) => {
     const targetTrack = theDayTracks ? theDayTracks.find((tr) => tr.item_id === item.id) : null;

@@ -4,18 +4,18 @@ import authHeaders from './authHeaders';
 
 export const getTracks = async () => {
   const response = await axios.get(`${baseUrl}records`, authHeaders())
-    .then((response) => response).catch((error) => error);
-  return response.data;
-};
-
-export const updateTrack = async (id, result, itemId, date) => {
-  const response = await axios.put(`${baseUrl}records/${id}`, { record: { result, itemId, date } }, authHeaders())
-    .then((response) => response).catch((error) => error);
+    .then((response) => response.data).catch((error) => error);
   return response;
 };
 
 export const addNewTrack = async (result, itemId, date) => {
   const response = await axios.post(`${baseUrl}records`, { record: { result, itemId, date } }, authHeaders())
+    .then((response) => response).catch((error) => error);
+  return response;
+};
+
+export const updateTrack = async (id, result, itemId, date) => {
+  const response = await axios.put(`${baseUrl}records/${id}`, { record: { result, itemId, date } }, authHeaders())
     .then((response) => response).catch((error) => error);
   return response;
 };

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Chart from 'react-google-charts';
 import pluralize from 'pluralize';
 import getAvgRate from '../helpers/getAvgRate';
-import getItemAvgResult from '../helpers/getItemAvgResult';
+import getItemTotalResult from '../helpers/getItemTotalResult';
 import { getTracks } from '../helpers/restTracks';
 import { addTracks } from '../actions/tracks';
 import { addTrackDates } from '../actions/trackDates';
@@ -117,7 +117,7 @@ const Progress = ({
         </div>
         <div className="progress__items mb3">
           {items.map((item) => {
-            const itemTotalResult = getItemAvgResult(item, tracks);
+            const itemTotalResult = getItemTotalResult(item, tracks);
             const formattedItemTotal = itemTotalResult.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
             return (
               <div className="progress__item" key={item.id}>

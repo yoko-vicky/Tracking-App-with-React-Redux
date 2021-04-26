@@ -1,6 +1,6 @@
 import moment from 'moment';
 
-const getItemAvgResult = (item, tracks) => {
+const getItemTotalResult = (item, tracks) => {
   const sameItemTracks = tracks.filter((track) => {
     const matchId = track.item_id === item.id;
     const targetDate = moment(Number(track.date));
@@ -11,7 +11,4 @@ const getItemAvgResult = (item, tracks) => {
   return totalResultForItem;
 };
 
-export default getItemAvgResult;
-
-// items.forEach((item) => {
-// })
+export default getItemTotalResult;
