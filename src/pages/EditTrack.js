@@ -56,11 +56,8 @@ const EditTrack = ({
 
       const sameItemTrack = sameDateTracks.find((track) => track.item_id === submitItemId);
       if (sameItemTrack && submitItemValue) {
-        console.log('sameItemTrack', sameItemTrack);
-        console.log('submitItemValue', submitItemValue);
         runUpdateTrack(sameItemTrack.id, submitItemValue, submitItemId, StrDate);
       } else if (submitItemValue) {
-        console.log('submitItemValue', submitItemValue);
         runAddNewTrack(submitItemValue, submitItemId, StrDate);
       }
     });

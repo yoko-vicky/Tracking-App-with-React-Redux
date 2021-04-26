@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TrackListItem should match with snapshot 1`] = `
+<div
+  className="tracks__item "
+>
+  <div
+    className="tracks__item__sign"
+  >
+    
+  </div>
+  <a
+    className="tracks__item__link"
+    href="/tracks/0"
+    onClick={[Function]}
+  >
+    <div
+      className="tracks__item__graph"
+    >
+      <div
+        className="loader"
+      >
+        Loading...
+      </div>
+    </div>
+    <div
+      className="tracks__item__date"
+    >
+      Jan 1st 1970
+    </div>
+    <div
+      className="tracks__item__rate"
+    >
+      <span
+        className="rate"
+      >
+        0
+      </span>
+      %
+    </div>
+    <div
+      className="tracks__item__toright"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        strokeWidth="0"
+        style={
+          Object {
+            "color": undefined,
+          }
+        }
+        viewBox="0 0 24 24"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M10.707 17.707L16.414 12 10.707 6.293 9.293 7.707 13.586 12 9.293 16.293z"
+        />
+      </svg>
+    </div>
+  </a>
+</div>
+`;

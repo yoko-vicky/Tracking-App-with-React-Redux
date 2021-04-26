@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TrackItem should match with snapshot 1`] = `
+<div
+  className="items__item"
+>
+  <a
+    className="items__item-link"
+    href="/track/0/edit"
+    onClick={[Function]}
+  >
+    <div
+      className="items__icon"
+    >
+      <span
+        className="iconify"
+        data-icon="typcn:sort-alphabetically"
+        data-inline="false"
+      />
+    </div>
+    <div
+      className="items__text"
+    >
+      <div
+        className="items__title"
+      >
+        Idioms
+      </div>
+      <div
+        className="items__result"
+      >
+        <span
+          className="items__result__num"
+        >
+          100
+        </span>
+        <span
+          className="items__result__unit"
+        >
+          idioms / 30
+        </span>
+      </div>
+      <div
+        className="items__rate"
+      >
+        Achievement rate: 100 %
+      </div>
+    </div>
+  </a>
+</div>
+`;
