@@ -14,7 +14,7 @@ export const updateItem = async (id, title, unit, icon, target) => {
       title, unit, icon, target,
     },
   }, authHeaders())
-    .then((response) => response).catch((error) => error);
+    .then((response) => response.data).catch((error) => error);
   return response;
 };
 

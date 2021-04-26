@@ -1,9 +1,9 @@
 export const user = {
   admin: false,
-  created_at: '2021-04-23T13:45:08.345Z',
+  created_at: expect.any(String),
   id: 2,
-  password_digest: '$2a$12$4OemxkVsw92BaZYRgddBOuy6OXgYrhkGgkdvsh.ZQSP5xctxzBD9.',
-  updated_at: '2021-04-23T13:45:08.345Z',
+  password_digest: expect.any(String),
+  updated_at: expect.any(String),
   username: 'vicky',
 };
 
