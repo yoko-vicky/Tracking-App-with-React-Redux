@@ -1,6 +1,6 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 # Tracking App built with React
-<!-- ![Top Page Screenshot](./screenshot.png) -->
+![Screenshots](./screenshot.png)
 
 
 ## About the Project
