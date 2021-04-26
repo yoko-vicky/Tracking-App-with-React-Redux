@@ -10,6 +10,7 @@ exports[`LoginPage should match with snapshot 1`] = `
   <div
     className="content"
   >
+    
     <div>
       <form
         className="form"

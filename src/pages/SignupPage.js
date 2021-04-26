@@ -8,20 +8,24 @@ import { logIn, setUser } from '../actions/user';
 
 const SignupPage = ({ history, setUser, logIn }) => {
   const [errors, setErrors] = useState([]);
+  const [msg, setMsg] = useState('');
 
   const runSignedUpAuth = async (username, password) => {
     try {
       const response = await signedUp(username, password);
       if (response.status === 'created') {
+        setMsg('You are now logging in...');
         setErrors([]);
         localStorage.setItem('token', response.token);
         setUser(response.user);
         logIn(true);
         history.push('/tracks');
       } else if (response.errors.length > 0) {
+        setMsg('');
         setErrors(response.errors);
       }
     } catch {
+      setMsg('');
       setErrors(['Sorry, signup was faild.']);
     }
   };
@@ -35,6 +39,7 @@ const SignupPage = ({ history, setUser, logIn }) => {
       <h1 className="heading">Signup</h1>
       <div className="content">
         {errors && errors.map((error) => (<p key={error} className="error-msg">{error}</p>))}
+        {msg && <p className="info-msg">{msg}</p>}
         <UsersForm handleSubmit={handleSubmit} btnName="Sign Up" />
         <Link to="/" className="btn">Go back to Home</Link>
       </div>

@@ -4,7 +4,8 @@ import { MemoryRouter } from 'react-router-dom';
 import renderer from 'react-test-renderer';
 import TrackItem from '../../components/TrackItem';
 import createTestStore from '../fixtures/createTestStore';
-import items from '../fixtures/items'
+import items from '../fixtures/items';
+
 describe('TrackItem', () => {
   let store;
   beforeEach(() => {
