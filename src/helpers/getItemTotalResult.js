@@ -1,4 +1,4 @@
-import moment from 'moment';
+import { moment } from './api';
 
 const getItemTotalResult = (item, tracks) => {
   const sameItemTracks = tracks.filter((track) => {

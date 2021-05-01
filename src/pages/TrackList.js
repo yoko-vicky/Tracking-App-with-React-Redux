@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import moment from 'moment';
+import { moment } from '../helpers/api';
 import TrackListItem from '../components/TrackListItem';
 import { getTracks } from '../helpers/restTracks';
 import { getItems } from '../helpers/restItems';

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import moment from 'moment';
 import Chart from 'react-google-charts';
 import { GiTrophyCup } from 'react-icons/gi';
 import { BiChevronRight } from 'react-icons/bi';
+import { moment } from '../helpers/api';
 import calcAchieveTotalRate from '../helpers/calcAchieveTotalRate';
 
 const TrackListItem = ({ milSec, sameDateTracks, itemNum }) => {
