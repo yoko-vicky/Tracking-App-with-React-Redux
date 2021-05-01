@@ -1,35 +1,33 @@
-import axios from 'axios';
-import baseUrl from './baseUrl';
-import authHeaders from './authHeaders';
+import { sendRequestWithData, sendRequestWithoutData } from './api';
 
 export const getItems = async () => {
-  const response = await axios.get(`${baseUrl}items`, authHeaders())
+  const response = await sendRequestWithoutData('get', 'items')
     .then((response) => response.data).catch((error) => error);
   return response;
 };
 
 export const updateItem = async (id, title, unit, icon, target) => {
-  const response = await axios.put(`${baseUrl}items/${id}`, {
+  const response = await sendRequestWithData('put', `items/${id}`, {
     item: {
       title, unit, icon, target,
     },
-  }, authHeaders())
+  })
     .then((response) => response.data).catch((error) => error);
   return response;
 };
 
 export const addNewItem = async (title, unit, icon, target) => {
-  const response = await axios.post(`${baseUrl}items`, {
+  const response = await sendRequestWithData('post', 'items', {
     item: {
       title, unit, icon, target,
     },
-  }, authHeaders())
+  })
     .then((response) => response).catch((error) => error);
   return response;
 };
 
 export const removeItemFromDB = async (id) => {
-  const response = await axios.delete(`${baseUrl}items/${id}`, authHeaders())
+  const response = await sendRequestWithoutData('delete', `items/${id}`)
     .then((response) => response).catch((error) => error);
   return response;
 };

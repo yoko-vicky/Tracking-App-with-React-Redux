@@ -1,15 +1,13 @@
-import axios from 'axios';
-import authHeaders from './authHeaders';
-import baseUrl from './baseUrl';
+import { sendRequestWithData } from './api';
 
 export const signedUp = async (username, password) => {
-  const response = await axios.post(`${baseUrl}signup`, { user: { username, password } }, authHeaders())
+  const response = await sendRequestWithData('post', 'signup', { user: { username, password } })
     .then((response) => response.data).catch((error) => error);
   return response;
 };
 
 export const loggedIn = async (username, password) => {
-  const response = await axios.post(`${baseUrl}login`, { user: { username, password } }, authHeaders())
+  const response = await sendRequestWithData('post', 'login', { user: { username, password } })
     .then((response) => response.data).catch((error) => error);
   return response;
 };

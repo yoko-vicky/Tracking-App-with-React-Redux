@@ -15,7 +15,7 @@ exports[`TrackForm should match with snapshot 1`] = `
       <input
         onChange={[Function]}
         type="date"
-        value="2021-04-26"
+        value="2021-05-01"
       />
     </div>
     <div
