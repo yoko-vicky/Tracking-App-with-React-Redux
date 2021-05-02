@@ -131,7 +131,7 @@ AdminItemForm.propTypes = {
   unit: PropTypes.string,
   icon: PropTypes.string,
   target: PropTypes.number,
-  handleSubmit: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func,
 };
 
 AdminItemForm.defaultProps = {
@@ -139,6 +139,7 @@ AdminItemForm.defaultProps = {
   unit: '',
   icon: '',
   target: 0,
+  handleSubmit: null,
 };
 
 export default AdminItemForm;

@@ -1,5 +1,5 @@
 const defaultUserState = {
-  logIn: false,
+  logIn: true,
   user: {},
 };
 

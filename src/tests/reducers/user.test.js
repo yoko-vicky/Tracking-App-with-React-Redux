@@ -6,7 +6,7 @@ describe('userReducer', () => {
 
   beforeEach(() => {
     defaultState = {
-      logIn: false,
+      logIn: true,
       user: {},
     };
   });

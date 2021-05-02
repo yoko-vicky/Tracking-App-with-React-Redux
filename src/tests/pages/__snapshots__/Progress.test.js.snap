@@ -1,3 +1,81 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Progress should match with snapshot 1`] = `null`;
+exports[`Progress should match with snapshot 1`] = `
+<div
+  className="progress"
+>
+  <h1
+    className="heading"
+  >
+    Your Progress
+  </h1>
+  <div
+    className="content"
+  >
+    
+    <div
+      className="progress__header"
+    >
+      <div
+        className="progress__title"
+      >
+        Average achievements rate for the last 30 days
+      </div>
+      <div
+        className="progress__chart__text"
+      >
+        <span
+          className="txt"
+        >
+          You achieved
+        </span>
+        <span
+          className="num"
+        >
+          0
+        </span>
+        <span
+          className="txt"
+        >
+          on average
+        </span>
+      </div>
+      <div
+        className="progress__chart__container"
+      >
+        <div
+          className="loader"
+        >
+          Loading...
+        </div>
+      </div>
+    </div>
+    <div
+      className="progress__graph"
+    >
+      <div
+        className="progress__title"
+      >
+        Weekly Achivements Rate (%)
+      </div>
+      <div
+        className="progress__graph__container"
+      >
+        <div>
+          Loading Chart
+        </div>
+      </div>
+    </div>
+    <div
+      className="progress__items mb3"
+    />
+    <a
+      className="btn"
+      href="/progress"
+      onClick={[Function]}
+    >
+      Share
+    </a>
+  </div>
+</div>
+`;

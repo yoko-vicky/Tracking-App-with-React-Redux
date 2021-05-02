@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import UsersForm from '../components/UsersForm';
 import { signedUp } from '../helpers/authUsers';
 import { logIn, setUser } from '../actions/user';
 
-const SignupPage = ({ history, setUser, logIn }) => {
+const SignupPage = ({
+  history, setUser, logIn, loginUser,
+}) => {
   const [errors, setErrors] = useState([]);
   const [msg, setMsg] = useState('');
 
@@ -34,7 +36,7 @@ const SignupPage = ({ history, setUser, logIn }) => {
     runSignedUpAuth(username, password);
   };
 
-  return (
+  return loginUser ? <Redirect to="/tracks" /> : (
     <div>
       <h1 className="heading">Signup</h1>
       <div className="content">
@@ -47,10 +49,21 @@ const SignupPage = ({ history, setUser, logIn }) => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  adminStatus: state.user.user.admin,
+  loginUser: state.user.logIn,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  setUser: (user) => dispatch(setUser(user)),
+  logIn: (status) => dispatch(logIn(status)),
+});
+
 SignupPage.propTypes = {
   history: PropTypes.instanceOf(Object),
   logIn: PropTypes.func,
   setUser: PropTypes.func,
+  loginUser: PropTypes.bool.isRequired,
 };
 
 SignupPage.defaultProps = {
@@ -58,10 +71,4 @@ SignupPage.defaultProps = {
   logIn: null,
   setUser: null,
 };
-
-const mapDispatchToProps = (dispatch) => ({
-  setUser: (user) => dispatch(setUser(user)),
-  logIn: (status) => dispatch(logIn(status)),
-});
-
-export default connect(undefined, mapDispatchToProps)(SignupPage);
+export default connect(mapStateToProps, mapDispatchToProps)(SignupPage);

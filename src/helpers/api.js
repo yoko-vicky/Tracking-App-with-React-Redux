@@ -1,4 +1,5 @@
 import axios from 'axios';
+import originDecode from 'jwt-decode';
 import originMoment from 'moment';
 import baseUrl from './baseUrl';
 import authHeaders from './authHeaders';
@@ -14,3 +15,4 @@ export const sendRequestWithoutData = async (method, path) => {
 };
 
 export const moment = (param) => originMoment(param);
+export const decode = (param) => originDecode(param);

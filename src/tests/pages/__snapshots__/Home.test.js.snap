@@ -15,22 +15,13 @@ exports[`Home should match with snapshot 1`] = `
     >
       Welcome to Track it App!
     </h2>
-    <div>
-      <a
-        className="btn mb2 dark"
-        href="/login"
-        onClick={[Function]}
-      >
-        Login
-      </a>
-      <a
-        className="btn mb2 medium"
-        href="/signup"
-        onClick={[Function]}
-      >
-        Signup
-      </a>
-    </div>
+    <button
+      className="btn"
+      onClick={[Function]}
+      type="button"
+    >
+      Logout
+    </button>
   </div>
 </div>
 `;
