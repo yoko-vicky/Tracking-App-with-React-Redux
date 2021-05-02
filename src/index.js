@@ -16,18 +16,6 @@ const jsx = (
   </Provider>
 );
 
-/* eslint-disable no-console */
-store.subscribe(() => {
-  const {
-    user, items, tracks, trackDates,
-  } = store.getState();
-  console.log('user', user);
-  console.log('items', items);
-  console.log('tracks', tracks);
-  console.log('trackDates', trackDates);
-});
-/* eslint-enable no-console */
-
 const runAutoLogin = async (userId) => {
   const response = await autoLogin(userId);
   if (response.logged_in) {
