@@ -23,7 +23,7 @@ const AdminItemForm = ({
 
   const onUnitChange = (e) => {
     const { value } = e.target;
-    const regex = /^[a-zA-Z]{1,9}$/;
+    const regex = /^[a-zA-Z]{0,9}$/;
     if (value.match(regex)) {
       setError('');
       setInputUnit(value);
