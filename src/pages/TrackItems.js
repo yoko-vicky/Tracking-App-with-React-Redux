@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
+import { AiFillCaretLeft, AiFillCaretRight } from 'react-icons/ai';
 import PropTypes from 'prop-types';
 import Chart from 'react-google-charts';
 import { moment } from '../helpers/api';
@@ -94,9 +95,13 @@ const TrackItems = ({
       <h1 className="heading">Track it</h1>
       <div className="items__header">
         <div className="items__date">
-          <Link to={trackDates[currentIndex - 1] || trackDates[currentIndex] || ''}>&lt;</Link>
+          <Link to={trackDates[currentIndex - 1] || trackDates[currentIndex] || ''}>
+            <AiFillCaretLeft />
+          </Link>
           <span>{moment(date).format('MMM Do YYYY')}</span>
-          <Link to={trackDates[currentIndex + 1] || trackDates[currentIndex] || ''}>&gt;</Link>
+          <Link to={trackDates[currentIndex + 1] || trackDates[currentIndex] || ''}>
+            <AiFillCaretRight />
+          </Link>
         </div>
         <div className="items__overview">
           <div className="items__chart__container">
