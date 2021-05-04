@@ -1,4 +1,7 @@
 const calcAchieveTotalRate = (sameDateTracks, itemNum) => {
+  if (!sameDateTracks || !itemNum) {
+    return 0;
+  }
   const totalTrackRates = sameDateTracks
     .reduce((acm, rec) => {
       const rate = rec.result / rec.target;
