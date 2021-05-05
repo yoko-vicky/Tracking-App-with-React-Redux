@@ -1,0 +1,150 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer should match with snapshot 1`] = `
+<footer
+  className="footer"
+>
+  <nav
+    className="footer__nav"
+  >
+    <a
+      aria-current={null}
+      className="footer__nav__item"
+      href="/track/create"
+      onClick={[Function]}
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        strokeWidth="0"
+        style={
+          Object {
+            "color": undefined,
+          }
+        }
+        viewBox="0 0 16 16"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          height="5"
+          rx="1"
+          width="4"
+          x="1"
+          y="10"
+        />
+        <rect
+          height="9"
+          rx="1"
+          width="4"
+          x="6"
+          y="6"
+        />
+        <rect
+          height="14"
+          rx="1"
+          width="4"
+          x="11"
+          y="1"
+        />
+      </svg>
+      <span
+        className="footer__nav__item__text"
+      >
+        Add Track
+      </span>
+    </a>
+    <a
+      aria-current={null}
+      className="footer__nav__item"
+      href="/tracks"
+      onClick={[Function]}
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        strokeWidth="0"
+        style={
+          Object {
+            "color": undefined,
+          }
+        }
+        viewBox="0 0 512 512"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"
+        />
+      </svg>
+      <span
+        className="footer__nav__item__text"
+      >
+        Track List
+      </span>
+    </a>
+    <a
+      aria-current={null}
+      className="footer__nav__item"
+      href="/progress"
+      onClick={[Function]}
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        strokeWidth="0"
+        style={
+          Object {
+            "color": undefined,
+          }
+        }
+        viewBox="0 0 512 512"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M290.352 13.213l-11.475 218.984 204.68-78.584a219.242 219.284 0 0 0-193.205-140.4zm-51.39 47.566A219.242 219.284 0 0 0 38.59 206.24a219.242 219.284 0 0 0 77.3 250.918 219.242 219.284 0 0 0 262.49-3.092 219.242 219.284 0 0 0 71.366-252.67l-204.682 78.583 12.24-218.943a219.242 219.284 0 0 0-18.34-.258z"
+        />
+      </svg>
+      <span
+        className="footer__nav__item__text"
+      >
+        Your Progress
+      </span>
+    </a>
+    <a
+      aria-current={null}
+      className="footer__nav__item"
+      href="/more"
+      onClick={[Function]}
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        strokeWidth="0"
+        style={
+          Object {
+            "color": undefined,
+          }
+        }
+        viewBox="0 0 24 24"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2S13.1 10 12 10zM18 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2S19.1 10 18 10zM6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2S7.1 10 6 10z"
+        />
+      </svg>
+      <span
+        className="footer__nav__item__text"
+      >
+        More
+      </span>
+    </a>
+  </nav>
+</footer>
+`;

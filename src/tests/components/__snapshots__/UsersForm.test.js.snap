@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UsersForm should match with snapshot 1`] = `
+<div>
+  <form
+    className="form"
+    onSubmit={[Function]}
+  >
+    <div
+      className="form__group"
+    >
+      <input
+        name="username"
+        onChange={[Function]}
+        placeholder="Enter your username"
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="form__group"
+    >
+      <input
+        name="password"
+        onChange={[Function]}
+        placeholder="Enter your password"
+        type="password"
+        value=""
+      />
+    </div>
+    <button
+      className="btn mb3"
+      type="submit"
+    >
+      Save
+    </button>
+  </form>
+</div>
+`;

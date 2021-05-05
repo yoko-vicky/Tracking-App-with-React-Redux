@@ -1,0 +1,28 @@
+html {
+  font-size: 62.5%; // 1rem = 8px (8/16)
+
+  @include mq(tab) {
+    font-size: 62.5%; // 1rem = 10px (10/16)
+  }
+}
+
+body,
+select,
+input,
+button {
+  font-family: $main-font;
+  line-height: 1.7;
+  font-size: $default-font-size;
+  letter-spacing: 0.1px;
+  color: $dark-grey;
+}
+
+.heading {
+  display: block;
+  width: 100%;
+  background: $primary-color;
+  text-align: center;
+  color: $white;
+  font-size: 2.4rem;
+  padding: 1rem 0;
+}

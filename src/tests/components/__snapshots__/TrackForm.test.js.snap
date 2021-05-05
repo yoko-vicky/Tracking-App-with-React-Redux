@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TrackForm should match with snapshot 1`] = `
+<div
+  className="track-form mb3"
+>
+  
+  <form
+    className="track-form__form mb3"
+    onSubmit={[Function]}
+  >
+    <div
+      className="track-form__date"
+    >
+      <input
+        onChange={[Function]}
+        type="date"
+        value="2021-05-05"
+      />
+    </div>
+    <div
+      className="track-form__group mb3"
+    />
+    <button
+      className="btn dark"
+      type="submit"
+    >
+      Save
+    </button>
+  </form>
+</div>
+`;

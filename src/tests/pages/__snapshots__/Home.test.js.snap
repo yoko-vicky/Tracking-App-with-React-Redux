@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home should match with snapshot 1`] = `
+<div>
+  <h1
+    className="heading"
+  >
+    Home
+  </h1>
+  <div
+    className="content"
+  >
+    <h2
+      className="home__heading"
+    >
+      Welcome to Track it App!
+    </h2>
+    <button
+      className="btn"
+      onClick={[Function]}
+      type="button"
+    >
+      Logout
+    </button>
+  </div>
+</div>
+`;

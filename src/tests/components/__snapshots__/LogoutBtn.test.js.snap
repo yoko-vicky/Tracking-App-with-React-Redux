@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LogoutBtn should match with snapshot 1`] = `
+<button
+  className="btn"
+  onClick={[Function]}
+  type="button"
+>
+  Logout
+</button>
+`;

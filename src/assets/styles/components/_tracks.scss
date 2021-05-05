@@ -1,0 +1,74 @@
+.tracks {
+  &__item {
+    position: relative;
+
+    &__sign {
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    &__link {
+      display: grid;
+      grid-template-columns: 4fr 9fr 5fr 1.5fr;
+      align-items: center;
+      padding: 1rem;
+      background: $white;
+      margin: 0 auto 2rem;
+    }
+
+    &__date {
+      font-weight: bold;
+      font-size: 1.8rem;
+    }
+
+    &__rate {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+
+      .rate {
+        font-weight: bold;
+        font-size: 1.8rem;
+      }
+
+      .goodjob {
+        border: 1px solid;
+        width: 2.6rem;
+        height: 2.6rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 0.6rem;
+        border-radius: 50%;
+        color: $primary-color;
+      }
+    }
+
+    &__toright {
+      text-align: right;
+    }
+
+    &__graph {
+      width: 4rem;
+      height: 4rem;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+
+      &::after {
+        content: '';
+        display: block;
+        height: 2.4rem;
+        width: 2.4rem;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-46%, -46%);
+        background: $white;
+      }
+    }
+  }
+}

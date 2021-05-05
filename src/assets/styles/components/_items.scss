@@ -1,0 +1,135 @@
+.items {
+  &__header {
+    width: 100%;
+    margin: 0 auto;
+    background: $white;
+    padding: 2rem;
+    max-width: $text-max-width;
+  }
+
+  &__overview {
+    text-align: center;
+  }
+
+  &__chart {
+    &__container {
+      width: 18rem;
+      height: 18rem;
+      margin: 0 auto;
+      position: relative;
+      z-index: 0;
+      margin-top: -2.4rem;
+
+      &::after {
+        content: '';
+        display: block;
+        width: 9rem;
+        height: 9rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-49%, -49%);
+        background: $white;
+        border-radius: 50%;
+      }
+    }
+
+    &__comment {
+      position: relative;
+      z-index: 1;
+      margin-top: -2.4rem;
+    }
+  }
+
+  &__date {
+    text-align: center;
+    color: $medium-grey;
+    font-size: 2.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto 0.6rem;
+    position: relative;
+    z-index: 1;
+
+    a {
+      color: $medium-grey;
+    }
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .iconify {
+      font-size: 5rem;
+      color: $primary-color;
+    }
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 2rem;
+
+    @include mq(mob) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__item-link {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-gap: 0.6rem;
+    background: $white;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-radius: 3px;
+  }
+
+  &__text {
+    text-align: left;
+
+    @include mq(mob) {
+      text-align: center;
+    }
+  }
+
+  &__title {
+    font-size: 1.4rem;
+    color: $grey;
+    font-weight: bold;
+    word-break: break-all;
+    line-height: 1.2;
+    margin-bottom: 0.6rem;
+  }
+
+  &__result {
+    display: flex;
+    align-items: center;
+
+    @include mq(mob) {
+      justify-content: center;
+    }
+
+    &__num {
+      font-size: 2.6rem;
+      font-weight: bold;
+      line-height: 1;
+      text-align: right;
+      color: $medium-grey;
+    }
+
+    &__unit {
+      font-size: 1.3rem;
+      color: $grey;
+      margin-left: 0.6rem;
+    }
+  }
+
+  &__rate {
+    font-size: 1.2rem;
+    color: $grey;
+  }
+}

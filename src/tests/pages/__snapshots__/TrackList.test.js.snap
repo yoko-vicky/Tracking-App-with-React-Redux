@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TrackList should match with snapshot 1`] = `
+<div
+  className="TrackList"
+>
+  <h1
+    className="heading"
+  >
+    All tracks
+  </h1>
+  <div
+    className="content"
+  >
+    
+    <div
+      className="tracks mb3"
+    />
+    <a
+      className="btn dark"
+      href="/track/create"
+      onClick={[Function]}
+    >
+      Add New Track
+    </a>
+  </div>
+</div>
+`;
