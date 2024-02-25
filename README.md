@@ -4,20 +4,20 @@
 
 
 ## About the Project
-This responsive web application was built with React and Redux as the final project at Microverse.
-I also built [REST API with Ruby on Rails](https://github.com/yocosaka/Tracking-App-Api-with-Rails) as the back-end for this application.
+Experience seamless management of database resources through this responsive web application, crafted using React and Redux as the culminating project at Microverse. Complemented by a robust REST API developed with Ruby on Rails, this application empowers users to efficiently add, edit, and remove records tailored to their tracking needs. Whether monitoring daily progress in language acquisition or any other endeavor, the platform offers versatile functionality.
 
-In this app, you can manage database resources in API including add, edit, and remove records that you want to track. For example, you can track your daily progress in learning English.
+### Key Features
 
-I implemented these things:
-- Connected to the back-end API to send and receive data
-- With routes for each of the screens, so the user can easily go back and forward
-- Use Redux to store info used across the app, like the username
-- The project was deployed to Heroku and accessible online
-- Implemented user authentication from the front-end to the server
-- Created an admin panel to create / update / delete Items (things to measure)
-- Made the app responsive, creating both tablet and desktop versions, following design guidelines
-- Implemented the progress page with data charts that show the average achievements rate and total scores
+- Integration with the back-end API for seamless data transmission.
+- Intuitive routing facilitates easy navigation between screens.
+- Utilization of Redux for centralized storage of essential information, such as user credentials.
+- Deployment on Heroku for convenient online access.
+- Front-end to server user authentication implementation.
+- Creating an admin panel enables item management operations like creation, updating, and deletion.
+- Development of responsive layouts catering to both tablet and desktop interfaces, adhering to design standards.
+- Incorporation of a progress page featuring dynamic data charts showcasing average achievement rates and total scores.
+
+Please see the [REST API with Ruby on Rails](https://github.com/yocosaka/Tracking-App-Api-with-Rails) built as a backend for this project.
 
 A list of commonly used resources that I find helpful is listed in the acknowledgments.
 
