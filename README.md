@@ -59,7 +59,7 @@ git clone https://github.com/yoko-vicky/Tracking-App-with-React-Redux
 cd Tracking-App-with-React-Redux
 npm install
 npm start
-
+```
 To run the backend API, see [Tracking App API Repo](https://github.com/yoko-vicky/Tracking-App-Api-with-Rails)
 
 ---
