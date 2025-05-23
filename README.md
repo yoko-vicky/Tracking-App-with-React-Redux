@@ -1,113 +1,126 @@
-![](https://img.shields.io/badge/Microverse-blueviolet)
-# Tracking App built with React
-![Screenshots](./screenshot.png)
+# 📦 Tracking App – A UX-Informed Daily Progress Tracker
 
+A responsive, fullstack app for tracking learning habits — combining frontend clarity with backend structure and personalized user flows.
 
-## About the Project
-Experience seamless management of database resources through this responsive web application, crafted using React and Redux as the culminating project at Microverse. Complemented by a robust REST API developed with Ruby on Rails, this application empowers users to efficiently add, edit, and remove records tailored to their tracking needs. Whether monitoring daily progress in language acquisition or any other endeavor, the platform offers versatile functionality.
+![screenshot](./screenshot.png)
 
-### Key Features
+---
 
-- Integration with the back-end API for seamless data transmission.
-- Intuitive routing facilitates easy navigation between screens.
-- Utilization of Redux for centralized storage of essential information, such as user credentials.
-- Deployment on Heroku for convenient online access.
-- Front-end to server user authentication implementation.
-- Creating an admin panel enables item management operations like creation, updating, and deletion.
-- Development of responsive layouts catering to both tablet and desktop interfaces, adhering to design standards.
-- Incorporation of a progress page featuring dynamic data charts showcasing average achievement rates and total scores.
+## 🧭 About the Project
 
-Please see the [REST API with Ruby on Rails](https://github.com/yocosaka/Tracking-App-Api-with-Rails) built as a backend for this project.
+**Tracking App** is a fullstack CRUD-based tracker designed for recording progress in customizable categories (e.g. pronunciation, idioms, reading).  
+Developed as a capstone at Microverse, it blends **React + Redux** on the frontend with a **Rails REST API** backend.
 
-A list of commonly used resources that I find helpful is listed in the acknowledgments.
+### 🧠 UX Highlights
+- Designed **intuitive user flow** from login → record → history → chart
+- Minimized friction in data input with **clear feedback & minimalist UI**
+- Incorporated **progress visualization** to motivate continued use
+- Created **admin mode** with structured item management for flexibility
+- Auth flow and state logic aligned to reduce user confusion and redundancy
 
+This project reflects my focus on aligning data structure and user interaction — with clarity, simplicity, and real-world usability.
 
-## Built With
+---
 
-* [React](https://reactjs.org/)
-* [Redux](https://redux.js.org/)
-* [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
-* [HTML5](https://en.wikipedia.org/wiki/HTML5)
-* [SASS](https://sass-lang.com/)
+## 🚀 Key Features
 
+- 🔐 Google-like login experience (username/password via API)
+- 📊 Track daily progress and visualize it through dynamic charts
+- 🗂 View historical data by category
+- ⚙️ Admin interface for CRUD item management
+- 🔁 Fully responsive design (tablet & desktop)
+- 🔗 Frontend–backend integration via REST API
 
-## Live Demo
+Backend repo:  
+🔗 [Tracking App API – Ruby on Rails](https://github.com/yocosaka/Tracking-App-Api-with-Rails)
 
-[Live Demo Link](https://yoco-tracking-app-front.herokuapp.com/)
+---
 
+## 🛠️ Built With
 
-## Getting Started
+- Frontend: [React](https://reactjs.org/) / [Redux](https://redux.js.org/) / [SASS](https://sass-lang.com/)
+- Backend: Ruby on Rails (REST API)  
+- Auth: Frontend-auth flow via Redux & API logic  
+- Visualization: Chart logic (vanilla + CSS)
 
-To get a local copy up and running follow these simple example steps.
+---
 
-1. On the project GitHub page, navigate to the main page of the repository.
-2. Under the repository name, locate and click on a green button named `Code`. 
-3. Copy the project URL as displayed.
-4. If you're running the Windows Operating System, open your command prompt. On Linux, Open your terminal. 
-5. Change the current working directory to the location where you want the cloned directory to be made. Leave as it is if the current location is where you want the project to be. 
-6. Type git clone, and then paste the URL you copied in Step 3. <br>
-e.g. $ git clone https://github.com/yourUsername/yourProjectName 
-7. Press Enter. Your local copy will be created. 
-8. Go to helpers/baseUrl.js and rewrite the baseUrl like `http://localhost:3001/` so you can run this project in your local environment
-9. To run the server, run `npm start`
-10. To run the tests, run `npm test`
+## 🔗 Live Demo  
+[Try the app](https://yoco-tracking-app-front.herokuapp.com/)
 
-## How to use this app as a user
+---
 
-1. To start using this app as a user, you need to log in with a username and password. This login is authenticated by API
-2. Then, you can record your track for each item for each day: Idioms, Pronunciation, Reading, etc.
-3. On the all tracks page, you can check the past tracks you've made
-4. On the progress page, you can see your progress so far
+## ⚙️ Getting Started
 
-## How to manage items as an admin user
+To run locally:
 
-1. Like the ordinary user, you need to log in with a username and password as an admin user, which is required to be given the status of admin: true by the administrator for the API
-  * You can see how to create admin user in the [Readme file for the REST API](https://github.com/yocosaka/Tracking-App-Api-with-Rails)
-2. Then, you'll see the admin page. On this page, the items that are added by administrators will show
-3. By clicking the "Add item" button, it shows the form, and you can add an item
-4. By clicking each item, you can edit it
+```bash
+git clone https://github.com/yoko-vicky/Tracking-App-with-React-Redux
+cd Tracking-App-with-React-Redux
+npm install
+npm start
 
+To run the backend API, see [Tracking App API Repo](https://github.com/yoko-vicky/Tracking-App-Api-with-Rails)
 
-## Author
+---
 
-👤 **Yoko Saka**
+## 👥 Usage
 
-- GitHub: [@yocosaka](https://github.com/yocosaka)
-- Twitter: [@yocosaka](https://twitter.com/yocosaka)
-- LinkedIn: [Yoko Saka](https://www.linkedin.com/in/yokosaka)
+### As a User
+1. Login with your credentials
+2. Track your daily activities (Idioms, Reading, etc.)
+3. View historical records and progress chart
 
+### As an Admin
+1. Login with an `admin: true` account (see API repo for setup)
+2. Manage tracking categories (add / edit / delete items)
 
-## Contributing
+---
 
-Contributions, issues, and feature requests are welcome!
-Feel free to check the [issues page](../../issues).
+## 👤 Author
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
+**Yoko Saka**  
+Frontend Developer × UX Thinker
+
+- GitHub: [yoko-vicky](https://github.com/yoko-vicky)
+- LinkedIn: [Yoko Saka](https://www.linkedin.com/in/yoko-vicky/)
+- Portfolio: [View Portfolio](https://abiding-snap-e4c.notion.site/Yoko-UX-Informed-Frontend-Development-Structuring-Portfolio-1cb994322fd580deab65d69fbfa3ddba)
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repo  
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)  
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)  
+4. Push to the branch (`git push origin feature/AmazingFeature`)  
 5. Open a Pull Request
 
+---
 
-## Show your support
+## ⭐️ Support
 
-Give a ⭐️ if you like this project!
+Give a ⭐️ if this helped or inspired you!
 
+---
 
-## License
+## 📝 License
 
-### Design:
-["Bodytrack.it "](https://www.behance.net/gallery/13271423/Bodytrackit-An-iOs-app-Branding-UX-and-UI) design idea by [Gregoire Vella](https://www.behance.net/gregoirevella) is licensed under [Creative Commons license of the design](https://creativecommons.org/licenses/by-nc/4.0/).
+**Application:** MIT License  
+**Design Inspiration:**  
+["Bodytrack.it"](https://www.behance.net/gallery/13271423/Bodytrackit-An-iOs-app-Branding-UX-and-UI) by [Gregoire Vella](https://www.behance.net/gregoirevella)  
+Licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)
 
-### Application:
-This project is [MIT](./LICENSE) licensed except for the design above
+---
 
-## Acknowledgements
-* [Proptypes](https://reactjs.org/docs/typechecking-with-proptypes.html)
-* [Moment.js](https://momentjs.com/)
-* [axios](https://github.com/axios/axios)
-* [Pluralize](https://github.com/plurals/pluralize)
-* [Google Fonts](https://fonts.google.com/)
-* [Pixabay](https://pixabay.com/)
-* [React Icons](https://react-icons.github.io/react-icons)
-* [Iconify](https://iconify.design/icon-sets/)
+## 🙏 Acknowledgements
+
+- [Redux](https://redux.js.org/)
+- [Moment.js](https://momentjs.com/)
+- [axios](https://github.com/axios/axios)
+- [Pluralize](https://github.com/plurals/pluralize)
+- [Google Fonts](https://fonts.google.com/)
+- [Pixabay](https://pixabay.com/)
+- [React Icons](https://react-icons.github.io/react-icons)
+- [Iconify](https://iconify.design/icon-sets/)
+
