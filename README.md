@@ -42,12 +42,7 @@ Backend repo:
 - Backend: Ruby on Rails (REST API)  
 - Auth: Frontend-auth flow via Redux & API logic  
 - Visualization: Chart logic (vanilla + CSS)
-
----
-
-## 🔗 Live Demo  
-[Try the app](https://yoco-tracking-app-front.herokuapp.com/)
-
+  
 ---
 
 ## ⚙️ Getting Started
