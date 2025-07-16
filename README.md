@@ -20,6 +20,17 @@ Developed as a capstone at Microverse, it blends **React + Redux** on the fronte
 
 This project reflects my focus on aligning data structure and user interaction — with clarity, simplicity, and real-world usability.
 
+### 🔗 API & Data Modeling
+- Designed and implemented a Rails REST API to manage user, item, and record resources.
+- Created a PostgreSQL schema to support customizable tracking categories.
+- Used JWT authentication to secure user sessions.
+- Ensured data integrity and clear relationships between users, items, and records.
+
+### 🧭 Data Flow & Integration
+- Connected the React + Redux frontend with the Rails API for full CRUD operations.
+- Defined clear API endpoints to support intuitive user flows.
+- Managed async data updates while keeping state predictable and maintainable.
+
 ---
 
 ## 🚀 Key Features
