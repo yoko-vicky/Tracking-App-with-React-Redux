@@ -1,6 +1,6 @@
 # 📦 Tracking App – A UX-Informed Daily Progress Tracker
 
-A responsive, fullstack app for tracking learning habits — combining frontend clarity with backend structure and personalized user flows.
+A responsive, fullstack app for tracking learning habits — combining frontend clarity with backend structure, personalized data modeling, and UX-driven API design.
 
 ![screenshot](./screenshot.png)
 
@@ -17,19 +17,20 @@ Developed as a capstone at Microverse, it blends **React + Redux** on the fronte
 - Incorporated **progress visualization** to motivate continued use
 - Created **admin mode** with structured item management for flexibility
 - Auth flow and state logic aligned to reduce user confusion and redundancy
+- Mapped user interaction patterns to backend data structure and API responses, reducing cognitive load and redundant logic
 
 This project reflects my focus on aligning data structure and user interaction — with clarity, simplicity, and real-world usability.
 
 ### 🔗 API & Data Modeling
-- Designed and implemented a Rails REST API to manage user, item, and record resources.
-- Created a PostgreSQL schema to support customizable tracking categories.
-- Used JWT authentication to secure user sessions.
-- Ensured data integrity and clear relationships between users, items, and records.
+- Designed and implemented a Rails REST API — defining endpoints, request structures, and response patterns aligned with frontend UX logic
+- Created and normalized a PostgreSQL schema to support flexible, category-based habit tracking
+- Used JWT authentication to secure user sessions, integrated with frontend state logic
+- Mapped data relationships across users, items, and records to support maintainability, query efficiency, and intuitive UI behavior
 
 ### 🧭 Data Flow & Integration
 - Connected the React + Redux frontend with the Rails API for full CRUD operations.
-- Defined clear API endpoints to support intuitive user flows.
-- Managed async data updates while keeping state predictable and maintainable.
+- Designed API endpoints and backend logic to directly reflect frontend flows and user intent
+- Structured async data updates using Redux while preserving predictability and clear state transitions
 
 ---
 
@@ -40,7 +41,7 @@ This project reflects my focus on aligning data structure and user interaction �
 - 🗂 View historical data by category
 - ⚙️ Admin interface for CRUD item management
 - 🔁 Fully responsive design (tablet & desktop)
-- 🔗 Frontend–backend integration via REST API
+- 🔗 UX-driven REST API and schema design with frontend–backend integration
 
 Backend repo:  
 🔗 [Tracking App API – Ruby on Rails](https://github.com/yocosaka/Tracking-App-Api-with-Rails)
